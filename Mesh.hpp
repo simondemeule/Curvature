@@ -26,8 +26,6 @@ private:
     std::vector<glm::vec3> normals;
     std::vector<glm::vec2> UVs;
     
-    BoundingBox boundingBox;
-    
     void updateBoundingBox();
 public:
     Mesh(std::string filePath, ShadingAttributes shadingAttributesNew);

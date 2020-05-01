@@ -11,6 +11,7 @@
 #include "ShadingAttributes.hpp"
 #include "Intersection.hpp"
 #include "Ray.hpp"
+#include "BoundingBox.hpp"
 
 // shadable object class
 class ShadingObject {
@@ -23,4 +24,7 @@ public:
     
     // intersection function for object
     virtual Intersection intersection(Ray ray) = 0;
+    
+    // bounding box
+    BoundingBox boundingBox;
 };

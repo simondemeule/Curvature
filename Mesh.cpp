@@ -43,9 +43,9 @@ void Mesh::updateBoundingBox() {
     boundingBox.setPointNegative(pointNegative);
 }
 
-// calculates the area of a triangle
-float area(glm::vec2 a, glm::vec2 b, glm::vec2 c) {
-    return ((b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y)) / 2.0;
+// calculates the area of a triangle given vertex positions
+float area(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
+    return glm::length(glm::cross(b - a, c - a)) / 2.0;
 }
 
 Intersection Mesh::intersection(Ray ray) {
@@ -85,61 +85,17 @@ Intersection Mesh::intersection(Ray ray) {
                 // exit calculation for current triangle
                 continue;
             }
+            
             // intersection with plane is valid
             glm::vec3 v0 = ray.origin + ray.direction * t;
             
-            glm::vec2 p0; // intersection point projected to plane
-            glm::vec2 p1; // vertex 1 projected to plane
-            glm::vec2 p2; // vertex 2 projected to plane
-            glm::vec2 p3; // vertex 3 projected to plane
+            // barycentric area computation
+            float a0 = area(v1, v2, v3);
+            float a1 = area(v0, v2, v3);
+            float a2 = area(v1, v0, v3);
+            float a3 = area(v1, v2, v0);
             
-            // do the projection
-            
-            // find best projection plane
-            if(normal.x > normal.y && normal.x > normal.z) {
-                // worse plane is parallel to x
-                // choose yz
-                p0.x = v0.y;
-                p0.y = v0.z;
-                p1.x = v1.y;
-                p1.y = v1.z;
-                p2.x = v2.y;
-                p2.y = v2.z;
-                p3.x = v3.y;
-                p3.y = v3.z;
-            } else if(normal.y > normal.x && normal.y > normal.z) {
-                // worse plane is parallel to y
-                // choose xz
-                p0.x = v0.x;
-                p0.y = v0.z;
-                p1.x = v1.x;
-                p1.y = v1.z;
-                p2.x = v2.x;
-                p2.y = v2.z;
-                p3.x = v3.x;
-                p3.y = v3.z;
-            } else {
-                // worse plane is parallel to z
-                // choose xy
-                p0.x = v0.x;
-                p0.y = v0.y;
-                p1.x = v1.x;
-                p1.y = v1.y;
-                p2.x = v2.x;
-                p2.y = v2.y;
-                p3.x = v3.x;
-                p3.y = v3.y;
-            }
-            
-            float a = area(p1, p2, p3); // area for triangle p1-p2-p3
-            float c1 = area(p0, p2, p3) / a; // barycentric coordinate for triangle p0-p2-p3
-            float c2 = area(p1, p0, p3) / a; // barycentric coordinate for for triangle p1-p0-p3
-            float c3 = area(p1, p2, p0) / a; // barycentric coordinate for for triangle p1-p2-p0
-            
-            if(c1 < -1e-6 ||
-               c2 < -1e-6 ||
-               c3 < -1e-6 ||
-               std::abs(c1 + c2 + c3 - 1.0) > 1e-6) {
+            if(std::abs((a1 + a2 + a3) / a0 - 1.0) > 1e-3) {
                 // intersection is not in triangle
                 // exit calculation for current triangle
                 continue;
@@ -148,13 +104,6 @@ Intersection Mesh::intersection(Ray ray) {
             // intersection is valid
             if(!intersection.exists || intersection.distance > t) {
                 // intersection is the first found or is closer than the one previously found
-                
-//                // get normals
-//                glm::vec3 n1 = glm::normalize(normals[i1]);
-//                glm::vec3 n2 = glm::normalize(normals[i2]);
-//                glm::vec3 n3 = glm::normalize(normals[i3]);
-//                // interpolate normal
-//                intersection.normal = c1 * n1 + c2 * n2 + c3 * n3;
 
                 intersection.exists = true;
                 intersection.origin = ray.origin + ray.direction * t;
