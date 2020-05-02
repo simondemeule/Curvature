@@ -102,7 +102,7 @@ BoundedNode* BoundedHierarchy::buildHierarchy(std::vector<ShadingObject*> object
 
     // decide which one is optimal
     float splitCost;
-    float splitCostBest = std::numeric_limits<float>::infinity();
+    float splitCostBest;
     int splitIndex = 0;
     int splitIndexBest;
     BoundingBox boundingBoxLeft;
@@ -115,7 +115,7 @@ BoundedNode* BoundedHierarchy::buildHierarchy(std::vector<ShadingObject*> object
     
     for(; itUnionLeft != unionLeft.end() && itUnionRight != unionRight.end(); ++itUnionLeft, ++itUnionRight, ++itPrimitiveCountLeft, ++itPrimitiveCountRight) {
         splitCost = itUnionLeft->surfaceArea() * *itPrimitiveCountLeft + itUnionRight->surfaceArea() * *itPrimitiveCountRight;
-        if(splitCost < splitCostBest) {
+        if(splitIndex == 0 || splitCost < splitCostBest) {
             splitIndexBest = splitIndex;
             splitCostBest = splitCost;
             boundingBoxLeft = *itUnionLeft;

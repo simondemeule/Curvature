@@ -11,7 +11,6 @@
 #include "BoundedNode.hpp"
 
 Intersection BoundedNode::closestIntersection(Ray ray) {
-    // TODO: remove all bounding box checks in classes derived from ShadingObject, they will be handled here instead now
     if(boundingBox.intersectionTest(ray)) {
         // ray intersects with node
         if(object != nullptr) {

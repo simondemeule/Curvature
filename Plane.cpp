@@ -15,7 +15,7 @@ Plane::Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadingAttributes shading
 {
     float infinity = std::numeric_limits<float>::infinity();
     boundingBox.setPointPositive(glm::vec3(infinity));
-    boundingBox.setPointPositive(glm::vec3(-infinity));
+    boundingBox.setPointNegative(glm::vec3(-infinity));
     primitiveCount = 1;
 }
 

@@ -20,13 +20,6 @@ Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadingAttributes shadingAt
 
 Intersection Sphere::intersection(Ray ray) {
     Intersection intersection;
-    if(!boundingBox.intersectionTest(ray)) {
-        // no intersection with bounding box
-        // measured to speed up render time by about 20% on scenes with large amounts of spheres
-        // exit calculation
-        intersection.exists = false;
-        return intersection;
-    }
     // code based on class notes
     glm::vec3 delta = ray.origin - origin;
     float b = 2.0 * glm::dot(ray.direction, delta);

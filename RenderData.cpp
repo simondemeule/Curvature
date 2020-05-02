@@ -417,7 +417,7 @@ void RenderData::loadTest() {
     // plane
     shadingAttributes.specular = shadingAttributes.diffuse = glm::vec3(0.0, 0.9, 0.6);
     shadingAttributes.reflectivity = 0;
-    //objects.push_back(new Plane(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1), shadingAttributes));
+    objects.push_back(new Plane(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1), shadingAttributes));
     
     // mesh
     //objects.push_back(new Mesh("monkey.obj", shadingAttributes));
