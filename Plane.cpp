@@ -1,6 +1,6 @@
 //
 //  Plane.cpp
-//  project
+//  Bent
 //
 //  Created by Simon Demeule on 2019-03-30.
 //  Copyright © 2019 Simon Demeule. All rights reserved.
@@ -12,7 +12,12 @@ Plane::Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadingAttributes shading
     origin(originNew),
     normal(glm::normalize(normalNew)),
     ShadingObject(shadingAttributesNew)
-{}
+{
+    float infinity = std::numeric_limits<float>::infinity();
+    boundingBox.setPointPositive(glm::vec3(infinity));
+    boundingBox.setPointPositive(glm::vec3(-infinity));
+    primitiveCount = 1;
+}
 
 Intersection Plane::intersection(Ray ray) {
     // code based on scratchapixel's tutorial. see https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-plane-and-ray-disk-intersection

@@ -1,6 +1,6 @@
 //
 //  Renderable.hpp
-//  project
+//  Bent
 //
 //  Created by Simon Demeule on 2019-03-20.
 //  Copyright © 2019 Simon Demeule. All rights reserved.
@@ -11,10 +11,10 @@
 #include "ShadingAttributes.hpp"
 #include "Intersection.hpp"
 #include "Ray.hpp"
-#include "BoundingBox.hpp"
+#include "BoundedObject.hpp"
 
 // shadable object class
-class ShadingObject {
+class ShadingObject : public BoundedObject {
 public:
     // shading attributes (ambient, diffuse, specular, etc)
     ShadingAttributes shadingAttributes;
@@ -25,6 +25,6 @@ public:
     // intersection function for object
     virtual Intersection intersection(Ray ray) = 0;
     
-    // bounding box
-    BoundingBox boundingBox;
+    // primitive count for bounded hierarchy construction optimisation
+    int primitiveCount;
 };

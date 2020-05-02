@@ -1,6 +1,6 @@
 //
 //  Sphere.cpp
-//  project
+//  Bent
 //
 //  Created by Simon Demeule on 2019-03-30.
 //  Copyright © 2019 Simon Demeule. All rights reserved.
@@ -11,9 +11,12 @@
 Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadingAttributes shadingAttributesNew) :
     ShadingObject(shadingAttributesNew),
     origin(originNew),
-    radius(radiusNew),
-    boundingBox(glm::vec3(radiusNew, radiusNew, radiusNew) + originNew, glm::vec3(- radiusNew, - radiusNew, - radiusNew) + originNew)
-{}
+    radius(radiusNew)
+{
+    boundingBox.setPointPositive(glm::vec3(radiusNew, radiusNew, radiusNew) + originNew);
+    boundingBox.setPointNegative(glm::vec3(- radiusNew, - radiusNew, - radiusNew) + originNew);
+    primitiveCount = 1;
+}
 
 Intersection Sphere::intersection(Ray ray) {
     Intersection intersection;

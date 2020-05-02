@@ -1,6 +1,6 @@
 //
 //  Image.hpp
-//  project
+//  Bent
 //
 //  Created by Simon Demeule on 2019-04-02.
 //  Copyright © 2019 Simon Demeule. All rights reserved.

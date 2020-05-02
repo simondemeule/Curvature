@@ -1,6 +1,6 @@
 //
 //  Mesh.cpp
-//  project
+//  Bent
 //
 //  Created by Simon Demeule on 2019-03-30.
 //  Copyright © 2019 Simon Demeule. All rights reserved.
@@ -11,7 +11,7 @@
 
 Mesh::Mesh(std::string filePath, ShadingAttributes shadingAttributesNew) : ShadingObject(shadingAttributesNew) {
     loadOBJ(filePath.c_str(), indices, vertices, normals, UVs);
-    
+    primitiveCount = indices.size() / 3;
     updateBoundingBox();
 }
 

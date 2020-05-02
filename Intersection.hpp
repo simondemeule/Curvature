@@ -1,6 +1,6 @@
 //
 //  Intersection.hpp
-//  project
+//  Bent
 //
 //  Created by Simon Demeule on 2019-03-21.
 //  Copyright © 2019 Simon Demeule. All rights reserved.

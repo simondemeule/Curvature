@@ -1,6 +1,6 @@
 //
 //  Plane.hpp
-//  project
+//  Bent
 //
 //  Created by Simon Demeule on 2019-03-30.
 //  Copyright © 2019 Simon Demeule. All rights reserved.
@@ -14,6 +14,8 @@
 #include "ShadingAttributes.hpp"
 #include "Intersection.hpp"
 #include "Ray.hpp"
+
+// TODO: currently the bounding box is infinite. This is stupid and might break things.
 
 // plane class
 class Plane : public ShadingObject {

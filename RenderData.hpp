@@ -1,6 +1,6 @@
 //
 //  RenderData.hpp
-//  project
+//  Bent
 //
 //  Created by Simon Demeule on 2019-04-06.
 //  Copyright © 2019 Simon Demeule. All rights reserved.
@@ -17,6 +17,7 @@
 #include "Camera.hpp"
 #include "Ray.hpp"
 #include "Intersection.hpp"
+#include "BoundedHierarchy.hpp"
 
 // class holding all scene objects, output settings, and methods for getting the color of a ray within the scene.
 class RenderData {
@@ -31,12 +32,14 @@ private:
     void applyThreadSettings(int threadCountNew);                   // sets thread count manually
     void applyThreadSettings();                                     // sets thread count automatically
     void applyRecursionSettings(int recursionLimitNew);             // sets recursion limit for reflections
+    void computeBoundedHierarchy();
 public:
     // these are public but should never be overwritten externally. too lazy for getters and setters.
     
     std::vector<ShadingObject*> objects;
     std::vector<Light*> lights;
     Camera* camera;
+    BoundedHierarchy* boundedHierarchy;
     
     int outputWidth;            // output width in pixels
     int outputHeight;           // output height in pixels
@@ -70,6 +73,9 @@ public:
     
     // calculate closest intersection between ray and any object
     Intersection closestIntersection(Ray ray);
+    
+    // calculate closest intersection between ray and any object with raymarching
+    Intersection closestIntersectionMarched(Ray ray, int recursionDepth);
     
     // calculate the color contribution of a light to an intersection
     glm::vec3 colorLight(Intersection intersection, Light* light);

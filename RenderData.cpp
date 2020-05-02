@@ -1,6 +1,6 @@
 //
 //  RenderData.cpp
-//  project
+//  Bent
 //
 //  Created by Simon Demeule on 2019-04-06.
 //  Copyright © 2019 Simon Demeule. All rights reserved.
@@ -406,6 +406,7 @@ void RenderData::loadTest() {
     shadingAttributes.specular = glm::vec3(0.8);
     shadingAttributes.shininess = 1;
     shadingAttributes.reflectivity = 0.2;
+    
     // sphere grid
     for(int i = -3; i <= 3; i++) {
         for(int j = -3; j <= 3; j++) {
@@ -416,7 +417,10 @@ void RenderData::loadTest() {
     // plane
     shadingAttributes.specular = shadingAttributes.diffuse = glm::vec3(0.0, 0.9, 0.6);
     shadingAttributes.reflectivity = 0;
-    objects.push_back(new Plane(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1), shadingAttributes));
+    //objects.push_back(new Plane(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1), shadingAttributes));
+    
+    // mesh
+    //objects.push_back(new Mesh("monkey.obj", shadingAttributes));
     
     // sphere floating miror
     shadingAttributes.ambient = glm::vec3(0);
@@ -427,7 +431,10 @@ void RenderData::loadTest() {
     objects.push_back(new Sphere(glm::vec3(0, 0, 4), 2, shadingAttributes));
     
     // sphere over camera
-    objects.push_back(new Sphere(glm::vec3(0, -4, 2), 1, shadingAttributes));
+    //objects.push_back(new Sphere(glm::vec3(0, -4, 2), 1, shadingAttributes));
+    
+    // some other sphere
+    //objects.push_back(new Sphere(glm::vec3(1, -2, 4), 1, shadingAttributes));
     
     // lights
     shadingAttributes.specular = shadingAttributes.diffuse = glm::vec3(0.9, 0.0, 0.6);
@@ -438,6 +445,7 @@ void RenderData::loadTest() {
     lights.push_back(new Light(glm::vec3(-4, 4, 20), shadingAttributes));
     // camera
     camera = new Camera(glm::vec3(0, -4, 2), glm::vec3(0, 4, -2), glm::vec3(0, 0, 1), 80, 1.0, 16.0 / 9.0);
+    //camera = new Camera(glm::vec3(0, 0, 2), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0), 80, 1.0, 16.0 / 9.0);
 }
 
 void RenderData::applyOutputSettingsFromFocalPlane() {
@@ -482,6 +490,10 @@ void RenderData::applyRecursionSettings(int recursionLimitNew) {
     recursionLimit = recursionLimitNew;
 }
 
+void RenderData::computeBoundedHierarchy() {
+    boundedHierarchy = new BoundedHierarchy(objects);
+}
+
 // constructor for tests with fancy features
 RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew) {
     workingDirectory = workingDirectoryNew;
@@ -494,6 +506,7 @@ RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPass
     applyAntiAliasingSettings(antiAliasingPassesRootNew);
     applyThreadSettings(threadCountNew);
     applyRecursionSettings(recursionLimitNew);
+    computeBoundedHierarchy();
 }
 
 // constructor for assignment files
@@ -509,6 +522,7 @@ RenderData::RenderData(std::string workingDirectoryNew, std::string inputFileNam
     applyAntiAliasingSettings(1);
     applyThreadSettings();
     applyRecursionSettings(0);
+    computeBoundedHierarchy();
 }
 
 // calculate camera coordinates for given pixel and anti aliasing pass
@@ -518,6 +532,9 @@ RenderData::RenderData(std::string workingDirectoryNew, std::string inputFileNam
 // output:
 // x -> [-1, -1]
 // y -> [-1 / aspectRatio, 1 / aspectRatio]
+
+// TODO: implement better aliasing with an actual filter
+// https://computergraphics.stackexchange.com/questions/2130/anti-aliasing-filtering-in-ray-tracing
 glm::vec2 RenderData::toNormalizedCoordinates(int x, int y, int antiAliasingPass) {
     float xOffset;
     float yOffset;
@@ -533,17 +550,157 @@ glm::vec2 RenderData::toNormalizedCoordinates(int x, int y, int antiAliasingPass
                      - (y + yOffset - outputHeight / 2.0) / outputWidth * 2.0);
 }
 
+// Intersection closestIntersectionThroughPortal(Ray incoming, Portal* portal)
+
+// Intersection closestIntersectionThroughField(Ray incoming, Field* field, float step, int recursionDepth)
+//
+// calculate outgoing ray
+// check if calculated ray respects max step size
+// -> does not respect max step size
+//    recursively recalculate
+// calculate quantized grid center positions that might be crossed (including incoming origin)
+// check quantized spatial tree for objects at those positions
+// -> objects found
+//    calculate closest intersection from incoming ray with the found objects
+//    check if intersection distance < incoming to outgoing distance
+//    -> smaller
+//       return closest intersection
+// check if outgoing ray origin is within field
+// -> within field
+//    check if recursion depth exceeded
+//    -> depth exceeded
+//       return no intersection
+//    -> depth not exceeded
+//       recursively march field
+// -> outisde field
+//    return closest intersection from outgoing ray with all objects
+
+// ======================================================================================================
+
+// notes
+//
+// what the hell happens when two fields overlap?
+//   maybe just disallow it. it's easier to write an extension of the field class that's actually multiple fields.
+//   maybe just sum the delta from the incoming ray? means changing the way the marching function operates.
+//
+// need to update intersection type to allow intersections with fields (also implies redesigning hierarchy for objects, etc.)
+//
+// this (method described above) is called once we know a ray intersects with a field
+//
+// rays can enter fields by either intersecting with them or by containment (having their origin in them, ie reflected rays of an object within a field)
+//
+// the spatial data structure needs the folowing
+//   all bounding boxes are rounded to multiples of the marching stepsize
+//   search by ray intersection for shadable objects
+//   search by ray intersection for portals
+//   search by ray intersection or containement for fields
+//   search by multiple position containement for shadable objects (returns those that contains any of the points, not those that contain all of the points)
+
+// ======================================================================================================
+
+// ideas
+//
+// The idea behind the quantized approach is that if the marching step is guaranteed to be smaller than or equal to the quantization step of the spatial data structure,
+// a marching ray is entirely confined in a 3 x 3 x 3 quantized cube. With some comparaison operations can narrow it down to a 2 x 2 x 2
+// cube in the worse case, and a 1 x 1 x 1 cube in the best case.
+//
+// If there are no object whose bounding boxes occupy this volume, (which is very often) there cannot be an intersection,
+// and we can move on to the next marching step without computing intersections
+//
+// If everything is quantized to the stepsize, why not do all the bounding box / spatial data structure math with integers too!
+
+// newer ideas
+//
+// make the field method return a ray delta rather than a ray so that multiple fields can intersect
+// then intersection methods shouldnt be per portal / per field, must rethink that
+
+// ======================================================================================================
+
+// even newer ideas
+//
+// have an Intersection class that is the parent of FieldIntersection, ObjectIntersection, PortalIntersection
+//
+// fuck composite bounding boxes and field groups, they lead to complicated program design and unefficient ray containment checking.
+// it's easier to do it individually for each field, because if the ray start and end are both in the bounding box, then we know for sure the ray is entirely in the bounding box.
+// this is not true for composite bounding boxes; it has to be heavily manipulated to become a set of non-overlapping boxes that cover the whole composite volume together.
+//
+
+
+// glm::vec3 colorRay(Ray ray)
+// color the ray
+
+// compute closest object intersection
+// compute closest portal intersection
+// compute closest field intersection
+// if the field intersection is the closest existing thing
+//   set the position of the ray to the field intersection's position, and start marching the field
+// else if the portal intersection is the closest existing thing
+//   set the position of the ray to the portal's exit and re-orient the ray relative to the portal, and cast the ray again
+// else if the object intersection is the closest existing thing
+//   color the ray the usual way
+// else
+//   the ray meets nothing, set the color to black
+
+// glm::vec3 colorObjectIntersection(ObjectIntersection objectIntersection)
+// color the ray according to object intersection data
+
+// ObjectIntersection closestObjectIntersection(Ray ray)
+// compute closest object intersection
+
+// PortalIntersection closestPortalIntersection(Ray ray)
+// compute closest portal intersection
+
+// FieldIntersection closestFieldIntersection(Ray ray)
+// compute closest field intersection
+
+// std::vector<Field*> encompassingFields(Ray ray)
+// find the fields whose bounding boxes contain the ray origin
+
+// glm::vec3 colorRayThroughFields(Ray ray, std::vector<Fields*>)
+// march through fields until exit or intersection with object
+
+// compute contributions from all fields and normalize delta to get next ray origin
+// (optional: do a better job than Euler's method, use adaptive Runge-Kutta integration to get better precision and optimal step size)
+// create bounding box using old and new ray origins
+// search for object or portal which has a bounding box that intersects the ray bounding box (return a vector of portals and a vector of objects)
+// if no intersection or intersection at distance greater than increment
+//   compute encompassing fields for new ray origin
+//   if there are no encompassing fields
+//     call colorRay
+//   else
+//     call recursion
+// else
+//   compute proper intersection
+//   if intersection is portal
+//      go through portal
+//   else
+//      color object the usual way
+
+// glm::vec3 colorRayThroughPortal(Ray ray, Portal* portal)
+// make a ray go through a portal
+
+// teleport the ray
+// compute encompassing fields for new ray origin
+// if there are no encompassing fields
+//   call colorRay
+// else
+//   call colorRayThroughFields
+
+// ======================================================================================================
+
+// more thoughts
+
+// ray-marching can likely be improved by dynamically changing the increment. there probably are integration techniques that do this. might need the derivative of the field for this.
+// https://en.wikipedia.org/wiki/Runge–Kutta_methods
+// https://en.wikipedia.org/wiki/Runge–Kutta_methods#Adaptive_Runge–Kutta_methods
+
+// dp/dt = f(t, p)
+// p(t_o) = p_0
+// 
+
 // calculate closest intersection between ray and all objects
 Intersection RenderData::closestIntersection(Ray ray) {
-    Intersection closest;
-    closest.exists = false;
-    for(int i = 0; i < objects.size(); i++) {
-        Intersection temp = objects[i]->intersection(ray);
-        if(temp.exists && (!closest.exists || temp.distance < closest.distance)) {
-            closest = temp;
-        }
-    }
-    return closest;
+    return boundedHierarchy->closestIntersection(ray);
 }
 
 // calculate the color contribution of a light to an intersection
