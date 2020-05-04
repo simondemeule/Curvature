@@ -156,7 +156,7 @@ void RenderData::loadInputFile() {
                    diffuse != nullptr &&
                    specular != nullptr &&
                    shininess != nullptr) {
-                    ShadingAttributes shadingAttributes;
+                    ShadableAttributes shadingAttributes;
                     shadingAttributes.ambient = *ambient;
                     shadingAttributes.diffuse = *diffuse;
                     shadingAttributes.specular = *specular;
@@ -243,7 +243,7 @@ void RenderData::loadInputFile() {
                    diffuse != nullptr &&
                    specular != nullptr &&
                    shininess != nullptr) {
-                    ShadingAttributes shadingAttributes;
+                    ShadableAttributes shadingAttributes;
                     shadingAttributes.ambient = *ambient;
                     shadingAttributes.diffuse = *diffuse;
                     shadingAttributes.specular = *specular;
@@ -319,7 +319,7 @@ void RenderData::loadInputFile() {
                    diffuse != nullptr &&
                    specular != nullptr &&
                    shininess != nullptr) {
-                    ShadingAttributes shadingAttributes;
+                    ShadableAttributes shadingAttributes;
                     shadingAttributes.ambient = *ambient;
                     shadingAttributes.diffuse = *diffuse;
                     shadingAttributes.specular = *specular;
@@ -379,7 +379,7 @@ void RenderData::loadInputFile() {
                 }
                 if(diffuse != nullptr &&
                    specular != nullptr) {
-                    ShadingAttributes shadingAttributes;
+                    ShadableAttributes shadingAttributes;
                     shadingAttributes.diffuse = *diffuse;
                     shadingAttributes.specular = *specular;
                     lights.push_back(new Light(*origin, shadingAttributes));
@@ -400,7 +400,7 @@ void RenderData::loadInputFile() {
 }
 
 void RenderData::loadTest() {
-    ShadingAttributes shadingAttributes;
+    ShadableAttributes shadingAttributes;
     shadingAttributes.ambient = glm::vec3(0.1);
     shadingAttributes.diffuse = glm::vec3(0.8);
     shadingAttributes.specular = glm::vec3(0.8);
@@ -417,7 +417,7 @@ void RenderData::loadTest() {
     // plane
     shadingAttributes.specular = shadingAttributes.diffuse = glm::vec3(0.0, 0.9, 0.6);
     shadingAttributes.reflectivity = 0;
-    objects.push_back(new Plane(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1), shadingAttributes));
+    //objects.push_back(new Plane(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1), shadingAttributes));
     
     // mesh
     //objects.push_back(new Mesh("monkey.obj", shadingAttributes));
@@ -491,6 +491,7 @@ void RenderData::applyRecursionSettings(int recursionLimitNew) {
 }
 
 void RenderData::computeBoundedHierarchy() {
+    std::cout << "Building BVH tree" << std::endl;
     boundedHierarchy = new BoundedHierarchy(objects);
 }
 
@@ -696,15 +697,26 @@ glm::vec2 RenderData::toNormalizedCoordinates(int x, int y, int antiAliasingPass
 
 // dp/dt = f(t, p)
 // p(t_o) = p_0
-// 
+
+// ======================================================================================================
+
+// even more thoughts
+
+// it's much, much easier to make this work for a scene that is just an HDRI sphere texture map, where nothing intersects with the rays, and we are only interested in the direction of the rays once the exit the field.
+// we can just render everything to an image containing the UV data, and map the texture afterward, so that we may reposition everything after the render is done.
+
+// if we really want 3D objects that intersect with the fields, raymarching may be better suited to this. when the distance radius is large enough we can make multiple steps per distance check, as long as the distance between the moment where we made the check and the last step we make is smaller than the distance reported at the check. This really seems like the simplest, most elegant way to accelerate this.
+// BVH could be implemented for raymarching: start at the root, sort the children nodes by proximity, recur on the closest one: if an intersection is found at a distance closer than its sibling node, there is no need to recur on it. if the intersection is farther than its sibling distance (shortest path), then recursion is also needed for the sibling.
+
+// info about raymarching distance functions: https://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm
 
 // calculate closest intersection between ray and all objects
-Intersection RenderData::closestIntersection(Ray ray) {
+ShadableObjectIntersection RenderData::closestIntersection(Ray ray) {
     return boundedHierarchy->closestIntersection(ray);
 }
 
 // calculate the color contribution of a light to an intersection
-glm::vec3 RenderData::colorLight(Intersection intersection, Light* light) {
+glm::vec3 RenderData::colorLight(ShadableObjectIntersection intersection, Light* light) {
     glm::vec3 color(0.0);
     
     Ray lightRay;
@@ -714,35 +726,35 @@ glm::vec3 RenderData::colorLight(Intersection intersection, Light* light) {
     lightRay.direction = glm::normalize(lightRay.direction);
     lightRay.isCameraRay = false;
     
-    Intersection closest = closestIntersection(lightRay);
+    ShadableObjectIntersection closest = closestIntersection(lightRay);
     if(!closest.exists || closest.distance > distance) {
         // light ray is unobstructed, calculate contribution
         // diffuse
-        color += glm::dot(lightRay.direction, intersection.normal) * intersection.shadingObject->shadingAttributes.diffuse * light->shadingAttributes.diffuse;
+        color += glm::dot(lightRay.direction, intersection.normal) * intersection.shadableObject->shadingAttributes.diffuse * light->shadingAttributes.diffuse;
         // specular
-        color += std::pow(std::fmaxf(0, glm::dot(lightRay.direction, glm::reflect(intersection.incident, intersection.normal))), intersection.shadingObject->shadingAttributes.shininess) * intersection.shadingObject->shadingAttributes.specular * light->shadingAttributes.specular;
+        color += std::pow(std::fmaxf(0, glm::dot(lightRay.direction, glm::reflect(intersection.incident, intersection.normal))), intersection.shadableObject->shadingAttributes.shininess) * intersection.shadableObject->shadingAttributes.specular * light->shadingAttributes.specular;
     }
     return color;
 }
 
 // calculate the color of an intersection
-glm::vec3 RenderData::colorIntersection(Intersection intersection, int recursionDepth) {
+glm::vec3 RenderData::colorIntersection(ShadableObjectIntersection intersection, int recursionDepth) {
     glm::vec3 color(0.0);
     for(int i = 0; i < lights.size(); i++) {
         // diffuse and specular (taking visibility into account)
         color += colorLight(intersection, lights[i]);
     }
     // ambient
-    color += intersection.shadingObject->shadingAttributes.ambient;
+    color += intersection.shadableObject->shadingAttributes.ambient;
     // recursive reflection
     if(recursionDepth > 0) {
         Ray reflected;
         reflected.origin = intersection.origin;
         reflected.direction = glm::reflect(intersection.incident, intersection.normal);
         reflected.isCameraRay = true;
-        Intersection closest = closestIntersection(reflected);
+        ShadableObjectIntersection closest = closestIntersection(reflected);
         if(closest.exists) {
-            color += intersection.shadingObject->shadingAttributes.reflectivity * colorIntersection(closest, recursionDepth - 1);
+            color += intersection.shadableObject->shadingAttributes.reflectivity * colorIntersection(closest, recursionDepth - 1);
         }
     }
     return color;
@@ -750,7 +762,7 @@ glm::vec3 RenderData::colorIntersection(Intersection intersection, int recursion
 
 // calculate the color of a ray
 glm::vec3 RenderData::colorRay(Ray ray) {
-    Intersection closest = closestIntersection(ray);
+    ShadableObjectIntersection closest = closestIntersection(ray);
     if(closest.exists) {
         return colorIntersection(closest, recursionLimit);
     } else {

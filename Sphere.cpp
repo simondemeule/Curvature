@@ -8,8 +8,8 @@
 
 #include "Sphere.hpp"
 
-Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadingAttributes shadingAttributesNew) :
-    ShadingObject(shadingAttributesNew),
+Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes shadingAttributesNew) :
+    ShadableObject(shadingAttributesNew),
     origin(originNew),
     radius(radiusNew)
 {
@@ -18,8 +18,8 @@ Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadingAttributes shadingAt
     primitiveCount = 1;
 }
 
-Intersection Sphere::intersection(Ray ray) {
-    Intersection intersection;
+ShadableObjectIntersection Sphere::intersection(Ray ray) {
+    ShadableObjectIntersection intersection;
     // code based on class notes
     glm::vec3 delta = ray.origin - origin;
     float b = 2.0 * glm::dot(ray.direction, delta);
@@ -55,6 +55,6 @@ Intersection Sphere::intersection(Ray ray) {
     intersection.exists = true;
     intersection.incident = ray.direction;
     intersection.distance = t;
-    intersection.shadingObject = this;
+    intersection.shadableObject = this;
     return intersection;
 }

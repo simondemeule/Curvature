@@ -12,8 +12,8 @@
 #include <vector>
 
 #include "BoundedObject.hpp"
-#include "ShadingObject.hpp"
-#include "Intersection.hpp"
+#include "ShadableObject.hpp"
+#include "ShadableObjectIntersection.hpp"
 #include "Ray.hpp"
 
 // bounding box node, part of a BVH tree
@@ -23,7 +23,7 @@ public:
     BoundedNode* nodeLeft;
     BoundedNode* nodeRight;
     
-    ShadingObject* object;
+    ShadableObject* object;
     
-    Intersection closestIntersection(Ray ray);
+    ShadableObjectIntersection closestIntersection(Ray ray);
 };

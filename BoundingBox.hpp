@@ -11,6 +11,7 @@
 #include <glm/glm.hpp>
 
 #include "Ray.hpp"
+#include "BoundedObjectIntersection.hpp"
 
 // axis aligned bounding box class
 class BoundingBox {
@@ -24,15 +25,26 @@ public:
     BoundingBox();
     // usual constructor
     BoundingBox(glm::vec3 pointPositiveNew, glm::vec3 pointNegativeNew);
-    // sourrounding box constructor
+    // sourrounding box constructor, creates the smallest bounding box that fits both passed boxes
     BoundingBox(BoundingBox &firstBox, BoundingBox &secondBox);
     
     void setPointPositive(glm::vec3 pointPositiveNew);
     void setPointNegative(glm::vec3 pointNegativeNew);
     
+    BoundedObjectIntersection intersection(Ray ray);
+    
+    // test whether the ray intersects with the box
     bool intersectionTest(Ray ray);
-    bool overlapTest(BoundingBox boundingBox);
+    // test whether the passed box lives entirely within the called box, ie calledBox union passedBox = calledBox
+    bool containmentTest(BoundingBox boundingBox);
+    // test whether the point is in the box
+    bool containmentTest(glm::vec3 point);
+    // test whether the ray origin is in the box
     bool containmentTest(Ray ray);
+    // test whether the passed box has any overlap with the called box, ie passedBox intersection calledBox != empty
+    bool overlapTest(BoundingBox boundingBox);
+    // test similar to above, but overlap distance must be greater than zero, ie if boxes share precisely the same face they don't count as overlapping
+    bool overlapNonZeroTest(BoundingBox boundingBox);
     
     float surfaceArea();
 };

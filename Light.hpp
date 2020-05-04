@@ -10,13 +10,13 @@
 
 #include <glm/glm.hpp>
 
-#include "ShadingAttributes.hpp"
+#include "ShadableAttributes.hpp"
 
 // light data structure
 class Light {
 public:
-    ShadingAttributes shadingAttributes;
+    ShadableAttributes shadingAttributes;
     glm::vec3 origin;
     
-    Light(glm::vec3 originNew, ShadingAttributes shadingAttributesNew);
+    Light(glm::vec3 originNew, ShadableAttributes shadingAttributesNew);
 };

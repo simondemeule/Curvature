@@ -10,20 +10,20 @@
 
 #include <glm/glm.hpp>
 
-#include "ShadingObject.hpp"
-#include "ShadingAttributes.hpp"
-#include "Intersection.hpp"
+#include "ShadableObject.hpp"
+#include "ShadableAttributes.hpp"
+#include "ShadableObjectIntersection.hpp"
 #include "Ray.hpp"
 #include "BoundingBox.hpp"
 
 // sphere class
-class Sphere : public ShadingObject {
+class Sphere : public ShadableObject {
 private:
     glm::vec3 origin;
     float radius;
 
 public:
-    Sphere(glm::vec3 originNew, float radiusNew, ShadingAttributes shadingAttributesNew);
+    Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes shadingAttributesNew);
     
-    Intersection intersection(Ray ray);
+    ShadableObjectIntersection intersection(Ray ray);
 };

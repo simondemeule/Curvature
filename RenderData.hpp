@@ -12,11 +12,11 @@
 #include <vector>
 #include <glm/glm.hpp>
 
-#include "ShadingObject.hpp"
+#include "ShadableObject.hpp"
 #include "Light.hpp"
 #include "Camera.hpp"
 #include "Ray.hpp"
-#include "Intersection.hpp"
+#include "ShadableObjectIntersection.hpp"
 #include "BoundedHierarchy.hpp"
 
 // class holding all scene objects, output settings, and methods for getting the color of a ray within the scene.
@@ -36,7 +36,7 @@ private:
 public:
     // these are public but should never be overwritten externally. too lazy for getters and setters.
     
-    std::vector<ShadingObject*> objects;
+    std::vector<ShadableObject*> objects;
     std::vector<Light*> lights;
     Camera* camera;
     BoundedHierarchy* boundedHierarchy;
@@ -72,16 +72,13 @@ public:
     glm::vec2 toNormalizedCoordinates(int x, int y, int antiAliasingPass);
     
     // calculate closest intersection between ray and any object
-    Intersection closestIntersection(Ray ray);
-    
-    // calculate closest intersection between ray and any object with raymarching
-    Intersection closestIntersectionMarched(Ray ray, int recursionDepth);
+    ShadableObjectIntersection closestIntersection(Ray ray);
     
     // calculate the color contribution of a light to an intersection
-    glm::vec3 colorLight(Intersection intersection, Light* light);
+    glm::vec3 colorLight(ShadableObjectIntersection intersection, Light* light);
     
     // calculate the color of an intersection
-    glm::vec3 colorIntersection(Intersection intersection, int recursionDepth);
+    glm::vec3 colorIntersection(ShadableObjectIntersection intersection, int recursionDepth);
     
     // calculate the color of a ray
     glm::vec3 colorRay(Ray ray);

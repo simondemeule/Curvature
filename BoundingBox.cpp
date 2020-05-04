@@ -31,6 +31,56 @@ void BoundingBox::setPointNegative(glm::vec3 pointNegativeNew) {
     pointNegative = pointNegativeNew;
 }
 
+BoundedObjectIntersection BoundingBox::intersection(Ray ray) {
+    // code based on scratchapixel's tutorial. see https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
+    BoundedObjectIntersection intersection;
+    
+    glm::vec3 inverse = glm::vec3(1.0) / ray.direction;
+    
+    glm::bvec3 sign;
+    
+    sign.x = inverse.x > 0;
+    sign.y = inverse.y > 0;
+    sign.z = inverse.z > 0;
+    
+    glm::vec3 minLength;
+    glm::vec3 maxLength;
+    
+    minLength.x = ((sign.x ? pointNegative : pointPositive).x - ray.origin.x) * inverse.x;
+    maxLength.x = ((!sign.x ? pointNegative : pointPositive).x - ray.origin.x) * inverse.x;
+    minLength.y = ((sign.y ? pointNegative : pointPositive).y - ray.origin.y) * inverse.y;
+    maxLength.y = ((!sign.y ? pointNegative : pointPositive).y - ray.origin.y) * inverse.y;
+    
+    if ((minLength.x > maxLength.y) || (minLength.y > maxLength.x)) {
+        intersection.exists = false;
+        return intersection;
+    }
+    if (minLength.y > minLength.x) {
+        minLength.x = minLength.y;
+    }
+    if (maxLength.y < maxLength.x) {
+        maxLength.x = maxLength.y;
+    }
+    
+    minLength.z = ((sign.z ? pointNegative : pointPositive).z - ray.origin.z) * inverse.z;
+    maxLength.z = ((!sign.z ? pointNegative : pointPositive).z - ray.origin.z) * inverse.z;
+    
+    if ((minLength.x > maxLength.z) || (minLength.z > maxLength.x)) {
+        intersection.exists = false;
+        return intersection;
+    }
+    if (minLength.z > minLength.x) {
+        minLength.x = minLength.z;
+    }
+    if (maxLength.z < maxLength.x) {
+        maxLength.x = maxLength.z;
+    }
+    
+    intersection.exists = true;
+    intersection.distance = minLength.x;
+    return intersection;
+}
+
 bool BoundingBox::intersectionTest(Ray ray) {
     // code based on scratchapixel's tutorial. see https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
     
@@ -62,24 +112,36 @@ bool BoundingBox::intersectionTest(Ray ray) {
     
     if ((minLength.x > maxLength.z) || (minLength.z > maxLength.x))
         return false;
-//    if (minLength.z > minLength.x)
-//        minLength.x = minLength.z;
-//    if (maxLength.z < maxLength.x)
-//        maxLength.x = maxLength.z;
     
     return true;
 }
 
-bool BoundingBox::overlapTest(BoundingBox boundingBox) {
+bool BoundingBox::containmentTest(BoundingBox boundingBox) {
     return  boundingBox.pointNegative.x <= pointPositive.x && boundingBox.pointPositive.x >= pointNegative.x &&
             boundingBox.pointNegative.y <= pointPositive.y && boundingBox.pointPositive.y >= pointNegative.y &&
             boundingBox.pointNegative.z <= pointPositive.z && boundingBox.pointPositive.z >= pointNegative.z;
 }
 
+bool BoundingBox::containmentTest(glm::vec3 point) {
+    return (point.x <= pointPositive.x) && (point.x >= pointNegative.x) &&
+           (point.y <= pointPositive.y) && (point.y >= pointNegative.y) &&
+           (point.z <= pointPositive.z) && (point.z >= pointNegative.z);
+}
+
 bool BoundingBox::containmentTest(Ray ray) {
-    return (ray.origin.x <= pointPositive.x) && (ray.origin.x >= pointNegative.x) &&
-           (ray.origin.y <= pointPositive.y) && (ray.origin.y >= pointNegative.y) &&
-           (ray.origin.z <= pointPositive.z) && (ray.origin.z >= pointNegative.z);
+    return containmentTest(ray.origin);
+}
+
+bool BoundingBox::overlapTest(BoundingBox boundingBox) {
+    return pointPositive.x >= boundingBox.pointNegative.x && pointNegative.x <= boundingBox.pointPositive.x &&
+           pointPositive.y >= boundingBox.pointNegative.y && pointNegative.y <= boundingBox.pointPositive.y &&
+           pointPositive.z >= boundingBox.pointNegative.z && pointNegative.z <= boundingBox.pointPositive.z;
+}
+
+bool BoundingBox::overlapNonZeroTest(BoundingBox boundingBox) {
+    return pointPositive.x > boundingBox.pointNegative.x && pointNegative.x < boundingBox.pointPositive.x &&
+           pointPositive.y > boundingBox.pointNegative.y && pointNegative.y < boundingBox.pointPositive.y &&
+           pointPositive.z > boundingBox.pointNegative.z && pointNegative.z < boundingBox.pointPositive.z;
 }
 
 float BoundingBox::surfaceArea() {

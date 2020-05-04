@@ -359,44 +359,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BoundedHierarchy.cpp"
-            timestampString = "610127118.409003"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "BoundedHierarchy::buildHierarchy(std::vector&lt;ShadingObject*&gt; objects, BoundedNode* nodeParent, int splitAxis)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BoundedHierarchy.cpp"
-            timestampString = "610127118.409067"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "BoundedHierarchy::buildHierarchy(std::vector&lt;ShadingObject*&gt; objects, BoundedNode* nodeParent, int splitAxis)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "610127118.4094059"
+            timestampString = "610317739.576866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "510"
-            endingLineNumber = "510"
+            startingLineNumber = "511"
+            endingLineNumber = "511"
             landmarkName = "RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew)"
             landmarkType = "7">
             <Locations>
@@ -440,13 +408,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Plane.cpp"
-            timestampString = "610127118.40961"
+            timestampString = "610317739.577209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "Plane::Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadingAttributes shadingAttributesNew)"
+            landmarkName = "Plane::Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadableAttributes shadingAttributesNew)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoundedNode.cpp"
+            timestampString = "610317739.5772541"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "BoundedNode::closestIntersection(Ray ray)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoundedHierarchy.cpp"
+            timestampString = "610317739.577297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "BoundedHierarchy::buildHierarchy(std::vector&lt;ShadableObject*&gt; objects, BoundedNode* nodeParent)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoundedHierarchy.cpp"
+            timestampString = "610317739.577338"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "BoundedHierarchy::buildHierarchy(std::vector&lt;ShadableObject*&gt; objects, BoundedNode* nodeParent)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoundedHierarchy.cpp"
+            timestampString = "610317739.577376"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "BoundedHierarchy::buildHierarchy(std::vector&lt;ShadableObject*&gt; objects, BoundedNode* nodeParent)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BoundedHierarchy.cpp"
+            timestampString = "610317739.577413"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

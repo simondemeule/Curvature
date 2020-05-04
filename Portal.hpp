@@ -9,7 +9,7 @@
 #pragma once
 
 #include "BoundingBox.hpp"
-#include "Intersection.hpp"
+#include "ShadableObjectIntersection.hpp"
 #include "Ray.hpp"
 
 // a portal
@@ -17,6 +17,6 @@ class Portal {
 public:
     BoundingBox boundingBox;
     
-    virtual Intersection intersection(Ray ray) = 0;
+    virtual ShadableObjectIntersection intersection(Ray ray) = 0;
     virtual Ray traverse(Ray incoming) = 0;
 };

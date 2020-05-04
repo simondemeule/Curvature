@@ -9,7 +9,7 @@
 #include "Mesh.hpp"
 #include "OBJloader.h"
 
-Mesh::Mesh(std::string filePath, ShadingAttributes shadingAttributesNew) : ShadingObject(shadingAttributesNew) {
+Mesh::Mesh(std::string filePath, ShadableAttributes shadingAttributesNew) : ShadableObject(shadingAttributesNew) {
     loadOBJ(filePath.c_str(), indices, vertices, normals, UVs);
     primitiveCount = indices.size() / 3;
     updateBoundingBox();
@@ -48,8 +48,8 @@ float area(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
     return glm::length(glm::cross(b - a, c - a)) / 2.0;
 }
 
-Intersection Mesh::intersection(Ray ray) {
-    Intersection intersection;
+ShadableObjectIntersection Mesh::intersection(Ray ray) {
+    ShadableObjectIntersection intersection;
     intersection.exists = false;
     for(int i = 0; i < indices.size() / 3; i++) {
         // get indicies
@@ -113,6 +113,6 @@ Intersection Mesh::intersection(Ray ray) {
     
     // found intersection, fill in remaining information
     intersection.incident = ray.direction;
-    intersection.shadingObject = this;
+    intersection.shadableObject = this;
     return intersection;
 }

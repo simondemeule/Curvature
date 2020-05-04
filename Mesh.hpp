@@ -12,14 +12,14 @@
 #include <vector>
 #include <string>
 
-#include "ShadingObject.hpp"
-#include "ShadingAttributes.hpp"
-#include "Intersection.hpp"
+#include "ShadableObject.hpp"
+#include "ShadableAttributes.hpp"
+#include "ShadableObjectIntersection.hpp"
 #include "Ray.hpp"
 #include "BoundingBox.hpp"
 
 // mesh class
-class Mesh : public ShadingObject {
+class Mesh : public ShadableObject {
 private:
     std::vector<int> indices;
     std::vector<glm::vec3> vertices;
@@ -28,7 +28,7 @@ private:
     
     void updateBoundingBox();
 public:
-    Mesh(std::string filePath, ShadingAttributes shadingAttributesNew);
+    Mesh(std::string filePath, ShadableAttributes shadingAttributesNew);
     
-    Intersection intersection(Ray ray);
+    ShadableObjectIntersection intersection(Ray ray);
 };

@@ -12,7 +12,7 @@
 #include <vector>
 
 #include "BoundedNode.hpp"
-#include "Intersection.hpp"
+#include "ShadableObjectIntersection.hpp"
 #include "Ray.hpp"
 
 // a BVH tree
@@ -22,11 +22,11 @@ private:
     BoundedNode* root;
     
     // constructor subroutine
-    BoundedNode* buildHierarchy(std::vector<ShadingObject*> objects, BoundedNode* nodeParent, int splitAxis);
+    BoundedNode* buildHierarchy(std::vector<ShadableObject*> objects, BoundedNode* nodeParent);
 public:
     // create hierarchy
-    BoundedHierarchy(std::vector<ShadingObject*> objects);
+    BoundedHierarchy(std::vector<ShadableObject*> objects);
     
-    Intersection closestIntersection(Ray ray);
+    ShadableObjectIntersection closestIntersection(Ray ray);
     std::vector<BoundedObject*> overlappingObjects(BoundingBox boundingBox);
 };
