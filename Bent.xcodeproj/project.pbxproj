@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B52A3E0245D10F500AFF29F /* BoundedNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B52A3DF245D10F500AFF29F /* BoundedNode.cpp */; };
-		3BDE7D7B245CA779006DAA98 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D4A245CA776006DAA98 /* Camera.cpp */; };
-		3BDE7D7D245CA779006DAA98 /* RenderData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D52245CA776006DAA98 /* RenderData.cpp */; };
-		3BDE7D7E245CA779006DAA98 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D55245CA776006DAA98 /* main.cpp */; };
-		3BDE7D80245CA779006DAA98 /* Portal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D60245CA777006DAA98 /* Portal.cpp */; };
-		3BDE7D81245CA779006DAA98 /* BoundedHierarchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D61245CA777006DAA98 /* BoundedHierarchy.cpp */; };
-		3BDE7D82245CA779006DAA98 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D63245CA777006DAA98 /* BoundingBox.cpp */; };
-		3BDE7D83245CA779006DAA98 /* Field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D65245CA777006DAA98 /* Field.cpp */; };
-		3BDE7D84245CA779006DAA98 /* RenderThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D66245CA777006DAA98 /* RenderThread.cpp */; };
-		3BDE7D85245CA779006DAA98 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D67245CA777006DAA98 /* Tile.cpp */; };
-		3BDE7D87245CA779006DAA98 /* RenderScheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D6B245CA777006DAA98 /* RenderScheduler.cpp */; };
-		3BDE7D89245CA779006DAA98 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D72245CA778006DAA98 /* Plane.cpp */; };
-		3BDE7D8A245CA779006DAA98 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D73245CA778006DAA98 /* Light.cpp */; };
-		3BDE7D8B245CA779006DAA98 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D77245CA778006DAA98 /* Mesh.cpp */; };
-		3BDE7D8C245CA779006DAA98 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D79245CA778006DAA98 /* Image.cpp */; };
-		3BDE7D8D245CA779006DAA98 /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE7D7A245CA778006DAA98 /* Sphere.cpp */; };
+		3B22E8882460C00D00054235 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8642460C00C00054235 /* BoundingBox.cpp */; };
+		3B22E8892460C00D00054235 /* Portal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8652460C00C00054235 /* Portal.cpp */; };
+		3B22E88A2460C00D00054235 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8672460C00C00054235 /* Tile.cpp */; };
+		3B22E88B2460C00D00054235 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E86A2460C00C00054235 /* Mesh.cpp */; };
+		3B22E88C2460C00D00054235 /* RenderScheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8702460C00C00054235 /* RenderScheduler.cpp */; };
+		3B22E88D2460C00D00054235 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8732460C00C00054235 /* Plane.cpp */; };
+		3B22E88E2460C00D00054235 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8742460C00C00054235 /* main.cpp */; };
+		3B22E88F2460C00D00054235 /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8752460C00C00054235 /* Sphere.cpp */; };
+		3B22E8902460C00D00054235 /* RenderData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8772460C00C00054235 /* RenderData.cpp */; };
+		3B22E8912460C00D00054235 /* BoundedNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8792460C00D00054235 /* BoundedNode.cpp */; };
+		3B22E8922460C00D00054235 /* RenderThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E87B2460C00D00054235 /* RenderThread.cpp */; };
+		3B22E8932460C00D00054235 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E87D2460C00D00054235 /* Image.cpp */; };
+		3B22E8942460C00D00054235 /* Field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E87E2460C00D00054235 /* Field.cpp */; };
+		3B22E8952460C00D00054235 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E87F2460C00D00054235 /* Camera.cpp */; };
+		3B22E8962460C00D00054235 /* BoundedHierarchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8812460C00D00054235 /* BoundedHierarchy.cpp */; };
+		3B22E8972460C00D00054235 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8842460C00D00054235 /* Light.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,49 +38,45 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3B52A3DF245D10F500AFF29F /* BoundedNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BoundedNode.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D4A245CA776006DAA98 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D4B245CA776006DAA98 /* ShadingAttributes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadingAttributes.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D4C245CA776006DAA98 /* ico.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ico.mtl; sourceTree = SOURCE_ROOT; };
-		3BDE7D4D245CA776006DAA98 /* trunc.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trunc.obj; sourceTree = SOURCE_ROOT; };
-		3BDE7D4F245CA776006DAA98 /* monkey.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = monkey.mtl; sourceTree = SOURCE_ROOT; };
-		3BDE7D50245CA776006DAA98 /* ico.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ico.obj; sourceTree = SOURCE_ROOT; };
-		3BDE7D51245CA776006DAA98 /* Portal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Portal.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D52245CA776006DAA98 /* RenderData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderData.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D53245CA776006DAA98 /* OBJloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJloader.h; sourceTree = SOURCE_ROOT; };
-		3BDE7D55245CA776006DAA98 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D56245CA776006DAA98 /* monkey.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = monkey.obj; sourceTree = SOURCE_ROOT; };
-		3BDE7D57245CA776006DAA98 /* Mesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D58245CA776006DAA98 /* BoundedNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundedNode.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D5A245CA776006DAA98 /* RenderScheduler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderScheduler.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D5B245CA776006DAA98 /* Field.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Field.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D5C245CA777006DAA98 /* BoundingBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundingBox.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D5E245CA777006DAA98 /* Tile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tile.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D5F245CA777006DAA98 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D60245CA777006DAA98 /* Portal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Portal.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D61245CA777006DAA98 /* BoundedHierarchy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundedHierarchy.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D62245CA777006DAA98 /* trunc.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trunc.mtl; sourceTree = SOURCE_ROOT; };
-		3BDE7D63245CA777006DAA98 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D64245CA777006DAA98 /* Plane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Plane.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D65245CA777006DAA98 /* Field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Field.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D66245CA777006DAA98 /* RenderThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderThread.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D67245CA777006DAA98 /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D68245CA777006DAA98 /* RenderThread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderThread.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D6A245CA777006DAA98 /* ShadingObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadingObject.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D6B245CA777006DAA98 /* RenderScheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderScheduler.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D6C245CA777006DAA98 /* RenderData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderData.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D6D245CA777006DAA98 /* Ray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ray.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D6E245CA778006DAA98 /* BoundedHierarchy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundedHierarchy.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D71245CA778006DAA98 /* Image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Image.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D72245CA778006DAA98 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D73245CA778006DAA98 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D74245CA778006DAA98 /* Intersection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Intersection.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D76245CA778006DAA98 /* Light.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D77245CA778006DAA98 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D78245CA778006DAA98 /* Sphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sphere.hpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D79245CA778006DAA98 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D7A245CA778006DAA98 /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere.cpp; sourceTree = SOURCE_ROOT; };
-		3BDE7D8F245CB425006DAA98 /* BoundedObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BoundedObject.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8622460C00C00054235 /* OBJloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJloader.h; sourceTree = SOURCE_ROOT; };
+		3B22E8632460C00C00054235 /* Plane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Plane.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8642460C00C00054235 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8652460C00C00054235 /* Portal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Portal.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8662460C00C00054235 /* RenderThread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderThread.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8672460C00C00054235 /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8682460C00C00054235 /* ShadableObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadableObject.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8692460C00C00054235 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E86A2460C00C00054235 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E86B2460C00C00054235 /* Portal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Portal.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E86C2460C00C00054235 /* ShadableObjectIntersection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadableObjectIntersection.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E86D2460C00C00054235 /* BoundedObjectIntersection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundedObjectIntersection.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E86E2460C00C00054235 /* Sphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sphere.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E86F2460C00C00054235 /* Ray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ray.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8702460C00C00054235 /* RenderScheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderScheduler.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8712460C00C00054235 /* Mesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8722460C00C00054235 /* ShadableAttributes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadableAttributes.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8732460C00C00054235 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8742460C00C00054235 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8752460C00C00054235 /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8762460C00C00054235 /* BoundingBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundingBox.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8772460C00C00054235 /* RenderData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderData.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8782460C00D00054235 /* Tile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tile.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8792460C00D00054235 /* BoundedNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundedNode.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E87A2460C00D00054235 /* RenderData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderData.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E87B2460C00D00054235 /* RenderThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderThread.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E87C2460C00D00054235 /* Image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Image.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E87D2460C00D00054235 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E87E2460C00D00054235 /* Field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Field.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E87F2460C00D00054235 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8802460C00D00054235 /* Light.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8812460C00D00054235 /* BoundedHierarchy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundedHierarchy.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8822460C00D00054235 /* Field.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Field.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8832460C00D00054235 /* BoundedHierarchy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundedHierarchy.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8842460C00D00054235 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = SOURCE_ROOT; };
+		3B22E8852460C00D00054235 /* RenderScheduler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderScheduler.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8862460C00D00054235 /* BoundedNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundedNode.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8872460C00D00054235 /* BoundedObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundedObject.hpp; sourceTree = SOURCE_ROOT; };
+		3B22E8982460C03900054235 /* Intersection.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Intersection.hpp; sourceTree = SOURCE_ROOT; };
 		F4BF3C5C21F27C4300D819E9 /* Bent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Bent; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,49 +110,45 @@
 		F4BF3C5E21F27C4300D819E9 /* Bent */ = {
 			isa = PBXGroup;
 			children = (
-				3BDE7D61245CA777006DAA98 /* BoundedHierarchy.cpp */,
-				3BDE7D6E245CA778006DAA98 /* BoundedHierarchy.hpp */,
-				3B52A3DF245D10F500AFF29F /* BoundedNode.cpp */,
-				3BDE7D58245CA776006DAA98 /* BoundedNode.hpp */,
-				3BDE7D8F245CB425006DAA98 /* BoundedObject.hpp */,
-				3BDE7D63245CA777006DAA98 /* BoundingBox.cpp */,
-				3BDE7D5C245CA777006DAA98 /* BoundingBox.hpp */,
-				3BDE7D4A245CA776006DAA98 /* Camera.cpp */,
-				3BDE7D5F245CA777006DAA98 /* Camera.hpp */,
-				3BDE7D65245CA777006DAA98 /* Field.cpp */,
-				3BDE7D5B245CA776006DAA98 /* Field.hpp */,
-				3BDE7D4C245CA776006DAA98 /* ico.mtl */,
-				3BDE7D50245CA776006DAA98 /* ico.obj */,
-				3BDE7D79245CA778006DAA98 /* Image.cpp */,
-				3BDE7D71245CA778006DAA98 /* Image.hpp */,
-				3BDE7D74245CA778006DAA98 /* Intersection.hpp */,
-				3BDE7D73245CA778006DAA98 /* Light.cpp */,
-				3BDE7D76245CA778006DAA98 /* Light.hpp */,
-				3BDE7D55245CA776006DAA98 /* main.cpp */,
-				3BDE7D77245CA778006DAA98 /* Mesh.cpp */,
-				3BDE7D57245CA776006DAA98 /* Mesh.hpp */,
-				3BDE7D4F245CA776006DAA98 /* monkey.mtl */,
-				3BDE7D56245CA776006DAA98 /* monkey.obj */,
-				3BDE7D53245CA776006DAA98 /* OBJloader.h */,
-				3BDE7D72245CA778006DAA98 /* Plane.cpp */,
-				3BDE7D64245CA777006DAA98 /* Plane.hpp */,
-				3BDE7D60245CA777006DAA98 /* Portal.cpp */,
-				3BDE7D51245CA776006DAA98 /* Portal.hpp */,
-				3BDE7D6D245CA777006DAA98 /* Ray.hpp */,
-				3BDE7D52245CA776006DAA98 /* RenderData.cpp */,
-				3BDE7D6C245CA777006DAA98 /* RenderData.hpp */,
-				3BDE7D6B245CA777006DAA98 /* RenderScheduler.cpp */,
-				3BDE7D5A245CA776006DAA98 /* RenderScheduler.hpp */,
-				3BDE7D66245CA777006DAA98 /* RenderThread.cpp */,
-				3BDE7D68245CA777006DAA98 /* RenderThread.hpp */,
-				3BDE7D4B245CA776006DAA98 /* ShadingAttributes.hpp */,
-				3BDE7D6A245CA777006DAA98 /* ShadingObject.hpp */,
-				3BDE7D7A245CA778006DAA98 /* Sphere.cpp */,
-				3BDE7D78245CA778006DAA98 /* Sphere.hpp */,
-				3BDE7D67245CA777006DAA98 /* Tile.cpp */,
-				3BDE7D5E245CA777006DAA98 /* Tile.hpp */,
-				3BDE7D62245CA777006DAA98 /* trunc.mtl */,
-				3BDE7D4D245CA776006DAA98 /* trunc.obj */,
+				3B22E8812460C00D00054235 /* BoundedHierarchy.cpp */,
+				3B22E8832460C00D00054235 /* BoundedHierarchy.hpp */,
+				3B22E8792460C00D00054235 /* BoundedNode.cpp */,
+				3B22E8862460C00D00054235 /* BoundedNode.hpp */,
+				3B22E8872460C00D00054235 /* BoundedObject.hpp */,
+				3B22E86D2460C00C00054235 /* BoundedObjectIntersection.hpp */,
+				3B22E8642460C00C00054235 /* BoundingBox.cpp */,
+				3B22E8762460C00C00054235 /* BoundingBox.hpp */,
+				3B22E87F2460C00D00054235 /* Camera.cpp */,
+				3B22E8692460C00C00054235 /* Camera.hpp */,
+				3B22E87E2460C00D00054235 /* Field.cpp */,
+				3B22E8822460C00D00054235 /* Field.hpp */,
+				3B22E87D2460C00D00054235 /* Image.cpp */,
+				3B22E87C2460C00D00054235 /* Image.hpp */,
+				3B22E8982460C03900054235 /* Intersection.hpp */,
+				3B22E8842460C00D00054235 /* Light.cpp */,
+				3B22E8802460C00D00054235 /* Light.hpp */,
+				3B22E8742460C00C00054235 /* main.cpp */,
+				3B22E86A2460C00C00054235 /* Mesh.cpp */,
+				3B22E8712460C00C00054235 /* Mesh.hpp */,
+				3B22E8622460C00C00054235 /* OBJloader.h */,
+				3B22E8732460C00C00054235 /* Plane.cpp */,
+				3B22E8632460C00C00054235 /* Plane.hpp */,
+				3B22E8652460C00C00054235 /* Portal.cpp */,
+				3B22E86B2460C00C00054235 /* Portal.hpp */,
+				3B22E86F2460C00C00054235 /* Ray.hpp */,
+				3B22E8772460C00C00054235 /* RenderData.cpp */,
+				3B22E87A2460C00D00054235 /* RenderData.hpp */,
+				3B22E8702460C00C00054235 /* RenderScheduler.cpp */,
+				3B22E8852460C00D00054235 /* RenderScheduler.hpp */,
+				3B22E87B2460C00D00054235 /* RenderThread.cpp */,
+				3B22E8662460C00C00054235 /* RenderThread.hpp */,
+				3B22E8722460C00C00054235 /* ShadableAttributes.hpp */,
+				3B22E8682460C00C00054235 /* ShadableObject.hpp */,
+				3B22E86C2460C00C00054235 /* ShadableObjectIntersection.hpp */,
+				3B22E8752460C00C00054235 /* Sphere.cpp */,
+				3B22E86E2460C00C00054235 /* Sphere.hpp */,
+				3B22E8672460C00C00054235 /* Tile.cpp */,
+				3B22E8782460C00D00054235 /* Tile.hpp */,
 			);
 			path = Bent;
 			sourceTree = "<group>";
@@ -218,22 +210,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BDE7D87245CA779006DAA98 /* RenderScheduler.cpp in Sources */,
-				3BDE7D8A245CA779006DAA98 /* Light.cpp in Sources */,
-				3BDE7D85245CA779006DAA98 /* Tile.cpp in Sources */,
-				3BDE7D7B245CA779006DAA98 /* Camera.cpp in Sources */,
-				3BDE7D83245CA779006DAA98 /* Field.cpp in Sources */,
-				3BDE7D81245CA779006DAA98 /* BoundedHierarchy.cpp in Sources */,
-				3BDE7D7D245CA779006DAA98 /* RenderData.cpp in Sources */,
-				3B52A3E0245D10F500AFF29F /* BoundedNode.cpp in Sources */,
-				3BDE7D7E245CA779006DAA98 /* main.cpp in Sources */,
-				3BDE7D8B245CA779006DAA98 /* Mesh.cpp in Sources */,
-				3BDE7D80245CA779006DAA98 /* Portal.cpp in Sources */,
-				3BDE7D8D245CA779006DAA98 /* Sphere.cpp in Sources */,
-				3BDE7D89245CA779006DAA98 /* Plane.cpp in Sources */,
-				3BDE7D8C245CA779006DAA98 /* Image.cpp in Sources */,
-				3BDE7D82245CA779006DAA98 /* BoundingBox.cpp in Sources */,
-				3BDE7D84245CA779006DAA98 /* RenderThread.cpp in Sources */,
+				3B22E88D2460C00D00054235 /* Plane.cpp in Sources */,
+				3B22E88A2460C00D00054235 /* Tile.cpp in Sources */,
+				3B22E8972460C00D00054235 /* Light.cpp in Sources */,
+				3B22E8952460C00D00054235 /* Camera.cpp in Sources */,
+				3B22E8942460C00D00054235 /* Field.cpp in Sources */,
+				3B22E88F2460C00D00054235 /* Sphere.cpp in Sources */,
+				3B22E88C2460C00D00054235 /* RenderScheduler.cpp in Sources */,
+				3B22E8882460C00D00054235 /* BoundingBox.cpp in Sources */,
+				3B22E8922460C00D00054235 /* RenderThread.cpp in Sources */,
+				3B22E88E2460C00D00054235 /* main.cpp in Sources */,
+				3B22E88B2460C00D00054235 /* Mesh.cpp in Sources */,
+				3B22E8902460C00D00054235 /* RenderData.cpp in Sources */,
+				3B22E8932460C00D00054235 /* Image.cpp in Sources */,
+				3B22E8892460C00D00054235 /* Portal.cpp in Sources */,
+				3B22E8962460C00D00054235 /* BoundedHierarchy.cpp in Sources */,
+				3B22E8912460C00D00054235 /* BoundedNode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
