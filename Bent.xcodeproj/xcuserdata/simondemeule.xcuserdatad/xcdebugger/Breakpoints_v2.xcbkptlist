@@ -360,12 +360,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "610386720.697683"
+            timestampString = "610402445.397586"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
-            landmarkName = "RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew)"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
+            landmarkName = "RenderData::RenderData(std::string workingDirectoryNew, std::string inputFileNameNew, std::string outputFileNameNew)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -413,7 +413,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "Plane::Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadableAttributes shadingAttributesNew)"
+            landmarkName = "Plane::Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadableAttributes* shadableAttributesNew)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -424,7 +424,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedNode.cpp"
-            timestampString = "610317739.5772541"
+            timestampString = "610402445.397952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -440,7 +440,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedHierarchy.cpp"
-            timestampString = "610317739.577297"
+            timestampString = "610401043.0446399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
@@ -456,7 +456,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedHierarchy.cpp"
-            timestampString = "610317739.577338"
+            timestampString = "610401043.044903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -472,7 +472,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedHierarchy.cpp"
-            timestampString = "610317739.577376"
+            timestampString = "610401043.045126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -488,11 +488,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedHierarchy.cpp"
-            timestampString = "610317739.577413"
+            timestampString = "610401043.045346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
             endingLineNumber = "159">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RenderData.cpp"
+            timestampString = "610402445.398039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
+            landmarkName = "RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -8,8 +8,8 @@
 
 #include "Sphere.hpp"
 
-Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes shadingAttributesNew) :
-    ShadableObject(shadingAttributesNew),
+Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes* shadableAttributesNew) :
+    ShadableObject(shadableAttributesNew),
     origin(originNew),
     radius(radiusNew)
 {

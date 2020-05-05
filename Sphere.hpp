@@ -23,7 +23,7 @@ private:
     float radius;
 
 public:
-    Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes shadingAttributesNew);
+    Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes* shadableAttributesNew);
     
     ShadableObjectIntersection intersection(Ray ray);
 };

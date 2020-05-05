@@ -21,5 +21,8 @@ public:
     glm::vec3 normal;
     glm::vec3 incident;
     
+    int objectIntersectionDepth = 0;
+    int boxIntersectionDepth = 0;
+    
     ShadableObject *shadableObject;
 };

@@ -55,9 +55,9 @@ glm::vec3 RenderCore::colorLight(ShadableObjectIntersection intersection, Light*
     if(!closest.exists || closest.distance > distance) {
         // light ray is unobstructed, calculate contribution
         // diffuse
-        color += glm::dot(lightRay.direction, intersection.normal) * intersection.shadableObject->shadingAttributes.diffuse * light->shadingAttributes.diffuse;
+        color += glm::dot(lightRay.direction, intersection.normal) * intersection.shadableObject->shadableAttributes->diffuse * light->shadableAttributes.diffuse;
         // specular
-        color += std::pow(std::fmaxf(0, glm::dot(lightRay.direction, glm::reflect(intersection.incident, intersection.normal))), intersection.shadableObject->shadingAttributes.shininess) * intersection.shadableObject->shadingAttributes.specular * light->shadingAttributes.specular;
+        color += std::pow(std::fmaxf(0, glm::dot(lightRay.direction, glm::reflect(intersection.incident, intersection.normal))), intersection.shadableObject->shadableAttributes->shininess) * intersection.shadableObject->shadableAttributes->specular * light->shadableAttributes.specular;
     }
     return color;
 }
@@ -70,7 +70,7 @@ glm::vec3 RenderCore::colorIntersection(ShadableObjectIntersection intersection,
         color += colorLight(intersection, renderData->lights[i]);
     }
     // ambient
-    color += intersection.shadableObject->shadingAttributes.ambient;
+    color += intersection.shadableObject->shadableAttributes->ambient;
     // recursive reflection
     if(recursionDepth > 0) {
         Ray reflected;
@@ -79,7 +79,7 @@ glm::vec3 RenderCore::colorIntersection(ShadableObjectIntersection intersection,
         reflected.isCameraRay = true;
         ShadableObjectIntersection closest = closestIntersection(reflected);
         if(closest.exists) {
-            color += intersection.shadableObject->shadingAttributes.reflectivity * colorIntersection(closest, recursionDepth - 1);
+            color += intersection.shadableObject->shadableAttributes->reflectivity * colorIntersection(closest, recursionDepth - 1);
         }
     }
     return color;
@@ -88,11 +88,14 @@ glm::vec3 RenderCore::colorIntersection(ShadableObjectIntersection intersection,
 // calculate the color of a ray
 glm::vec3 RenderCore::colorRay(Ray ray) {
     ShadableObjectIntersection closest = closestIntersection(ray);
+    //return glm::vec3(closest.objectIntersectionDepth / 255.0, closest.boxIntersectionDepth / 255.0, 0.0);
+    
     if(closest.exists) {
         return colorIntersection(closest, renderData->recursionLimit);
     } else {
         return glm::vec3(0);
     }
+    
 }
 
 // calculate the color of a pixel

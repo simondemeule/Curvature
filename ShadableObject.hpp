@@ -17,10 +17,10 @@
 class ShadableObject : public BoundedObject {
 public:
     // shading attributes (ambient, diffuse, specular, etc)
-    ShadableAttributes shadingAttributes;
+    ShadableAttributes* shadableAttributes;
     
     // constructor
-    ShadableObject(ShadableAttributes shadingAttributesNew) : shadingAttributes(shadingAttributesNew) {}
+    ShadableObject(ShadableAttributes* shadableAttributesNew) : shadableAttributes(shadableAttributesNew) {}
     
     // intersection function for object
     virtual ShadableObjectIntersection intersection(Ray ray) = 0;

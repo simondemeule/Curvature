@@ -23,7 +23,7 @@ private:
     glm::vec3 origin;
     glm::vec3 normal;
 public:
-    Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadableAttributes shadingAttributesNew);
+    Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadableAttributes* shadableAttributesNew);
     
     ShadableObjectIntersection intersection(Ray ray);
 };

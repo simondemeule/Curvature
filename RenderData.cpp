@@ -12,10 +12,12 @@
 #include <sstream>
 #include <iostream>
 #include <thread>
+#include <chrono>
 
 #include "Sphere.hpp"
 #include "Plane.hpp"
-#include "Mesh.hpp"
+#include "MeshData.hpp"
+#include "MeshInstance.hpp"
 
 void RenderData::loadInputFile() {
     std::ifstream file(workingDirectory + inputFileName);
@@ -156,12 +158,12 @@ void RenderData::loadInputFile() {
                    diffuse != nullptr &&
                    specular != nullptr &&
                    shininess != nullptr) {
-                    ShadableAttributes shadingAttributes;
-                    shadingAttributes.ambient = *ambient;
-                    shadingAttributes.diffuse = *diffuse;
-                    shadingAttributes.specular = *specular;
-                    shadingAttributes.shininess = *shininess;
-                    objects.push_back(new Plane(*origin, *normal, shadingAttributes));
+                    ShadableAttributes* shadableAttributes = new ShadableAttributes();
+                    shadableAttributes->ambient = *ambient;
+                    shadableAttributes->diffuse = *diffuse;
+                    shadableAttributes->specular = *specular;
+                    shadableAttributes->shininess = *shininess;
+                    objects.push_back(new Plane(*origin, *normal, shadableAttributes));
                     delete origin;
                     delete normal;
                     delete ambient;
@@ -243,12 +245,12 @@ void RenderData::loadInputFile() {
                    diffuse != nullptr &&
                    specular != nullptr &&
                    shininess != nullptr) {
-                    ShadableAttributes shadingAttributes;
-                    shadingAttributes.ambient = *ambient;
-                    shadingAttributes.diffuse = *diffuse;
-                    shadingAttributes.specular = *specular;
-                    shadingAttributes.shininess = *shininess;
-                    objects.push_back(new Sphere(*origin, *radius, shadingAttributes));
+                    ShadableAttributes* shadableAttributes = new ShadableAttributes();
+                    shadableAttributes->ambient = *ambient;
+                    shadableAttributes->diffuse = *diffuse;
+                    shadableAttributes->specular = *specular;
+                    shadableAttributes->shininess = *shininess;
+                    objects.push_back(new Sphere(*origin, *radius, shadableAttributes));
                     delete origin;
                     delete radius;
                     delete ambient;
@@ -319,13 +321,16 @@ void RenderData::loadInputFile() {
                    diffuse != nullptr &&
                    specular != nullptr &&
                    shininess != nullptr) {
-                    ShadableAttributes shadingAttributes;
-                    shadingAttributes.ambient = *ambient;
-                    shadingAttributes.diffuse = *diffuse;
-                    shadingAttributes.specular = *specular;
-                    shadingAttributes.shininess = *shininess;
+                    ShadableAttributes* shadableAttributes = new ShadableAttributes();
+                    shadableAttributes->ambient = *ambient;
+                    shadableAttributes->diffuse = *diffuse;
+                    shadableAttributes->specular = *specular;
+                    shadableAttributes->shininess = *shininess;
                     
-                    objects.push_back(new Mesh(workingDirectory + *meshFileName, shadingAttributes));
+                    MeshData* meshData = new MeshData(workingDirectory + *meshFileName);
+                    meshDatas.push_back(meshData);
+                    MeshInstance* meshInstance = new MeshInstance(meshData, glm::mat4x4(1.0), shadableAttributes);
+                    meshInstances.push_back(meshInstance);
                     delete meshFileName;
                     delete ambient;
                     delete diffuse;
@@ -379,10 +384,10 @@ void RenderData::loadInputFile() {
                 }
                 if(diffuse != nullptr &&
                    specular != nullptr) {
-                    ShadableAttributes shadingAttributes;
-                    shadingAttributes.diffuse = *diffuse;
-                    shadingAttributes.specular = *specular;
-                    lights.push_back(new Light(*origin, shadingAttributes));
+                    ShadableAttributes shadableAttributes;
+                    shadableAttributes.diffuse = *diffuse;
+                    shadableAttributes.specular = *specular;
+                    lights.push_back(new Light(*origin, shadableAttributes));
                     delete origin;
                     delete diffuse;
                     delete specular;
@@ -400,49 +405,51 @@ void RenderData::loadInputFile() {
 }
 
 void RenderData::loadTest() {
-    ShadableAttributes shadingAttributes;
-    shadingAttributes.ambient = glm::vec3(0.1);
-    shadingAttributes.diffuse = glm::vec3(0.8);
-    shadingAttributes.specular = glm::vec3(0.8);
-    shadingAttributes.shininess = 1;
-    shadingAttributes.reflectivity = 0.2;
+    ShadableAttributes* sphereAttributes = new ShadableAttributes();
+    sphereAttributes->ambient = glm::vec3(0.1);
+    sphereAttributes->diffuse = glm::vec3(0.8);
+    sphereAttributes->specular = glm::vec3(0.8);
+    sphereAttributes->shininess = 1;
+    sphereAttributes->reflectivity = 0.2;
     
     // sphere grid
     for(int i = -3; i <= 3; i++) {
         for(int j = -3; j <= 3; j++) {
-            objects.push_back(new Sphere(glm::vec3(i * 2, j * 2, 0), 1, shadingAttributes));
+            objects.push_back(new Sphere(glm::vec3(i * 2, j * 2, 0), 1, sphereAttributes));
         }
     }
     
-    // plane
-    shadingAttributes.specular = shadingAttributes.diffuse = glm::vec3(0.0, 0.9, 0.6);
-    shadingAttributes.reflectivity = 0;
-    //objects.push_back(new Plane(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1), shadingAttributes));
-    
     // mesh
-    //objects.push_back(new Mesh("monkey.obj", shadingAttributes));
+    /*
+    MeshData* meshData = new MeshData("monkey.obj");
+    meshDatas.push_back(meshData);
+    MeshInstance* meshInstance = new MeshInstance(meshData, glm::mat4x4(1.0), sphereAttributes);
+    meshInstances.push_back(meshInstance);
+    */
     
     // sphere floating miror
-    shadingAttributes.ambient = glm::vec3(0);
-    shadingAttributes.diffuse = glm::vec3(0);
-    shadingAttributes.specular = glm::vec3(0);
-    shadingAttributes.shininess = 0;
-    shadingAttributes.reflectivity = 1;
-    objects.push_back(new Sphere(glm::vec3(0, 0, 4), 2, shadingAttributes));
+    ShadableAttributes* mirrorAttributes = new ShadableAttributes();
+    mirrorAttributes->ambient = glm::vec3(0);
+    mirrorAttributes->diffuse = glm::vec3(0);
+    mirrorAttributes->specular = glm::vec3(0);
+    mirrorAttributes->shininess = 0;
+    mirrorAttributes->reflectivity = 1;
+    objects.push_back(new Sphere(glm::vec3(0, 0, 4), 2, mirrorAttributes));
     
     // sphere over camera
-    //objects.push_back(new Sphere(glm::vec3(0, -4, 2), 1, shadingAttributes));
+    //objects.push_back(new Sphere(glm::vec3(0, -4, 2), 1, shadableAttributes));
     
     // some other sphere
-    //objects.push_back(new Sphere(glm::vec3(1, -2, 4), 1, shadingAttributes));
+    //objects.push_back(new Sphere(glm::vec3(1, -2, 4), 1, shadableAttributes));
     
     // lights
-    shadingAttributes.specular = shadingAttributes.diffuse = glm::vec3(0.9, 0.0, 0.6);
-    lights.push_back(new Light(glm::vec3(4, -4, 2), shadingAttributes));
-    shadingAttributes.specular = shadingAttributes.diffuse = glm::vec3(0.3, 0.1, 0.9);
-    lights.push_back(new Light(glm::vec3(-4, 4, 2), shadingAttributes));
-    shadingAttributes.specular = shadingAttributes.diffuse = glm::vec3(0.0, 0.9, 0.6);
-    lights.push_back(new Light(glm::vec3(-4, 4, 20), shadingAttributes));
+    ShadableAttributes lightAttributes;
+    lightAttributes.specular = lightAttributes.diffuse = glm::vec3(0.9, 0.0, 0.6);
+    lights.push_back(new Light(glm::vec3(4, -4, 2), lightAttributes));
+    lightAttributes.specular = lightAttributes.diffuse = glm::vec3(0.3, 0.1, 0.9);
+    lights.push_back(new Light(glm::vec3(-4, 4, 2), lightAttributes));
+    lightAttributes.specular = lightAttributes.diffuse = glm::vec3(0.0, 0.9, 0.6);
+    lights.push_back(new Light(glm::vec3(-4, 4, 20), lightAttributes));
     // camera
     camera = new Camera(glm::vec3(0, -4, 2), glm::vec3(0, 4, -2), glm::vec3(0, 0, 1), 80, 1.0, 16.0 / 9.0);
     //camera = new Camera(glm::vec3(0, 0, 2), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0), 80, 1.0, 16.0 / 9.0);
@@ -492,7 +499,17 @@ void RenderData::applyRecursionSettings(int recursionLimitNew) {
 
 void RenderData::computeBoundedHierarchy() {
     std::cout << "Building BVH tree" << std::endl;
+    auto startTime = std::chrono::high_resolution_clock::now();
     boundedHierarchy = new BoundedHierarchy(objects);
+    auto endTime = std::chrono::high_resolution_clock::now();
+    std::cout << "Done in "<< std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << " milliseconds" << std::endl;
+}
+
+void RenderData::expandPrimitives() {
+    for(int i = 0; i < meshInstances.size(); i++) {
+        std::vector<MeshPrimitive*> meshPrimitives = meshInstances.at(i)->expandPrimitives();
+        objects.insert(objects.end(), meshPrimitives.begin(), meshPrimitives.end());
+    }
 }
 
 // constructor for tests with fancy features
@@ -507,6 +524,7 @@ RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPass
     applyAntiAliasingSettings(antiAliasingPassesRootNew);
     applyThreadSettings(threadCountNew);
     applyRecursionSettings(recursionLimitNew);
+    expandPrimitives();
     computeBoundedHierarchy();
 }
 
@@ -523,5 +541,6 @@ RenderData::RenderData(std::string workingDirectoryNew, std::string inputFileNam
     applyAntiAliasingSettings(1);
     applyThreadSettings();
     applyRecursionSettings(0);
+    expandPrimitives();
     computeBoundedHierarchy();
 }

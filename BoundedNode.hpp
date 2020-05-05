@@ -25,5 +25,6 @@ public:
     
     ShadableObject* object;
     
+    ShadableObjectIntersection incrementDepth(ShadableObjectIntersection intersection, int objectIncrement, int boxIncrement);
     ShadableObjectIntersection closestIntersection(Ray ray);
 };

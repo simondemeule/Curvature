@@ -12,12 +12,15 @@
 #include <vector>
 #include <glm/glm.hpp>
 
-#include "ShadableObject.hpp"
-#include "Light.hpp"
-#include "Camera.hpp"
 #include "Ray.hpp"
+#include "ShadableObject.hpp"
 #include "ShadableObjectIntersection.hpp"
 #include "BoundedHierarchy.hpp"
+#include "MeshData.hpp"
+#include "MeshInstance.hpp"
+#include "Light.hpp"
+#include "Camera.hpp"
+
 
 // class holding all information necessary to render a scene
 class RenderData {
@@ -32,11 +35,14 @@ private:
     void applyThreadSettings(int threadCountNew);                   // sets thread count manually
     void applyThreadSettings();                                     // sets thread count automatically
     void applyRecursionSettings(int recursionLimitNew);             // sets recursion limit for reflections
-    void computeBoundedHierarchy();
+    void expandPrimitives();                                        // expands mesh instances into mesh primitives
+    void computeBoundedHierarchy();                                 // computes acceleration structure
 public:
     // these are public but should never be overwritten externally. too lazy for getters and setters.
     
     std::vector<ShadableObject*> objects;
+    std::vector<MeshData*> meshDatas;
+    std::vector<MeshInstance*> meshInstances;
     std::vector<Light*> lights;
     Camera* camera;
     BoundedHierarchy* boundedHierarchy;

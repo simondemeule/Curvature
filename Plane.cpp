@@ -8,10 +8,10 @@
 
 #include "Plane.hpp"
 
-Plane::Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadableAttributes shadingAttributesNew) :
+Plane::Plane(glm::vec3 originNew, glm::vec3 normalNew, ShadableAttributes* shadableAttributesNew) :
     origin(originNew),
     normal(glm::normalize(normalNew)),
-    ShadableObject(shadingAttributesNew)
+    ShadableObject(shadableAttributesNew)
 {
     float infinity = std::numeric_limits<float>::infinity();
     boundingBox.setPointPositive(glm::vec3(infinity));

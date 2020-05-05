@@ -15,8 +15,8 @@
 // light data structure
 class Light {
 public:
-    ShadableAttributes shadingAttributes;
+    ShadableAttributes shadableAttributes;
     glm::vec3 origin;
     
-    Light(glm::vec3 originNew, ShadableAttributes shadingAttributesNew);
+    Light(glm::vec3 originNew, ShadableAttributes shadableAttributesNew);
 };

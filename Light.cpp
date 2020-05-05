@@ -8,4 +8,4 @@
 
 #include "Light.hpp"
 
-Light::Light(glm::vec3 originNew, ShadableAttributes shadingAttributesNew) : origin(originNew), shadingAttributes(shadingAttributesNew) {}
+Light::Light(glm::vec3 originNew, ShadableAttributes shadableAttributesNew) : origin(originNew), shadableAttributes(shadableAttributesNew) {}

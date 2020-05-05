@@ -34,10 +34,16 @@ ShadableObjectIntersection pickClosest(ShadableObjectIntersection intersectionFi
     }
 }
 
+ShadableObjectIntersection BoundedNode::incrementDepth(ShadableObjectIntersection intersection, int objectIncrement, int boxIncrement) {
+    intersection.objectIntersectionDepth += objectIncrement;
+    intersection.boxIntersectionDepth += boxIncrement;
+    return intersection;
+}
+
 ShadableObjectIntersection BoundedNode::closestIntersection(Ray ray) {
     if(object != nullptr) {
         // base case, node is leaf, call object intersection function
-        return object->intersection(ray);
+        return incrementDepth(object->intersection(ray), 1, 0);
     } else {
         // recursive case, node is internal
         
@@ -49,18 +55,36 @@ ShadableObjectIntersection BoundedNode::closestIntersection(Ray ray) {
             // none exist
             ShadableObjectIntersection intersection;
             intersection.exists = false;
-            return intersection;
+            return incrementDepth(intersection, 0, 2);
         } else if(intersectionBoxLeft.exists && !intersectionBoxRight.exists) {
             // left exists
-            return nodeLeft->closestIntersection(ray);
+            return incrementDepth(nodeLeft->closestIntersection(ray), 0, 2);
         } else if(!intersectionBoxLeft.exists && intersectionBoxRight.exists) {
             // right exists
-            return nodeRight->closestIntersection(ray);
+            return incrementDepth(nodeRight->closestIntersection(ray), 0, 2);
         } else {
             // both exist
             if(nodeLeft->boundingBox.overlapNonZeroTest(nodeRight->boundingBox)) {
                 // the bounding boxes overlap, we can't conclude that if there actually is an intersection in the closest node it occludes the other one
-                return pickClosest(nodeLeft->closestIntersection(ray), nodeRight->closestIntersection(ray));
+                ShadableObjectIntersection intersectionLeft = nodeLeft->closestIntersection(ray);
+                ShadableObjectIntersection intersectionRight = nodeRight->closestIntersection(ray);
+                if(!intersectionLeft.exists && !intersectionRight.exists) {
+                    // none exist
+                    ShadableObjectIntersection intersection;
+                    intersection.exists = false;
+                    return incrementDepth(intersection, intersectionLeft.objectIntersectionDepth + intersectionRight.objectIntersectionDepth, intersectionLeft.boxIntersectionDepth + intersectionRight.boxIntersectionDepth + 2);
+                } else if(intersectionLeft.exists && !intersectionRight.exists) {
+                    // left exists
+                    return incrementDepth(intersectionLeft, intersectionRight.objectIntersectionDepth, intersectionRight.boxIntersectionDepth + 2);
+                } else if(!intersectionLeft.exists && intersectionRight.exists) {
+                    // right exists
+                    return incrementDepth(intersectionRight, intersectionLeft.objectIntersectionDepth, intersectionLeft.boxIntersectionDepth + 2);
+                } else {
+                    // both exist, return closest
+                    ShadableObjectIntersection intersectionClosest = intersectionLeft.distance < intersectionRight.distance ? intersectionLeft : intersectionRight;
+                    ShadableObjectIntersection intersectionFurthest = intersectionLeft.distance > intersectionRight.distance ? intersectionLeft : intersectionRight;
+                    return incrementDepth(intersectionClosest, intersectionFurthest.objectIntersectionDepth, intersectionFurthest.boxIntersectionDepth + 2);
+                }
             } else {
                 // the bounding boxes don't overlap, meaning we can conclude that any intersection in the closest node will occlude the other one
                 BoundedNode* nodeClosest = intersectionBoxLeft.distance < intersectionBoxRight.distance ? nodeLeft : nodeRight;
@@ -68,10 +92,10 @@ ShadableObjectIntersection BoundedNode::closestIntersection(Ray ray) {
                 ShadableObjectIntersection intersectionClosest = nodeClosest->closestIntersection(ray);
                 if(intersectionClosest.exists) {
                     // the intersection exists and we can conclude it will occlude any possible intersection in the other node, meaning we can skip computing it
-                    return intersectionClosest;
+                    return incrementDepth(intersectionClosest, 0, 2);
                 } else {
                     // there is no intersection in the closest node, search for one in the other node
-                    return nodeFurthest->closestIntersection(ray);
+                    return incrementDepth(nodeFurthest->closestIntersection(ray), intersectionClosest.objectIntersectionDepth, intersectionClosest.boxIntersectionDepth + 2);
                 }
             }
         }

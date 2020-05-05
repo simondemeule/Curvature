@@ -1,5 +1,7 @@
 // the OBJloader provided in class
 
+#pragma once
+
 #include <glm/glm.hpp>
 #include <cstring>
 #include <vector>
