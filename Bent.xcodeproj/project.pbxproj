@@ -23,6 +23,7 @@
 		3B22E8952460C00D00054235 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E87F2460C00D00054235 /* Camera.cpp */; };
 		3B22E8962460C00D00054235 /* BoundedHierarchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8812460C00D00054235 /* BoundedHierarchy.cpp */; };
 		3B22E8972460C00D00054235 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B22E8842460C00D00054235 /* Light.cpp */; };
+		3B46AECF2461BD5F00934688 /* RenderCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AECD2461BD5F00934688 /* RenderCore.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +78,8 @@
 		3B22E8862460C00D00054235 /* BoundedNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundedNode.hpp; sourceTree = SOURCE_ROOT; };
 		3B22E8872460C00D00054235 /* BoundedObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundedObject.hpp; sourceTree = SOURCE_ROOT; };
 		3B22E8982460C03900054235 /* Intersection.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Intersection.hpp; sourceTree = SOURCE_ROOT; };
+		3B46AECD2461BD5F00934688 /* RenderCore.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RenderCore.cpp; sourceTree = SOURCE_ROOT; };
+		3B46AECE2461BD5F00934688 /* RenderCore.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RenderCore.hpp; sourceTree = SOURCE_ROOT; };
 		F4BF3C5C21F27C4300D819E9 /* Bent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Bent; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -136,6 +139,8 @@
 				3B22E8652460C00C00054235 /* Portal.cpp */,
 				3B22E86B2460C00C00054235 /* Portal.hpp */,
 				3B22E86F2460C00C00054235 /* Ray.hpp */,
+				3B46AECD2461BD5F00934688 /* RenderCore.cpp */,
+				3B46AECE2461BD5F00934688 /* RenderCore.hpp */,
 				3B22E8772460C00C00054235 /* RenderData.cpp */,
 				3B22E87A2460C00D00054235 /* RenderData.hpp */,
 				3B22E8702460C00C00054235 /* RenderScheduler.cpp */,
@@ -221,6 +226,7 @@
 				3B22E8922460C00D00054235 /* RenderThread.cpp in Sources */,
 				3B22E88E2460C00D00054235 /* main.cpp in Sources */,
 				3B22E88B2460C00D00054235 /* Mesh.cpp in Sources */,
+				3B46AECF2461BD5F00934688 /* RenderCore.cpp in Sources */,
 				3B22E8902460C00D00054235 /* RenderData.cpp in Sources */,
 				3B22E8932460C00D00054235 /* Image.cpp in Sources */,
 				3B22E8892460C00D00054235 /* Portal.cpp in Sources */,

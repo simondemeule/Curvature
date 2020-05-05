@@ -13,12 +13,13 @@
 #include <string>
 
 #include "RenderData.hpp"
+#include "RenderCore.hpp"
 
 class RenderThread; // forward declare
 class Tile;
 class Image;
 
-// class for coordinating render threads
+// highest-level class that orchestrates all rendering, delegating Tiles to RenderThreads.
 class RenderScheduler {
 private:
     std::vector<RenderThread *> renderThreads;
@@ -27,6 +28,7 @@ private:
     std::mutex debugMutex;
     int nextTileIndex = 0;
     RenderData* renderData;
+    RenderCore* renderCore;
 public:
     
     RenderScheduler(RenderData* renderDataNew);

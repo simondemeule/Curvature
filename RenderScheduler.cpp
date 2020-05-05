@@ -16,7 +16,7 @@
 #include "Image.hpp"
 #include "Sphere.hpp"
 
-RenderScheduler::RenderScheduler(RenderData* renderDataNew) : renderData(renderDataNew) {}
+RenderScheduler::RenderScheduler(RenderData* renderDataNew) : renderData(renderDataNew), renderCore(new RenderCore(renderData)) {}
 
 void RenderScheduler::debugOut(int identifier, std::string message) {
     std::lock_guard<std::mutex> guard(debugMutex);
@@ -65,7 +65,7 @@ void RenderScheduler::renderAndSaveImage() {
     }
     // create threads
     for(int identifier = 0; identifier < renderData->threadCount; identifier++) {
-        renderThreads.push_back(new RenderThread(this, renderData, identifier));
+        renderThreads.push_back(new RenderThread(this, renderCore, identifier));
     }
     // start threads
     auto startTime = std::chrono::high_resolution_clock::now();

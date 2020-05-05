@@ -19,7 +19,7 @@
 #include "ShadableObjectIntersection.hpp"
 #include "BoundedHierarchy.hpp"
 
-// class holding all scene objects, output settings, and methods for getting the color of a ray within the scene.
+// class holding all information necessary to render a scene
 class RenderData {
 private:
     void loadInputFile();                                           // creates objects and camera from input file
@@ -61,25 +61,4 @@ public:
     
     // constructor for assignment files
     RenderData(std::string workingDirectoryNew, std::string inputFileNameNew, std::string outputFileNameNew);
-    
-    // transforms a pixel coordinate and antialiasing pass number to normalized camera plane coordinates
-    // input:
-    // x -> [0, outputWidth]
-    // y -> [0, outputHeight]
-    // output:
-    // x -> [-1, 1]
-    // y -> [-1 / aspectRatio, 1 / aspectRatio]
-    glm::vec2 toNormalizedCoordinates(int x, int y, int antiAliasingPass);
-    
-    // calculate closest intersection between ray and any object
-    ShadableObjectIntersection closestIntersection(Ray ray);
-    
-    // calculate the color contribution of a light to an intersection
-    glm::vec3 colorLight(ShadableObjectIntersection intersection, Light* light);
-    
-    // calculate the color of an intersection
-    glm::vec3 colorIntersection(ShadableObjectIntersection intersection, int recursionDepth);
-    
-    // calculate the color of a ray
-    glm::vec3 colorRay(Ray ray);
 };

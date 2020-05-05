@@ -10,10 +10,10 @@
 
 #include "RenderScheduler.hpp"
 
-RenderThread::RenderThread(RenderScheduler* renderSchedulerNew, RenderData* renderDataNew, int identifierNew) :
-    renderScheduler(renderSchedulerNew),
-    renderData(renderDataNew),
-    identifier(identifierNew)
+RenderThread::RenderThread(RenderScheduler* renderScheduler, RenderCore* renderCore, int identifier) :
+    renderScheduler(renderScheduler),
+    renderCore(renderCore),
+    identifier(identifier)
 {}
 
 RenderThread::~RenderThread() {
@@ -51,15 +51,8 @@ void RenderThread::renderTile(Tile* tile) {
     for(int y = tile->y; y < tile->y + tile->ySize; y++) {
         // loop left to right
         for(int x = tile->x; x < tile->x + tile->xSize; x++) {
-            glm::vec3 color(0.0);
-            // accumulate anti-aliasing passes
-            for(int a = 0; a < renderData->antiAliasingPasses; a++) {
-                glm::vec2 normalizedCoordinates = renderData->toNormalizedCoordinates(x, y, a);
-                Ray ray = renderData->camera->castNormalized(normalizedCoordinates);
-                color += renderData->colorRay(ray);
-            }
-            // average passes
-            color *= 1.0 / renderData->antiAliasingPasses;
+            // render pixel
+            glm::vec3 color = renderCore->colorPixel(x, y);
             // write color to tile
             tile->write(color, x, y);
         }

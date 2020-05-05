@@ -11,7 +11,7 @@
 #include <thread>
 #include <mutex>
 
-#include "RenderData.hpp"
+#include "RenderCore.hpp"
 #include "Tile.hpp"
 #include "Camera.hpp"
 
@@ -21,12 +21,12 @@ class RenderScheduler; // forward declare
 class RenderThread {
 private:
     RenderScheduler* renderScheduler;
-    RenderData* renderData;
+    RenderCore* renderCore;
     std::thread thread;
     bool done;
     int identifier;
 public:
-    RenderThread(RenderScheduler* renderSchedulerNew, RenderData* renderDataNew, int identifierNew);
+    RenderThread(RenderScheduler* renderScheduler, RenderCore* renderCore, int identifier);
     ~RenderThread();
     
     // start the render loop
