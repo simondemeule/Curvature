@@ -415,17 +415,15 @@ void RenderData::loadTest() {
     // sphere grid
     for(int i = -3; i <= 3; i++) {
         for(int j = -3; j <= 3; j++) {
-            objects.push_back(new Sphere(glm::vec3(i * 2, j * 2, 0), 1, sphereAttributes));
+            objects.push_back(new Sphere(glm::vec3(i * 2, j * 2, -2), 1, sphereAttributes));
         }
     }
     
     // mesh
-    /*
     MeshData* meshData = new MeshData("monkey.obj");
     meshDatas.push_back(meshData);
     MeshInstance* meshInstance = new MeshInstance(meshData, glm::mat4x4(1.0), sphereAttributes);
     meshInstances.push_back(meshInstance);
-    */
     
     // sphere floating miror
     ShadableAttributes* mirrorAttributes = new ShadableAttributes();
