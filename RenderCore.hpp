@@ -13,6 +13,7 @@
 #include "RenderData.hpp"
 #include "Ray.hpp"
 #include "ShadableObjectIntersection.hpp"
+#include "DistanceMeasure.hpp"
 #include "Light.hpp"
 
 // class holding all high-level methods used to render a scene. used by RenderThread
@@ -40,6 +41,9 @@ public:
     
     // calculate the color of an intersection
     glm::vec3 colorIntersection(ShadableObjectIntersection intersection, int recursionDepth);
+    
+    // march ray distance
+    DistanceMeasure marchDistanceRay(Ray ray);
     
     // calculate the color of a ray
     glm::vec3 colorRay(Ray ray);

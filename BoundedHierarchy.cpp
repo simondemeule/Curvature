@@ -10,6 +10,7 @@
 #include <vector>
 #include <list>
 #include <iostream>
+#include <stdexcept>
 
 #include "BoundedHierarchy.hpp"
 
@@ -155,4 +156,8 @@ ShadableObjectIntersection BoundedHierarchy::closestIntersection(Ray ray) {
         intersection.exists = false;
         return intersection;
     }
+}
+
+DistanceMeasure BoundedHierarchy::distance(glm::vec3 point) {
+    return root->distance(point);
 }

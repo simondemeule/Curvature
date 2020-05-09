@@ -15,6 +15,7 @@
 #include "ShadableObject.hpp"
 #include "ShadableObjectIntersection.hpp"
 #include "Ray.hpp"
+#include "DistanceMeasure.hpp"
 
 // bounding box node, part of a BVH tree
 class BoundedNode : public BoundedObject {
@@ -27,4 +28,6 @@ public:
     
     ShadableObjectIntersection incrementDepth(ShadableObjectIntersection intersection, int objectIncrement, int boxIncrement);
     ShadableObjectIntersection closestIntersection(Ray ray);
+    DistanceMeasure incrementDepth(DistanceMeasure distance, int objectIncrement, int boxIncrement);
+    DistanceMeasure distance(glm::vec3 point);
 };

@@ -13,6 +13,7 @@
 
 #include "BoundedNode.hpp"
 #include "ShadableObjectIntersection.hpp"
+#include "DistanceMeasure.hpp"
 #include "Ray.hpp"
 
 // a BVH tree
@@ -28,5 +29,5 @@ public:
     BoundedHierarchy(std::vector<ShadableObject*> objects);
     
     ShadableObjectIntersection closestIntersection(Ray ray);
-    std::vector<BoundedObject*> overlappingObjects(BoundingBox boundingBox);
+    DistanceMeasure distance(glm::vec3 point);
 };

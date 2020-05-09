@@ -142,3 +142,42 @@ ShadableObjectIntersection BoundedNode::closestIntersection(Ray ray) {
     }
     */
 }
+
+DistanceMeasure BoundedNode::incrementDepth(DistanceMeasure distance, int objectIncrement, int boxIncrement) {
+    distance.objectDistanceDepth += objectIncrement;
+    distance.boxDistanceDepth += boxIncrement;
+    return distance;
+}
+
+DistanceMeasure BoundedNode::distance(glm::vec3 point) {
+    if(object != nullptr) {
+        // base case, node is leaf, call object distance function
+        DistanceMeasure result = object->distance(point);
+        return result;
+    } else {
+        // recursive case, node is internal
+        
+        DistanceMeasure distanceLeftBox = nodeLeft->boundingBox.distance(point);
+        DistanceMeasure distanceRightBox = nodeRight->boundingBox.distance(point);
+        
+        BoundedNode* nodeClosest = distanceLeftBox.distance < distanceRightBox.distance ? nodeLeft : nodeRight;
+        BoundedNode* nodeFurthest = distanceLeftBox.distance > distanceRightBox.distance ? nodeLeft : nodeRight;
+        
+        DistanceMeasure distanceFurthestBox = distanceLeftBox.distance > distanceRightBox.distance ? distanceLeftBox : distanceRightBox;
+        
+        DistanceMeasure distanceClosest = nodeClosest->distance(point);
+        
+        if(distanceClosest.distance < distanceFurthestBox.distance) {
+            // distance to object in closest node is closer than the start of the other node's bounding box. no need to recur on the furthest node.
+            return incrementDepth(distanceClosest, 0, 2);
+        } else {
+            // we can't optimize here, must compute both full distances
+            DistanceMeasure distanceFurthest = nodeFurthest->distance(point);
+            if(distanceClosest.distance < distanceFurthest.distance) {
+                return incrementDepth(distanceClosest, distanceFurthest.objectDistanceDepth, distanceFurthest.boxDistanceDepth + 2);
+            } else {
+                return incrementDepth(distanceFurthest, distanceClosest.objectDistanceDepth, distanceClosest.boxDistanceDepth + 2);
+            }
+        }
+    }
+}

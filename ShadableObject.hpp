@@ -8,8 +8,11 @@
 
 #pragma once
 
+#include <glm/glm.hpp>
+
 #include "ShadableAttributes.hpp"
 #include "ShadableObjectIntersection.hpp"
+#include "DistanceMeasure.hpp"
 #include "Ray.hpp"
 #include "BoundedObject.hpp"
 
@@ -22,8 +25,10 @@ public:
     // constructor
     ShadableObject(ShadableAttributes* shadableAttributesNew) : shadableAttributes(shadableAttributesNew) {}
     
-    // intersection function for object
+    // intersection function
     virtual ShadableObjectIntersection intersection(Ray ray) = 0;
+    // distance function
+    virtual DistanceMeasure distance(glm::vec3 point) = 0;
     
     // primitive count for bounded hierarchy construction optimisation
     int primitiveCount;

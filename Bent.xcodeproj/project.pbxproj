@@ -10,7 +10,6 @@
 		3B46AF082461EE2D00934688 /* MeshPrimitive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AED92461EE2B00934688 /* MeshPrimitive.cpp */; };
 		3B46AF092461EE2D00934688 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEDB2461EE2B00934688 /* Image.cpp */; };
 		3B46AF0A2461EE2D00934688 /* RenderCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEDC2461EE2B00934688 /* RenderCore.cpp */; };
-		3B46AF0B2461EE2D00934688 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEDE2461EE2B00934688 /* Plane.cpp */; };
 		3B46AF0C2461EE2D00934688 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEDF2461EE2B00934688 /* Camera.cpp */; };
 		3B46AF0D2461EE2D00934688 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEE12461EE2B00934688 /* BoundingBox.cpp */; };
 		3B46AF0E2461EE2D00934688 /* MeshData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEE72461EE2B00934688 /* MeshData.cpp */; };
@@ -26,6 +25,7 @@
 		3B46AF182461EE2D00934688 /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEFB2461EE2C00934688 /* Sphere.cpp */; };
 		3B46AF192461EE2D00934688 /* Field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEFD2461EE2C00934688 /* Field.cpp */; };
 		3B46AF1A2461EE2D00934688 /* RenderScheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AF012461EE2D00934688 /* RenderScheduler.cpp */; };
+		3B46AF2124639ED600934688 /* Tester.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AF1F24639ED600934688 /* Tester.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,7 +46,6 @@
 		3B46AEDB2461EE2B00934688 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEDC2461EE2B00934688 /* RenderCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderCore.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEDD2461EE2B00934688 /* ShadableObjectIntersection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadableObjectIntersection.hpp; sourceTree = SOURCE_ROOT; };
-		3B46AEDE2461EE2B00934688 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEDF2461EE2B00934688 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEE02461EE2B00934688 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AEE12461EE2B00934688 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = SOURCE_ROOT; };
@@ -64,7 +63,6 @@
 		3B46AEED2461EE2B00934688 /* ShadableObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadableObject.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AEEF2461EE2B00934688 /* Portal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Portal.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AEF02461EE2B00934688 /* Sphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sphere.hpp; sourceTree = SOURCE_ROOT; };
-		3B46AEF12461EE2B00934688 /* Plane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Plane.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AEF22461EE2B00934688 /* Light.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AEF32461EE2B00934688 /* RenderData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderData.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEF42461EE2C00934688 /* Field.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Field.hpp; sourceTree = SOURCE_ROOT; };
@@ -86,6 +84,9 @@
 		3B46AF052461EE2D00934688 /* ShadableAttributes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShadableAttributes.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AF062461EE2D00934688 /* MeshData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MeshData.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AF072461EE2D00934688 /* Tile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tile.hpp; sourceTree = SOURCE_ROOT; };
+		3B46AF1F24639ED600934688 /* Tester.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Tester.cpp; sourceTree = SOURCE_ROOT; };
+		3B46AF2024639ED600934688 /* Tester.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Tester.hpp; sourceTree = SOURCE_ROOT; };
+		3B46AF23246701E600934688 /* DistanceMeasure.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DistanceMeasure.hpp; sourceTree = SOURCE_ROOT; };
 		F4BF3C5C21F27C4300D819E9 /* Bent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Bent; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,6 +130,7 @@
 				3B46AEEC2461EE2B00934688 /* BoundingBox.hpp */,
 				3B46AEDF2461EE2B00934688 /* Camera.cpp */,
 				3B46AEE02461EE2B00934688 /* Camera.hpp */,
+				3B46AF23246701E600934688 /* DistanceMeasure.hpp */,
 				3B46AEFD2461EE2C00934688 /* Field.cpp */,
 				3B46AEF42461EE2C00934688 /* Field.hpp */,
 				3B46AEDB2461EE2B00934688 /* Image.cpp */,
@@ -144,8 +146,6 @@
 				3B46AED92461EE2B00934688 /* MeshPrimitive.cpp */,
 				3B46AEE62461EE2B00934688 /* MeshPrimitive.hpp */,
 				3B46AEFF2461EE2C00934688 /* OBJloader.h */,
-				3B46AEDE2461EE2B00934688 /* Plane.cpp */,
-				3B46AEF12461EE2B00934688 /* Plane.hpp */,
 				3B46AEF52461EE2C00934688 /* Portal.cpp */,
 				3B46AEEF2461EE2B00934688 /* Portal.hpp */,
 				3B46AF002461EE2C00934688 /* Ray.hpp */,
@@ -162,6 +162,8 @@
 				3B46AEDD2461EE2B00934688 /* ShadableObjectIntersection.hpp */,
 				3B46AEFB2461EE2C00934688 /* Sphere.cpp */,
 				3B46AEF02461EE2B00934688 /* Sphere.hpp */,
+				3B46AF1F24639ED600934688 /* Tester.cpp */,
+				3B46AF2024639ED600934688 /* Tester.hpp */,
 				3B46AEE82461EE2B00934688 /* Tile.cpp */,
 				3B46AF072461EE2D00934688 /* Tile.hpp */,
 			);
@@ -234,9 +236,9 @@
 				3B46AF132461EE2D00934688 /* Portal.cpp in Sources */,
 				3B46AF182461EE2D00934688 /* Sphere.cpp in Sources */,
 				3B46AF0D2461EE2D00934688 /* BoundingBox.cpp in Sources */,
+				3B46AF2124639ED600934688 /* Tester.cpp in Sources */,
 				3B46AF102461EE2D00934688 /* RenderThread.cpp in Sources */,
 				3B46AF192461EE2D00934688 /* Field.cpp in Sources */,
-				3B46AF0B2461EE2D00934688 /* Plane.cpp in Sources */,
 				3B46AF162461EE2D00934688 /* BoundedNode.cpp in Sources */,
 				3B46AF0A2461EE2D00934688 /* RenderCore.cpp in Sources */,
 				3B46AF142461EE2D00934688 /* main.cpp in Sources */,

@@ -13,6 +13,7 @@
 #include "ShadableObject.hpp"
 #include "ShadableAttributes.hpp"
 #include "ShadableObjectIntersection.hpp"
+#include "DistanceMeasure.hpp"
 #include "Ray.hpp"
 #include "BoundingBox.hpp"
 
@@ -25,5 +26,8 @@ private:
 public:
     Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes* shadableAttributesNew);
     
+    // intersection function
     ShadableObjectIntersection intersection(Ray ray);
+    // distance function
+    DistanceMeasure distance(glm::vec3 point);
 };

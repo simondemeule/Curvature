@@ -8,6 +8,8 @@
 
 #include "BoundingBox.hpp"
 
+#include <algorithm>
+
 BoundingBox::BoundingBox() :
     pointPositive(glm::vec3(0)),
     pointNegative(glm::vec3(0))
@@ -81,6 +83,53 @@ BoundedObjectIntersection BoundingBox::intersection(Ray ray) {
     return intersection;
 }
 
+// taken from https://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm
+DistanceMeasure BoundingBox::distance(glm::vec3 point) {
+    glm::vec3 pointCenter = 0.5f * (pointPositive + pointNegative);
+    glm::vec3 boundFromCenter = pointPositive - pointCenter;
+    glm::vec3 pointFromCenter = point - pointCenter;
+    glm::vec3 pointFromCornerMirrored = abs(pointFromCenter) - boundFromCenter;
+    
+    DistanceMeasure distanceMeasure;
+    distanceMeasure.origin = point;
+    distanceMeasure.boxDistanceDepth = 1;
+    distanceMeasure.distance = glm::length(glm::max(pointFromCornerMirrored, glm::vec3(0.0))) + std::min<float>(std::max<float>(pointFromCornerMirrored.x, std::max<float>(pointFromCornerMirrored.y, pointFromCornerMirrored.z)), 0.0);
+    
+    return distanceMeasure;
+}
+
+// original code
+// the furthest point is always a box corner. relative to the center, the sign of the corter is the opposite of the point
+DistanceMeasure BoundingBox::distanceEnd(glm::vec3 point) {
+    glm::vec3 pointCenter = 0.5f * (pointPositive + pointNegative);
+    glm::vec3 boundFromCenter = pointPositive - pointCenter;
+    glm::vec3 pointFromCenter = point - pointCenter;
+    
+    glm::bvec3 sign;
+    
+    sign.x = pointFromCenter.x > 0;
+    sign.y = pointFromCenter.y > 0;
+    sign.z = pointFromCenter.z > 0;
+    
+    glm::vec3 pointFurthestFromCenter;
+    
+    pointFurthestFromCenter.x = sign.x ? - boundFromCenter.x : boundFromCenter.x;
+    pointFurthestFromCenter.y = sign.y ? - boundFromCenter.y : boundFromCenter.y;
+    pointFurthestFromCenter.z = sign.z ? - boundFromCenter.z : boundFromCenter.z;
+    
+    DistanceMeasure distanceMeasure;
+    distanceMeasure.origin = point;
+    distanceMeasure.boxDistanceDepth = 1;
+    distanceMeasure.distance = glm::length(pointFromCenter - pointFurthestFromCenter);
+    
+    return distanceMeasure;
+}
+
+float BoundingBox::surfaceArea() {
+    return 2 * (pointPositive.x - pointNegative.x) * (pointPositive.y - pointNegative.y) + 2 * (pointPositive.x - pointNegative.x) * (pointPositive.z - pointNegative.z) + 2 * (pointPositive.y - pointNegative.y) * (pointPositive.z - pointNegative.z);
+    ;
+}
+
 bool BoundingBox::intersectionTest(Ray ray) {
     // code based on scratchapixel's tutorial. see https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
     
@@ -142,9 +191,4 @@ bool BoundingBox::overlapNonZeroTest(BoundingBox boundingBox) {
     return pointPositive.x > boundingBox.pointNegative.x && pointNegative.x < boundingBox.pointPositive.x &&
            pointPositive.y > boundingBox.pointNegative.y && pointNegative.y < boundingBox.pointPositive.y &&
            pointPositive.z > boundingBox.pointNegative.z && pointNegative.z < boundingBox.pointPositive.z;
-}
-
-float BoundingBox::surfaceArea() {
-    return 2 * (pointPositive.x - pointNegative.x) * (pointPositive.y - pointNegative.y) + 2 * (pointPositive.x - pointNegative.x) * (pointPositive.z - pointNegative.z) + 2 * (pointPositive.y - pointNegative.y) * (pointPositive.z - pointNegative.z);
-    ;
 }

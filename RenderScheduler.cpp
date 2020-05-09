@@ -9,6 +9,7 @@
 #include "RenderScheduler.hpp"
 
 #include <iostream>
+#include <stdexcept>
 #include <chrono>
 
 #include "RenderThread.hpp"

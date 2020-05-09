@@ -8,6 +8,8 @@
 
 #include "Sphere.hpp"
 
+#include <algorithm>
+
 Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes* shadableAttributesNew) :
     ShadableObject(shadableAttributesNew),
     origin(originNew),
@@ -57,4 +59,12 @@ ShadableObjectIntersection Sphere::intersection(Ray ray) {
     intersection.distance = t;
     intersection.shadableObject = this;
     return intersection;
+}
+
+DistanceMeasure Sphere::distance(glm::vec3 point) {
+    DistanceMeasure distanceMeasure;
+    distanceMeasure.origin = point;
+    distanceMeasure.objectDistanceDepth = 1;
+    distanceMeasure.distance = std::max<float>(0, glm::length(point - origin) - radius);
+    return distanceMeasure;
 }

@@ -8,7 +8,11 @@
 
 #pragma once
 
+#include <glm/glm.hpp>
+
 #include "ShadableObject.hpp"
+#include "ShadableObjectIntersection.hpp"
+#include "DistanceMeasure.hpp"
 
 class MeshInstance; // forward declare
 
@@ -21,5 +25,8 @@ public:
     
     MeshPrimitive(MeshInstance* meshInstance, int indexLocation);
     
+    // intersection function
     ShadableObjectIntersection intersection(Ray ray);
+    // distance function
+    DistanceMeasure distance(glm::vec3 point);
 };

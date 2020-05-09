@@ -11,11 +11,11 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <stdexcept>
 #include <thread>
 #include <chrono>
 
 #include "Sphere.hpp"
-#include "Plane.hpp"
 #include "MeshData.hpp"
 #include "MeshInstance.hpp"
 
@@ -87,97 +87,6 @@ void RenderData::loadInputFile() {
                     delete focalLength;
                     delete aspectRatio;
                     throw std::runtime_error("Input file has incomplete data for camera");
-                }
-            } else if(result == "plane") {
-                // parse plane data
-                glm::vec3* origin = nullptr;
-                glm::vec3* normal = nullptr;
-                glm::vec3* ambient = nullptr;
-                glm::vec3* diffuse = nullptr;
-                glm::vec3* specular = nullptr;
-                float* shininess = nullptr;
-                for(int i = 0; i < 6; i++) {
-                    std::getline(file, line);
-                    iss = std::istringstream(line);
-                    std::getline(iss, result, ' ');
-                    if(result == "nor:") {
-                        delete normal;
-                        normal = new glm::vec3();
-                        std::getline(iss, result, ' ');
-                        normal->x = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        normal->y = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        normal->z = std::stof(result);
-                    } else if(result == "pos:") {
-                        delete origin;
-                        origin = new glm::vec3();
-                        std::getline(iss, result, ' ');
-                        origin->x = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        origin->y = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        origin->z = std::stof(result);
-                    } else if(result == "amb:") {
-                        delete ambient;
-                        ambient = new glm::vec3();
-                        std::getline(iss, result, ' ');
-                        ambient->r = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        ambient->g = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        ambient->b = std::stof(result);
-                    } else if(result == "dif:") {
-                        delete diffuse;
-                        diffuse = new glm::vec3();
-                        std::getline(iss, result, ' ');
-                        diffuse->r = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        diffuse->g = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        diffuse->b = std::stof(result);
-                    } else if(result == "spe:") {
-                        delete specular;
-                        specular = new glm::vec3();
-                        std::getline(iss, result, ' ');
-                        specular->r = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        specular->g = std::stof(result);
-                        std::getline(iss, result, ' ');
-                        specular->b = std::stof(result);
-                    } else if(result == "shi:") {
-                        delete shininess;
-                        shininess = new float;
-                        std::getline(iss, result, ' ');
-                        *shininess = std::stof(result);
-                    }
-                }
-                if(origin != nullptr &&
-                   normal != nullptr &&
-                   ambient != nullptr &&
-                   diffuse != nullptr &&
-                   specular != nullptr &&
-                   shininess != nullptr) {
-                    ShadableAttributes* shadableAttributes = new ShadableAttributes();
-                    shadableAttributes->ambient = *ambient;
-                    shadableAttributes->diffuse = *diffuse;
-                    shadableAttributes->specular = *specular;
-                    shadableAttributes->shininess = *shininess;
-                    objects.push_back(new Plane(*origin, *normal, shadableAttributes));
-                    delete origin;
-                    delete normal;
-                    delete ambient;
-                    delete diffuse;
-                    delete specular;
-                    delete shininess;
-                } else {
-                    delete origin;
-                    delete normal;
-                    delete ambient;
-                    delete diffuse;
-                    delete specular;
-                    delete shininess;
-                    throw std::runtime_error("Input file has incomplete data for plane");
                 }
             } else if(result == "sphere") {
                 // parse sphere data
@@ -425,7 +334,10 @@ void RenderData::loadTest() {
     MeshInstance* meshInstance = new MeshInstance(meshData, glm::mat4x4(1.0), sphereAttributes);
     meshInstances.push_back(meshInstance);
     
+    //objects.push_back(new Sphere(glm::vec3(0, 0, 0), 1, sphereAttributes));
+    
     // sphere floating miror
+    /*
     ShadableAttributes* mirrorAttributes = new ShadableAttributes();
     mirrorAttributes->ambient = glm::vec3(0);
     mirrorAttributes->diffuse = glm::vec3(0);
@@ -433,6 +345,7 @@ void RenderData::loadTest() {
     mirrorAttributes->shininess = 0;
     mirrorAttributes->reflectivity = 1;
     objects.push_back(new Sphere(glm::vec3(0, 0, 4), 2, mirrorAttributes));
+    */
     
     // sphere over camera
     //objects.push_back(new Sphere(glm::vec3(0, -4, 2), 1, shadableAttributes));

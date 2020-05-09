@@ -12,6 +12,7 @@
 
 #include "Ray.hpp"
 #include "BoundedObjectIntersection.hpp"
+#include "DistanceMeasure.hpp"
 
 // axis aligned bounding box class
 class BoundingBox {
@@ -31,7 +32,14 @@ public:
     void setPointPositive(glm::vec3 pointPositiveNew);
     void setPointNegative(glm::vec3 pointNegativeNew);
     
+    // intersection function
     BoundedObjectIntersection intersection(Ray ray);
+    // distance function
+    DistanceMeasure distance(glm::vec3 point);
+    // distance function for furthest point on box
+    DistanceMeasure distanceEnd(glm::vec3 point);
+    // surface area function
+    float surfaceArea();
     
     // test whether the ray intersects with the box
     bool intersectionTest(Ray ray);
@@ -46,5 +54,4 @@ public:
     // test similar to above, but overlap distance must be greater than zero, ie if boxes share precisely the same face they don't count as overlapping
     bool overlapNonZeroTest(BoundingBox boundingBox);
     
-    float surfaceArea();
 };

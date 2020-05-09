@@ -10,6 +10,8 @@
 
 #include "MeshInstance.hpp"
 
+#include <algorithm>
+
 MeshPrimitive::MeshPrimitive(MeshInstance* meshInstance, int indexLocation) :
     ShadableObject(meshInstance->shadableAttributes),
     meshInstance(meshInstance),
@@ -96,4 +98,70 @@ ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {
     intersection.incident = ray.direction;
     intersection.shadableObject = this;
     return intersection;
+}
+
+// utility functions for distance computation
+float sign(float number) {
+    if(number > 0) {
+        return 1;
+    } else if(number < 0) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
+float clamp(float number) {
+    return std::min<float>(std::max<float>(number, 0), 1);
+}
+
+float dot2(glm::vec3 vector) {
+    return dot(vector, vector);
+    
+}
+
+// taken from https://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm
+DistanceMeasure MeshPrimitive::distance(glm::vec3 point) {
+    // get indicies
+    int index1 = meshInstance->meshData->indices.at(indexLocation);
+    int index2 = meshInstance->meshData->indices.at(indexLocation + 1);
+    int index3 = meshInstance->meshData->indices.at(indexLocation + 2);
+    
+    // get verticies
+    glm::vec3 corner1 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index1), 1.0));
+    glm::vec3 corner2 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index2), 1.0));
+    glm::vec3 corner3 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index3), 1.0));
+    
+    // get edge vectors
+    glm::vec3 edge21 = corner2 - corner1;
+    glm::vec3 edge32 = corner3 - corner2;
+    glm::vec3 edge13 = corner1 - corner3;
+    
+    // get normal (unnormalized) (this is flipped, compared to the original code)
+    glm::vec3 normal = glm::cross(edge21, edge13);
+    
+    // get point position relative to corners
+    glm::vec3 pointFrom1 = point - corner1;
+    glm::vec3 pointFrom2 = point - corner2;
+    glm::vec3 pointFrom3 = point - corner3;
+    
+    DistanceMeasure distanceMeasure;
+    distanceMeasure.origin = point;
+    distanceMeasure.objectDistanceDepth = 1;
+    distanceMeasure.distance = sqrt(
+                                        (sign(dot(cross(edge21, normal), pointFrom1)) +
+                                         sign(dot(cross(edge32, normal), pointFrom2)) +
+                                         sign(dot(cross(edge13, normal), pointFrom3)) < 2.0)
+                                        ?
+                                        std::min<float>(
+                                            std::min<float>(
+                                                dot2(edge21 * clamp(dot(edge21, pointFrom1) / dot2(edge21)) - pointFrom1),
+                                                dot2(edge32 * clamp(dot(edge32, pointFrom2) / dot2(edge32)) - pointFrom2)
+                                            ),
+                                            dot2(edge13 * clamp(dot(edge13, pointFrom3) / dot2(edge13)) - pointFrom3)
+                                        )
+                                        :
+                                        dot(normal, pointFrom1) * dot(normal, pointFrom1) / dot2(normal)
+                                    );
+    return distanceMeasure;
 }

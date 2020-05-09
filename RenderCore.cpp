@@ -85,8 +85,30 @@ glm::vec3 RenderCore::colorIntersection(ShadableObjectIntersection intersection,
     return color;
 }
 
+DistanceMeasure RenderCore::marchDistanceRay(Ray ray) {
+    DistanceMeasure distanceMeasure = renderData->boundedHierarchy->distance(ray.origin);
+    // glitchy patches on meshes are caused by the distance step being too small, which compound with rounding errors in the ray origin vector, driving the ray origin past the triangle
+    if(distanceMeasure.distance > 0.02 && distanceMeasure.distance < 20) {
+        Ray rayRecursive = ray;
+        rayRecursive.origin = ray.origin + ray.direction * distanceMeasure.distance * 0.999f;
+        DistanceMeasure distanceMeasureRecursive = marchDistanceRay(rayRecursive);
+        DistanceMeasure distanceMeasureFinal;
+        distanceMeasureFinal.distance = distanceMeasure.distance + distanceMeasureRecursive.distance;
+        distanceMeasureFinal.boxDistanceDepth = distanceMeasure.boxDistanceDepth + distanceMeasureRecursive.boxDistanceDepth;
+        distanceMeasureFinal.objectDistanceDepth = distanceMeasure.objectDistanceDepth + distanceMeasureRecursive.objectDistanceDepth;
+        return distanceMeasureFinal;
+    } else {
+        return distanceMeasure;
+    }
+}
+
 // calculate the color of a ray
 glm::vec3 RenderCore::colorRay(Ray ray) {
+    //ShadableObjectIntersection intersection = closestIntersection(ray);
+    //float castDistance = intersection.exists ? intersection.distance : 100.0;
+    //DistanceMeasure marchDistance = marchDistanceRay(ray);
+    //return glm::vec3(marchDistance.distance / 10.0, marchDistance.boxDistanceDepth / 1000.0, marchDistance.objectDistanceDepth / 200.0);// castDistance / 10.0, intersection.boxIntersectionDepth / 128.0);
+    
     ShadableObjectIntersection closest = closestIntersection(ray);
     //return glm::vec3(closest.objectIntersectionDepth / 255.0, closest.boxIntersectionDepth / 255.0, 0.0);
     
@@ -95,7 +117,6 @@ glm::vec3 RenderCore::colorRay(Ray ray) {
     } else {
         return glm::vec3(0);
     }
-    
 }
 
 // calculate the color of a pixel
