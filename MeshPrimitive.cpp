@@ -12,50 +12,72 @@
 
 #include <algorithm>
 
-MeshPrimitive::MeshPrimitive(MeshInstance* meshInstance, int indexLocation) :
-    ShadableObject(meshInstance->shadableAttributes),
-    meshInstance(meshInstance),
-    indexLocation(indexLocation)
+MeshPrimitive::MeshPrimitive(MeshInstance* meshInstanceNew, int indexLocationNew) :
+    ShadableObject(meshInstanceNew->shadableAttributes)
 {
     primitiveCount = 1;
+    meshInstance = meshInstanceNew;
+    indexLocation = indexLocationNew;
+    updateGeometryData();
     updateBoundingBox();
-}
-
-void MeshPrimitive::updateBoundingBox() {
-    for(int i = 0; i < 3; i++) {
-        int index = meshInstance->meshData->indices.at(indexLocation + i);
-        glm::vec3 corner = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index), 1.0));
-        if(i == 0) {
-            boundingBox.pointPositive = corner;
-            boundingBox.pointNegative = corner;
-        } else {
-            boundingBox.pointPositive = glm::max(corner, boundingBox.pointPositive);
-            boundingBox.pointNegative = glm::min(corner, boundingBox.pointNegative);
-        }
-    }
 }
 
 // calculates the area of a triangle given vertex positions
 float area(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
-    return glm::length(glm::cross(b - a, c - a)) / 2.0;
+    return glm::length(glm::cross(b - a, c - a)) * 0.5;
 }
 
-ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {
-    // get indicies
-    int index1 = meshInstance->meshData->indices.at(indexLocation);
-    int index2 = meshInstance->meshData->indices.at(indexLocation + 1);
-    int index3 = meshInstance->meshData->indices.at(indexLocation + 2);
+void MeshPrimitive::updateGeometryData() {
+    // get vertex indices
+    int indexVertex1 = meshInstance->meshData->vertexIndices.at(indexLocation);
+    int indexVertex2 = meshInstance->meshData->vertexIndices.at(indexLocation + 1);
+    int indexVertex3 = meshInstance->meshData->vertexIndices.at(indexLocation + 2);
     
-    // get verticies
-    glm::vec3 corner1 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index1), 1.0));
-    glm::vec3 corner2 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index2), 1.0));
-    glm::vec3 corner3 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index3), 1.0));
+    // get vertex positions, applying transformation
+    corner1 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertexData.at(indexVertex1), 1.0));
+    corner2 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertexData.at(indexVertex2), 1.0));
+    corner3 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertexData.at(indexVertex3), 1.0));
+    
+    // get edge vectors
+    edge21 = corner2 - corner1;
+    edge32 = corner3 - corner2;
+    edge13 = corner1 - corner3;
     
     // get normal of triangle plane
-    glm::vec3 normal = glm::normalize(glm::cross(corner2 - corner1, corner3 - corner1));
+    normalTrue = glm::normalize(glm::cross(corner2 - corner1, corner3 - corner1));
     
+    // get normal indices
+    int indexNormal1 = meshInstance->meshData->normalIndices.at(indexLocation);
+    int indexNormal2 = meshInstance->meshData->normalIndices.at(indexLocation + 1);
+    int indexNormal3 = meshInstance->meshData->normalIndices.at(indexLocation + 2);
+    
+    // TODO: this will crash if object has no normal data
+    
+    // get vertex normals, applying transformation and normalizing
+    normal1 = glm::normalize(glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->normalData.at(indexNormal1), 0.0)));
+    normal2 = glm::normalize(glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->normalData.at(indexNormal2), 0.0)));
+    normal3 = glm::normalize(glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->normalData.at(indexNormal3), 0.0)));
+    
+    // compute total area
+    areaTotal = area(corner1, corner2, corner3);
+}
+
+void MeshPrimitive::updateBoundingBox() {
+    glm::vec3 corners[] = {corner1, corner2, corner3};
+    for(int i = 0; i < 3; i++) {
+        if(i == 0) {
+            boundingBox.pointPositive = corners[i];
+            boundingBox.pointNegative = corners[i];
+        } else {
+            boundingBox.pointPositive = glm::max(corners[i], boundingBox.pointPositive);
+            boundingBox.pointNegative = glm::min(corners[i], boundingBox.pointNegative);
+        }
+    }
+}
+
+ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {    
     // calculate intersection with triangle plane
-    float denom = glm::dot(normal, ray.direction);
+    float denom = glm::dot(normalTrue, ray.direction);
     if(denom > -1e-6) {
         // intersection with plane is a backface or ray is parallel to plane
         // exit calculation
@@ -63,7 +85,7 @@ ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {
         intersection.exists = false;
         return intersection;
     }
-    float t = glm::dot(corner1 - ray.origin, normal) / denom;
+    float t = glm::dot(corner1 - ray.origin, normalTrue) / denom;
     if(t < 1e-3) {
         // intersection with plane is behind ray
         // exit calculation
@@ -73,15 +95,14 @@ ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {
     }
     
     // intersection with plane is valid
-    glm::vec3 v0 = ray.origin + ray.direction * t;
+    glm::vec3 pointIntersection = ray.origin + ray.direction * t;
     
     // barycentric area computation
-    float a0 = area(corner1, corner2, corner3);
-    float a1 = area(v0, corner2, corner3);
-    float a2 = area(corner1, v0, corner3);
-    float a3 = area(corner1, corner2, v0);
+    float area1 = area(pointIntersection, corner2, corner3);
+    float area2 = area(corner1, pointIntersection, corner3);
+    float area3 = area(corner1, corner2, pointIntersection);
     
-    if(std::abs((a1 + a2 + a3) / a0 - 1.0) > 1e-3) {
+    if(std::abs((area1 + area2 + area3) / areaTotal - 1.0) > 1e-3) {
         // intersection is not in triangle
         // exit calculation
         ShadableObjectIntersection intersection;
@@ -89,11 +110,18 @@ ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {
         return intersection;
     }
     
-    // valid intersection, fill in remaining information
+    // valid intersection, compute normal
+    
+    // TODO: deal with "no normal data" case
+    float weight1 = area1 / areaTotal;
+    float weight2 = area2 / areaTotal;
+    float weight3 = area3 / areaTotal;
+    glm::vec3 normalInterpolated = normal1 * weight1 + normal2 * weight2 + normal3 * weight3;
+    
     ShadableObjectIntersection intersection;
     intersection.exists = true;
-    intersection.origin = ray.origin + ray.direction * t;
-    intersection.normal = normal;
+    intersection.origin = pointIntersection;
+    intersection.normal = normalInterpolated;
     intersection.distance = t;
     intersection.incident = ray.direction;
     intersection.shadableObject = this;
@@ -122,24 +150,6 @@ float dot2(glm::vec3 vector) {
 
 // taken from https://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm
 DistanceMeasure MeshPrimitive::distance(glm::vec3 point) {
-    // get indicies
-    int index1 = meshInstance->meshData->indices.at(indexLocation);
-    int index2 = meshInstance->meshData->indices.at(indexLocation + 1);
-    int index3 = meshInstance->meshData->indices.at(indexLocation + 2);
-    
-    // get verticies
-    glm::vec3 corner1 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index1), 1.0));
-    glm::vec3 corner2 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index2), 1.0));
-    glm::vec3 corner3 = glm::vec3(meshInstance->transformation * glm::vec4(meshInstance->meshData->vertices.at(index3), 1.0));
-    
-    // get edge vectors
-    glm::vec3 edge21 = corner2 - corner1;
-    glm::vec3 edge32 = corner3 - corner2;
-    glm::vec3 edge13 = corner1 - corner3;
-    
-    // get normal (unnormalized) (this is flipped, compared to the original code)
-    glm::vec3 normal = glm::cross(edge21, edge13);
-    
     // get point position relative to corners
     glm::vec3 pointFrom1 = point - corner1;
     glm::vec3 pointFrom2 = point - corner2;
@@ -149,9 +159,9 @@ DistanceMeasure MeshPrimitive::distance(glm::vec3 point) {
     distanceMeasure.origin = point;
     distanceMeasure.objectDistanceDepth = 1;
     distanceMeasure.distance = sqrt(
-                                        (sign(dot(cross(edge21, normal), pointFrom1)) +
-                                         sign(dot(cross(edge32, normal), pointFrom2)) +
-                                         sign(dot(cross(edge13, normal), pointFrom3)) < 2.0)
+                                        (sign(dot(cross(edge21, - normalTrue), pointFrom1)) +
+                                         sign(dot(cross(edge32, - normalTrue), pointFrom2)) +
+                                         sign(dot(cross(edge13, - normalTrue), pointFrom3)) < 2.0)
                                         ?
                                         std::min<float>(
                                             std::min<float>(
@@ -161,7 +171,7 @@ DistanceMeasure MeshPrimitive::distance(glm::vec3 point) {
                                             dot2(edge13 * clamp(dot(edge13, pointFrom3) / dot2(edge13)) - pointFrom3)
                                         )
                                         :
-                                        dot(normal, pointFrom1) * dot(normal, pointFrom1) / dot2(normal)
+                                        dot(- normalTrue, pointFrom1) * dot(- normalTrue, pointFrom1) / dot2(- normalTrue)
                                     );
     return distanceMeasure;
 }

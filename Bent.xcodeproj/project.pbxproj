@@ -76,7 +76,6 @@
 		3B46AEFC2461EE2C00934688 /* Intersection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Intersection.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AEFD2461EE2C00934688 /* Field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Field.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEFE2461EE2C00934688 /* BoundedObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoundedObject.hpp; sourceTree = SOURCE_ROOT; };
-		3B46AEFF2461EE2C00934688 /* OBJloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJloader.h; sourceTree = SOURCE_ROOT; };
 		3B46AF002461EE2C00934688 /* Ray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ray.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AF012461EE2D00934688 /* RenderScheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderScheduler.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AF032461EE2D00934688 /* Image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Image.hpp; sourceTree = SOURCE_ROOT; };
@@ -145,7 +144,6 @@
 				3B46AEDA2461EE2B00934688 /* MeshInstance.hpp */,
 				3B46AED92461EE2B00934688 /* MeshPrimitive.cpp */,
 				3B46AEE62461EE2B00934688 /* MeshPrimitive.hpp */,
-				3B46AEFF2461EE2C00934688 /* OBJloader.h */,
 				3B46AEF52461EE2C00934688 /* Portal.cpp */,
 				3B46AEEF2461EE2B00934688 /* Portal.hpp */,
 				3B46AF002461EE2C00934688 /* Ray.hpp */,

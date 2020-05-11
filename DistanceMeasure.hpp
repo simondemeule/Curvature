@@ -16,4 +16,5 @@ struct DistanceMeasure {
     
     int objectDistanceDepth = 0;
     int boxDistanceDepth = 0;
+    int debugMarker = 0;
 };

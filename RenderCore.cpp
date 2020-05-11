@@ -87,15 +87,15 @@ glm::vec3 RenderCore::colorIntersection(ShadableObjectIntersection intersection,
 
 DistanceMeasure RenderCore::marchDistanceRay(Ray ray) {
     DistanceMeasure distanceMeasure = renderData->boundedHierarchy->distance(ray.origin);
-    // glitchy patches on meshes are caused by the distance step being too small, which compound with rounding errors in the ray origin vector, driving the ray origin past the triangle
     if(distanceMeasure.distance > 0.02 && distanceMeasure.distance < 20) {
         Ray rayRecursive = ray;
         rayRecursive.origin = ray.origin + ray.direction * distanceMeasure.distance * 0.999f;
         DistanceMeasure distanceMeasureRecursive = marchDistanceRay(rayRecursive);
         DistanceMeasure distanceMeasureFinal;
         distanceMeasureFinal.distance = distanceMeasure.distance + distanceMeasureRecursive.distance;
-        distanceMeasureFinal.boxDistanceDepth = distanceMeasure.boxDistanceDepth + distanceMeasureRecursive.boxDistanceDepth;
-        distanceMeasureFinal.objectDistanceDepth = distanceMeasure.objectDistanceDepth + distanceMeasureRecursive.objectDistanceDepth;
+        distanceMeasureFinal.boxDistanceDepth = distanceMeasureRecursive.boxDistanceDepth;
+        distanceMeasureFinal.objectDistanceDepth = distanceMeasureRecursive.objectDistanceDepth;
+        distanceMeasureFinal.debugMarker = distanceMeasureRecursive.debugMarker;
         return distanceMeasureFinal;
     } else {
         return distanceMeasure;
@@ -107,13 +107,15 @@ glm::vec3 RenderCore::colorRay(Ray ray) {
     //ShadableObjectIntersection intersection = closestIntersection(ray);
     //float castDistance = intersection.exists ? intersection.distance : 100.0;
     //DistanceMeasure marchDistance = marchDistanceRay(ray);
-    //return glm::vec3(marchDistance.distance / 10.0, marchDistance.boxDistanceDepth / 1000.0, marchDistance.objectDistanceDepth / 200.0);// castDistance / 10.0, intersection.boxIntersectionDepth / 128.0);
+    //return glm::vec3(marchDistance.distance / 10.0, marchDistance.objectDistanceDepth / 10.0, marchDistance.boxDistanceDepth / 10.0);
     
     ShadableObjectIntersection closest = closestIntersection(ray);
+    //return glm::vec3(closest.exists ? closest.distance / 10.0 : 100.0, closest.debugMarker, closest.boxIntersectionDepth / 40.0);
     //return glm::vec3(closest.objectIntersectionDepth / 255.0, closest.boxIntersectionDepth / 255.0, 0.0);
     
     if(closest.exists) {
         return colorIntersection(closest, renderData->recursionLimit);
+        //return 0.5f * (closest.normal + 1.0f);
     } else {
         return glm::vec3(0);
     }

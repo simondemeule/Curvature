@@ -15,8 +15,8 @@ MeshInstance::MeshInstance(MeshData* meshData, glm::mat4x4 transformation, Shada
 {}
 
 std::vector<MeshPrimitive*> MeshInstance::expandPrimitives() {
-    std::vector<MeshPrimitive*> primitives(meshData->indices.size() / 3);
-    for(int i = 0; i < meshData->indices.size() / 3; i++) {
+    std::vector<MeshPrimitive*> primitives(meshData->vertexIndices.size() / 3);
+    for(int i = 0; i < meshData->vertexIndices.size() / 3; i++) {
         primitives.at(i) = new MeshPrimitive(this, i * 3);
     }
     return primitives;

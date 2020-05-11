@@ -14,6 +14,8 @@
 #include <stdexcept>
 #include <thread>
 #include <chrono>
+#include <glm/glm.hpp>
+#include <glm/gtx/transform.hpp>
 
 #include "Sphere.hpp"
 #include "MeshData.hpp"
@@ -329,9 +331,10 @@ void RenderData::loadTest() {
     }
     
     // mesh
-    MeshData* meshData = new MeshData("monkey.obj");
+    MeshData* meshData = new MeshData("monkey4.obj");
     meshDatas.push_back(meshData);
-    MeshInstance* meshInstance = new MeshInstance(meshData, glm::mat4x4(1.0), sphereAttributes);
+    //MeshInstance* meshInstance = new MeshInstance(meshData, glm::rotate(glm::mat4(2.0), (float) M_PI_2, glm::vec3(1.0, 0.0, 0.0)), sphereAttributes);
+    MeshInstance* meshInstance = new MeshInstance(meshData,glm::mat4(1.0), sphereAttributes);
     meshInstances.push_back(meshInstance);
     
     //objects.push_back(new Sphere(glm::vec3(0, 0, 0), 1, sphereAttributes));
@@ -362,6 +365,7 @@ void RenderData::loadTest() {
     lightAttributes.specular = lightAttributes.diffuse = glm::vec3(0.0, 0.9, 0.6);
     lights.push_back(new Light(glm::vec3(-4, 4, 20), lightAttributes));
     // camera
+    //camera = new Camera(glm::vec3(0, -4, 0), glm::vec3(0, 4, 0), glm::vec3(0, 0, 1), 80, 1.0, 16.0 / 9.0);
     camera = new Camera(glm::vec3(0, -4, 2), glm::vec3(0, 4, -2), glm::vec3(0, 0, 1), 80, 1.0, 16.0 / 9.0);
     //camera = new Camera(glm::vec3(0, 0, 2), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0), 80, 1.0, 16.0 / 9.0);
 }

@@ -17,6 +17,9 @@
 
 // inspired by https://medium.com/@bromanz/how-to-create-awesome-accelerators-the-surface-area-heuristic-e14b5dec6160
 
+// TODO: do the sorting once, then remove the objects that get picked progressively so that the sorting isn't repeated at every step
+// TODO: make this multithreaded
+
 // automatic split axis choice
 BoundedHierarchy::BoundedHierarchy(std::vector<ShadableObject*> objects) : root(buildHierarchy(objects, nullptr)) {
     // must set root bounding box after the hierarchy is built since this is normally called by the parent

@@ -18,12 +18,30 @@ class MeshInstance; // forward declare
 
 class MeshPrimitive : public ShadableObject {
 private:
+    void updateGeometryData();
     void updateBoundingBox();
-public:
+    
     MeshInstance* meshInstance;
+    
     int indexLocation;
     
-    MeshPrimitive(MeshInstance* meshInstance, int indexLocation);
+    glm::vec3 corner1;
+    glm::vec3 corner2;
+    glm::vec3 corner3;
+    
+    glm::vec3 edge21;
+    glm::vec3 edge32;
+    glm::vec3 edge13;
+    
+    glm::vec3 normalTrue;
+    
+    glm::vec3 normal1;
+    glm::vec3 normal2;
+    glm::vec3 normal3;
+    
+    float areaTotal;
+public:
+    MeshPrimitive(MeshInstance* meshInstanceNew, int indexLocationNew);
     
     // intersection function
     ShadableObjectIntersection intersection(Ray ray);

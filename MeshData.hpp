@@ -16,8 +16,10 @@ class MeshData {
 public:
     MeshData(std::string filePath);
     
-    std::vector<int> indices;
-    std::vector<glm::vec3> vertices;
-    std::vector<glm::vec3> normals;
-    std::vector<glm::vec2> UVs;
+    std::vector<int> vertexIndices;
+    std::vector<int> normalIndices;
+    std::vector<int> uvIndices;
+    std::vector<glm::vec3> vertexData;
+    std::vector<glm::vec3> normalData;
+    std::vector<glm::vec2> uvData;
 };
