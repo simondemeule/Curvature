@@ -19,8 +19,6 @@
 		3B46AF122461EE2D00934688 /* RenderData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEF32461EE2B00934688 /* RenderData.cpp */; };
 		3B46AF132461EE2D00934688 /* Portal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEF52461EE2C00934688 /* Portal.cpp */; };
 		3B46AF142461EE2D00934688 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEF72461EE2C00934688 /* main.cpp */; };
-		3B46AF152461EE2D00934688 /* BoundedHierarchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEF82461EE2C00934688 /* BoundedHierarchy.cpp */; };
-		3B46AF162461EE2D00934688 /* BoundedNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEF92461EE2C00934688 /* BoundedNode.cpp */; };
 		3B46AF172461EE2D00934688 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEFA2461EE2C00934688 /* Light.cpp */; };
 		3B46AF182461EE2D00934688 /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEFB2461EE2C00934688 /* Sphere.cpp */; };
 		3B46AF192461EE2D00934688 /* Field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEFD2461EE2C00934688 /* Field.cpp */; };
@@ -69,8 +67,6 @@
 		3B46AEF52461EE2C00934688 /* Portal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Portal.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEF62461EE2C00934688 /* RenderScheduler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderScheduler.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AEF72461EE2C00934688 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
-		3B46AEF82461EE2C00934688 /* BoundedHierarchy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundedHierarchy.cpp; sourceTree = SOURCE_ROOT; };
-		3B46AEF92461EE2C00934688 /* BoundedNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundedNode.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEFA2461EE2C00934688 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEFB2461EE2C00934688 /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AEFC2461EE2C00934688 /* Intersection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Intersection.hpp; sourceTree = SOURCE_ROOT; };
@@ -119,9 +115,7 @@
 		F4BF3C5E21F27C4300D819E9 /* Bent */ = {
 			isa = PBXGroup;
 			children = (
-				3B46AEF82461EE2C00934688 /* BoundedHierarchy.cpp */,
 				3B46AEE52461EE2B00934688 /* BoundedHierarchy.hpp */,
-				3B46AEF92461EE2C00934688 /* BoundedNode.cpp */,
 				3B46AEE32461EE2B00934688 /* BoundedNode.hpp */,
 				3B46AEFE2461EE2C00934688 /* BoundedObject.hpp */,
 				3B46AEE42461EE2B00934688 /* BoundedObjectIntersection.hpp */,
@@ -237,10 +231,8 @@
 				3B46AF2124639ED600934688 /* Tester.cpp in Sources */,
 				3B46AF102461EE2D00934688 /* RenderThread.cpp in Sources */,
 				3B46AF192461EE2D00934688 /* Field.cpp in Sources */,
-				3B46AF162461EE2D00934688 /* BoundedNode.cpp in Sources */,
 				3B46AF0A2461EE2D00934688 /* RenderCore.cpp in Sources */,
 				3B46AF142461EE2D00934688 /* main.cpp in Sources */,
-				3B46AF152461EE2D00934688 /* BoundedHierarchy.cpp in Sources */,
 				3B46AF122461EE2D00934688 /* RenderData.cpp in Sources */,
 				3B46AF0F2461EE2D00934688 /* Tile.cpp in Sources */,
 				3B46AF1A2461EE2D00934688 /* RenderScheduler.cpp in Sources */,

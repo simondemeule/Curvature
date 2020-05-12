@@ -45,7 +45,7 @@ public:
     std::vector<MeshInstance*> meshInstances;
     std::vector<Light*> lights;
     Camera* camera;
-    BoundedHierarchy* boundedHierarchy;
+    BoundedHierarchy<ShadableObject, ShadableObjectIntersection>* boundedHierarchy;
     
     int outputWidth;            // output width in pixels
     int outputHeight;           // output height in pixels

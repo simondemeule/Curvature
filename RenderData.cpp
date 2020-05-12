@@ -415,7 +415,7 @@ void RenderData::applyRecursionSettings(int recursionLimitNew) {
 void RenderData::computeBoundedHierarchy() {
     std::cout << "Building BVH tree" << std::endl;
     auto startTime = std::chrono::high_resolution_clock::now();
-    boundedHierarchy = new BoundedHierarchy(objects);
+    boundedHierarchy = new BoundedHierarchy<ShadableObject, ShadableObjectIntersection>(objects);
     auto endTime = std::chrono::high_resolution_clock::now();
     std::cout << "Done in "<< std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << " milliseconds" << std::endl;
 }
