@@ -15,11 +15,11 @@
 MeshPrimitive::MeshPrimitive(MeshInstance* meshInstanceNew, int indexLocationNew) :
     ShadableObject(meshInstanceNew->shadableAttributes)
 {
-    primitiveCount = 1;
     meshInstance = meshInstanceNew;
     indexLocation = indexLocationNew;
     updateGeometryData();
     updateBoundingBox();
+    primitiveCount = 1;
 }
 
 // calculates the area of a triangle given vertex positions

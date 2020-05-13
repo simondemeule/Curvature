@@ -15,8 +15,8 @@ Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes* shadabl
     origin(originNew),
     radius(radiusNew)
 {
-    boundingBox.setPointPositive(glm::vec3(radiusNew, radiusNew, radiusNew) + originNew);
-    boundingBox.setPointNegative(glm::vec3(- radiusNew, - radiusNew, - radiusNew) + originNew);
+    boundingBox.setPointPositive(glm::vec3(radiusNew) + originNew);
+    boundingBox.setPointNegative(- glm::vec3(radiusNew) + originNew);
     primitiveCount = 1;
 }
 

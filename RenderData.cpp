@@ -20,6 +20,7 @@
 #include "Sphere.hpp"
 #include "MeshData.hpp"
 #include "MeshInstance.hpp"
+#include "FieldCrossProduct.hpp"
 
 void RenderData::loadInputFile() {
     std::ifstream file(workingDirectory + inputFileName);
@@ -330,13 +331,18 @@ void RenderData::loadTest() {
         }
     }
     
+    // field
+    Field* fieldCrossProduct = new FieldCrossProduct(glm::vec3(0), glm::vec3(0, 0, 1), 3, 1);
+    fields.push_back(fieldCrossProduct);
+    
     // mesh
-    MeshData* meshData = new MeshData("monkey4.obj");
+    /*
+    MeshData* meshData = new MeshData("monkey2.obj");
     meshDatas.push_back(meshData);
     //MeshInstance* meshInstance = new MeshInstance(meshData, glm::rotate(glm::mat4(2.0), (float) M_PI_2, glm::vec3(1.0, 0.0, 0.0)), sphereAttributes);
     MeshInstance* meshInstance = new MeshInstance(meshData,glm::mat4(1.0), sphereAttributes);
     meshInstances.push_back(meshInstance);
-    
+    */
     //objects.push_back(new Sphere(glm::vec3(0, 0, 0), 1, sphereAttributes));
     
     // sphere floating miror
@@ -412,10 +418,18 @@ void RenderData::applyRecursionSettings(int recursionLimitNew) {
     recursionLimit = recursionLimitNew;
 }
 
-void RenderData::computeBoundedHierarchy() {
-    std::cout << "Building BVH tree" << std::endl;
+void RenderData::computeShadableBoundedHierarchy() {
+    std::cout << "Building shadable bounded hierarchy" << std::endl;
     auto startTime = std::chrono::high_resolution_clock::now();
-    boundedHierarchy = new BoundedHierarchy<ShadableObject, ShadableObjectIntersection>(objects);
+    shadableBoundedHierarchy = new BoundedHierarchy<ShadableObject, ShadableObjectIntersection>(objects);
+    auto endTime = std::chrono::high_resolution_clock::now();
+    std::cout << "Done in "<< std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << " milliseconds" << std::endl;
+}
+
+void RenderData::computeFieldBoundedHierarchy() {
+    std::cout << "Building field bounded hierarchy" << std::endl;
+    auto startTime = std::chrono::high_resolution_clock::now();
+    fieldBoundedHierarchy = new BoundedHierarchy<Field, FieldIntersection>(fields);
     auto endTime = std::chrono::high_resolution_clock::now();
     std::cout << "Done in "<< std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << " milliseconds" << std::endl;
 }
@@ -440,7 +454,8 @@ RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPass
     applyThreadSettings(threadCountNew);
     applyRecursionSettings(recursionLimitNew);
     expandPrimitives();
-    computeBoundedHierarchy();
+    computeShadableBoundedHierarchy();
+    computeFieldBoundedHierarchy();
 }
 
 // constructor for assignment files
@@ -457,5 +472,6 @@ RenderData::RenderData(std::string workingDirectoryNew, std::string inputFileNam
     applyThreadSettings();
     applyRecursionSettings(0);
     expandPrimitives();
-    computeBoundedHierarchy();
+    computeShadableBoundedHierarchy();
+    computeFieldBoundedHierarchy();
 }

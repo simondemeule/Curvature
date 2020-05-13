@@ -12,7 +12,6 @@
 #include <cstring>
 #include <vector>
 #include <string>
-#include <stdlib.h>
 
 MeshData::MeshData(std::string filePath) {
         FILE *file = fopen(filePath.c_str(), "r");

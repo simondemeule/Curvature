@@ -24,6 +24,7 @@
 		3B46AF192461EE2D00934688 /* Field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AEFD2461EE2C00934688 /* Field.cpp */; };
 		3B46AF1A2461EE2D00934688 /* RenderScheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AF012461EE2D00934688 /* RenderScheduler.cpp */; };
 		3B46AF2124639ED600934688 /* Tester.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B46AF1F24639ED600934688 /* Tester.cpp */; };
+		3B8B2E4A246B6923005C2743 /* FieldCrossProduct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B2E48246B6923005C2743 /* FieldCrossProduct.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,6 +83,9 @@
 		3B46AF1F24639ED600934688 /* Tester.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Tester.cpp; sourceTree = SOURCE_ROOT; };
 		3B46AF2024639ED600934688 /* Tester.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Tester.hpp; sourceTree = SOURCE_ROOT; };
 		3B46AF23246701E600934688 /* DistanceMeasure.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DistanceMeasure.hpp; sourceTree = SOURCE_ROOT; };
+		3B8B2E46246B370C005C2743 /* FieldIntersection.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FieldIntersection.hpp; sourceTree = SOURCE_ROOT; };
+		3B8B2E48246B6923005C2743 /* FieldCrossProduct.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FieldCrossProduct.cpp; sourceTree = SOURCE_ROOT; };
+		3B8B2E49246B6923005C2743 /* FieldCrossProduct.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FieldCrossProduct.hpp; sourceTree = SOURCE_ROOT; };
 		F4BF3C5C21F27C4300D819E9 /* Bent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Bent; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,6 +130,9 @@
 				3B46AF23246701E600934688 /* DistanceMeasure.hpp */,
 				3B46AEFD2461EE2C00934688 /* Field.cpp */,
 				3B46AEF42461EE2C00934688 /* Field.hpp */,
+				3B8B2E46246B370C005C2743 /* FieldIntersection.hpp */,
+				3B8B2E48246B6923005C2743 /* FieldCrossProduct.cpp */,
+				3B8B2E49246B6923005C2743 /* FieldCrossProduct.hpp */,
 				3B46AEDB2461EE2B00934688 /* Image.cpp */,
 				3B46AF032461EE2D00934688 /* Image.hpp */,
 				3B46AEFC2461EE2C00934688 /* Intersection.hpp */,
@@ -226,6 +233,7 @@
 				3B46AF112461EE2D00934688 /* MeshInstance.cpp in Sources */,
 				3B46AF0C2461EE2D00934688 /* Camera.cpp in Sources */,
 				3B46AF132461EE2D00934688 /* Portal.cpp in Sources */,
+				3B8B2E4A246B6923005C2743 /* FieldCrossProduct.cpp in Sources */,
 				3B46AF182461EE2D00934688 /* Sphere.cpp in Sources */,
 				3B46AF0D2461EE2D00934688 /* BoundingBox.cpp in Sources */,
 				3B46AF2124639ED600934688 /* Tester.cpp in Sources */,

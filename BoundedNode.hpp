@@ -166,4 +166,38 @@ public:
             }
         }
     }
+    
+    // this uses lists instead of vectors to speedup merging recursive branches
+    std::list<Object*> encompassingObjects(glm::vec3 point) {
+        if(object != nullptr) {
+            // base case, node is leaf, return object
+            std::list<Object*> list = {object};
+            return list;
+        } else {
+            // recursive case, node is internal
+            
+            bool encompassingLeft = nodeLeft->boundingBox.containmentTest(point);
+            bool encompassingRight = nodeLeft->boundingBox.containmentTest(point);
+            
+            if(!encompassingLeft && !encompassingRight) {
+                // neither encompasses
+                std::list<Object*> list = {};
+                return list;
+            } else if(encompassingLeft && !encompassingRight) {
+                // left encompasses
+                return nodeLeft->encompassingObjects(point);
+            } else if(!encompassingLeft && encompassingRight) {
+                // right encompasses
+                return nodeRight->encompassingObjects(point);
+            } else {
+                // both encompass
+                std::list<Object*> listLeft = nodeLeft->encompassingObjects(point);
+                std::list<Object*> listRight = nodeRight->encompassingObjects(point);
+                // splice lists into left
+                listLeft.splice(listLeft.end(), listRight);
+                return listLeft;
+            }
+            
+        }
+    }
 };

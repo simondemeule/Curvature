@@ -24,6 +24,7 @@ private:
     float radius;
 
 public:
+    // constructor
     Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes* shadableAttributesNew);
     
     // intersection function

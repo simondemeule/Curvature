@@ -360,11 +360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "611000725.43968"
+            timestampString = "611031715.886403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "447"
-            endingLineNumber = "447"
+            startingLineNumber = "462"
+            endingLineNumber = "462"
             landmarkName = "RenderData::RenderData(std::string workingDirectoryNew, std::string inputFileNameNew, std::string outputFileNameNew)"
             landmarkType = "7">
             <Locations>
@@ -502,11 +502,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "611000725.440273"
+            timestampString = "611031715.8869359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "443"
-            endingLineNumber = "443"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew)"
             landmarkType = "7">
          </BreakpointContent>
@@ -518,7 +518,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tester.cpp"
-            timestampString = "610814520.54719"
+            timestampString = "611031496.2140729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -534,7 +534,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundingBox.cpp"
-            timestampString = "610814520.547259"
+            timestampString = "611031715.887192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -599,11 +599,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "611000725.440616"
+            timestampString = "611031715.8873791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "444"
-            endingLineNumber = "444"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
             landmarkName = "RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew)"
             landmarkType = "7">
             <Locations>
@@ -663,7 +663,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeshPrimitive.cpp"
-            timestampString = "611000725.440919"
+            timestampString = "611031715.887625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -679,11 +679,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "611000725.441108"
+            timestampString = "611031715.887773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "RenderData::loadTest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -695,12 +695,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeshPrimitive.cpp"
-            timestampString = "611000725.441359"
+            timestampString = "611031715.888001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
             endingLineNumber = "115"
             landmarkName = "MeshPrimitive::intersection(Ray ray)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sphere.cpp"
+            timestampString = "611031715.888043"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes* shadableAttributesNew)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

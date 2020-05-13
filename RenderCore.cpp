@@ -37,7 +37,7 @@ glm::vec2 RenderCore::toNormalizedCoordinates(int x, int y, int antiAliasingPass
 
 // calculate closest intersection between ray and all objects
 ShadableObjectIntersection RenderCore::closestIntersection(Ray ray) {
-    return renderData->boundedHierarchy->closestIntersection(ray);
+    return renderData->shadableBoundedHierarchy->closestIntersection(ray);
 }
 
 // calculate the color contribution of a light to an intersection
@@ -86,7 +86,7 @@ glm::vec3 RenderCore::colorIntersection(ShadableObjectIntersection intersection,
 }
 
 DistanceMeasure RenderCore::marchDistanceRay(Ray ray) {
-    DistanceMeasure distanceMeasure = renderData->boundedHierarchy->distance(ray.origin);
+    DistanceMeasure distanceMeasure = renderData->shadableBoundedHierarchy->distance(ray.origin);
     if(distanceMeasure.distance > 0.02 && distanceMeasure.distance < 20) {
         Ray rayRecursive = ray;
         rayRecursive.origin = ray.origin + ray.direction * distanceMeasure.distance * 0.999f;

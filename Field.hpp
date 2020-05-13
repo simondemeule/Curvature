@@ -10,13 +10,19 @@
 
 #include <glm/glm.hpp>
 
-#include "BoundingBox.hpp"
+#include "BoundedObject.hpp"
+#include "FieldIntersection.hpp"
 #include "Ray.hpp"
 
 // the parent class of all field types. deltaRay defines light-bending behaviour and is implemented by a child.
-class Field {
+class Field : public BoundedObject {
 public:
-    BoundingBox boundingBox;
+    // constructor
+    FieldIntersection intersection(Ray ray);
     
+    // ray differential equation function
     virtual glm::vec3 deltaRay(Ray ray, float step) = 0;
+    
+    // primitive count for bounded hierarchy construction optimisation
+    int primitiveCount = 1;
 };

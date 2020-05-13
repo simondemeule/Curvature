@@ -15,6 +15,8 @@
 #include "Ray.hpp"
 #include "ShadableObject.hpp"
 #include "ShadableObjectIntersection.hpp"
+#include "Field.hpp"
+#include "FieldIntersection.hpp"
 #include "BoundedHierarchy.hpp"
 #include "MeshData.hpp"
 #include "MeshInstance.hpp"
@@ -36,16 +38,19 @@ private:
     void applyThreadSettings();                                     // sets thread count automatically
     void applyRecursionSettings(int recursionLimitNew);             // sets recursion limit for reflections
     void expandPrimitives();                                        // expands mesh instances into mesh primitives
-    void computeBoundedHierarchy();                                 // computes acceleration structure
+    void computeShadableBoundedHierarchy();                         // computes acceleration structure for shadable objects
+    void computeFieldBoundedHierarchy();                            // computes acceleration structure for fields
 public:
     // these are public but should never be overwritten externally. too lazy for getters and setters.
     
-    std::vector<ShadableObject*> objects;
     std::vector<MeshData*> meshDatas;
     std::vector<MeshInstance*> meshInstances;
     std::vector<Light*> lights;
+    std::vector<ShadableObject*> objects;
+    std::vector<Field*> fields;
     Camera* camera;
-    BoundedHierarchy<ShadableObject, ShadableObjectIntersection>* boundedHierarchy;
+    BoundedHierarchy<ShadableObject, ShadableObjectIntersection>* shadableBoundedHierarchy;
+    BoundedHierarchy<Field, FieldIntersection>* fieldBoundedHierarchy;
     
     int outputWidth;            // output width in pixels
     int outputHeight;           // output height in pixels

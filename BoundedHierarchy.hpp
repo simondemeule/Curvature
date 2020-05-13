@@ -6,7 +6,6 @@
 //  Copyright © 2019 Simon Demeule. All rights reserved.
 //
 
-
 #pragma once
 
 #include <glm/glm.hpp>
@@ -16,14 +15,8 @@
 #include <stdexcept>
 
 #include "BoundedNode.hpp"
-#include "ShadableObjectIntersection.hpp"
 #include "DistanceMeasure.hpp"
 #include "Ray.hpp"
-
-// inspired by https://medium.com/@bromanz/how-to-create-awesome-accelerators-the-surface-area-heuristic-e14b5dec6160
-
-// TODO: do the sorting once, then remove the objects that get picked progressively so that the sorting isn't repeated at every step
-// TODO: make this multithreaded
 
 // a BVH tree
 template <class Object, class ObjectIntersection>
@@ -34,8 +27,18 @@ private:
     
     // constructor subroutine
     BoundedNode<Object, ObjectIntersection>* buildHierarchy(std::vector<Object*> objects, BoundedNode<Object, ObjectIntersection>* nodeParent) {
+        // inspired by https://medium.com/@bromanz/how-to-create-awesome-accelerators-the-surface-area-heuristic-e14b5dec6160
+        
+        // TODO: do the sorting once, then remove the objects that get picked progressively so that the sorting isn't repeated at every step
+        // TODO: make this multithreaded
+        
         if(objects.size() < 1) {
-            throw std::runtime_error("Object list is empty");
+            BoundedNode<Object, ObjectIntersection> *leaf = new BoundedNode<Object, ObjectIntersection>();
+            leaf->object = nullptr;
+            leaf->nodeParent = nodeParent;
+            leaf->nodeLeft = nullptr;
+            leaf->nodeRight = nullptr;
+            return leaf;
         } else if(objects.size() == 1) {
             // base case
             BoundedNode<Object, ObjectIntersection> *leaf = new BoundedNode<Object, ObjectIntersection>();
@@ -53,7 +56,7 @@ private:
         int splitIndexBest[3];
         BoundingBox boundingBoxLeft[3];
         BoundingBox boundingBoxRight[3];
-        std::vector<ShadableObject*> sortedObjects[3];
+        std::vector<Object*> sortedObjects[3];
         
         // iterate through split axes
         for(int splitAxis = 0; splitAxis < 3; splitAxis++) {
@@ -69,7 +72,7 @@ private:
             // sort objects by position
             sortedObjects[splitAxis].assign(objects.begin(), objects.end());
             
-            std::sort(sortedObjects[splitAxis].begin(), sortedObjects[splitAxis].end(), [maskAxis](ShadableObject* a, ShadableObject* b) {
+            std::sort(sortedObjects[splitAxis].begin(), sortedObjects[splitAxis].end(), [maskAxis](Object* a, Object* b) {
                 return glm::dot(maskAxis, a->boundingBox.pointPositive) < glm::dot(maskAxis, b->boundingBox.pointPositive);
             });
             
@@ -139,8 +142,8 @@ private:
         }
         
         // split the objects between the two child notes
-        std::vector<ShadableObject*> objectsLeft(sortedObjects[splitAxisBest].begin(), sortedObjects[splitAxisBest].begin() + splitIndexBest[splitAxisBest] + 1);
-        std::vector<ShadableObject*> objectsRight(sortedObjects[splitAxisBest].begin() + splitIndexBest[splitAxisBest] + 1, sortedObjects[splitAxisBest].end());
+        std::vector<Object*> objectsLeft(sortedObjects[splitAxisBest].begin(), sortedObjects[splitAxisBest].begin() + splitIndexBest[splitAxisBest] + 1);
+        std::vector<Object*> objectsRight(sortedObjects[splitAxisBest].begin() + splitIndexBest[splitAxisBest] + 1, sortedObjects[splitAxisBest].end());
         
         BoundedNode<Object, ObjectIntersection>* nodeThis = new BoundedNode<Object, ObjectIntersection>();
         nodeThis->object = nullptr;
@@ -156,15 +159,20 @@ private:
     }
 public:
     // create hierarchy
-    BoundedHierarchy(std::vector<ShadableObject*> objects) : root(buildHierarchy(objects, nullptr)) {
+    BoundedHierarchy(std::vector<Object*> objects) {
         // must set root bounding box after the hierarchy is built since this is normally called by the parent
-        root->boundingBox = BoundingBox(root->nodeLeft->boundingBox, root->nodeRight->boundingBox);
+        root = buildHierarchy(objects, nullptr);
+        if(root->nodeLeft != nullptr && root->nodeRight != nullptr) {
+            // exclude empty hierarchies, as this will break
+            root->boundingBox = BoundingBox(root->nodeLeft->boundingBox, root->nodeRight->boundingBox);
+        }
     }
     
     ObjectIntersection closestIntersection(Ray ray) {
         // BoundedNode's recursive function assumes the passed node is known to intersect the ray.
         // this means we have to check the intersection with the root node before calling it.
-        if(root->boundingBox.intersectionTest(ray)) {
+        // we also exclude cases where the hierarchy is empty.
+        if((root->nodeLeft != nullptr && root->nodeRight != nullptr) && root->boundingBox.intersectionTest(ray)) {
             return root->closestIntersection(ray);
         } else {
             ObjectIntersection intersection;
@@ -174,7 +182,28 @@ public:
     }
     
     DistanceMeasure distance(glm::vec3 point) {
-        return root->distance(point);
+        // exclude empty hierarchies, as this will break
+        if(root->nodeLeft != nullptr && root->nodeRight != nullptr) {
+            return root->distance(point);
+        } else {
+            // this might break things, too
+            DistanceMeasure distanceMeasure;
+            distanceMeasure.origin = point;
+            distanceMeasure.distance = std::numeric_limits<float>::infinity();
+            return distanceMeasure;
+        }
+    }
+    
+    std::list<Object*> encompassingObjects(glm::vec3 point) {
+        // BoundedNode's recursive function assumes the passed node is known to contain the point.
+        // this means we have to check containment with the root node before calling it.
+        // we also exclude cases where the hierarchy is empty.
+        if((root->nodeLeft != nullptr && root->nodeRight != nullptr) && root->boundingBox.containmentTest(point)) {
+            return root->encompassingObjects(point);
+        } else {
+            std::list<Object*> list = {};
+            return list;
+        }
     }
 
 };

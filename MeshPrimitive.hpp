@@ -41,6 +41,7 @@ private:
     
     float areaTotal;
 public:
+    // constructor
     MeshPrimitive(MeshInstance* meshInstanceNew, int indexLocationNew);
     
     // intersection function
