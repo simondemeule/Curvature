@@ -8,6 +8,8 @@
 
 #include "RenderCore.hpp"
 
+#include <iostream>
+
 RenderCore::RenderCore(RenderData* renderData) : renderData(renderData) {}
 
 // calculate camera coordinates for given pixel and anti aliasing pass
@@ -33,6 +35,124 @@ glm::vec2 RenderCore::toNormalizedCoordinates(int x, int y, int antiAliasingPass
     }
     return glm::vec2((x + xOffset - renderData->outputWidth / 2.0) / renderData->outputWidth * 2.0,
                    - (y + yOffset - renderData->outputHeight / 2.0) / renderData->outputWidth * 2.0);
+}
+
+ShadableObjectIntersection RenderCore::marchFields(std::list<Field*> fields, Ray ray, float step, DistanceMeasure safeZone, int recursionDepth) {
+    glm::vec3 deltaRay;
+    Ray rayRecursive;
+    float distanceAccumulator = 0;
+    while(recursionDepth-- > 0) {
+        deltaRay = ray.direction * step;
+        int numIterated = 0;
+        for(std::list<Field*>::iterator it = fields.begin(); it != fields.end(); ++it) {
+            numIterated++;
+            deltaRay += (**it).deltaRay(ray, step);
+        }
+        float stepLength = glm::length(deltaRay);
+        // we now know precisely the previous ray's direction 
+        ray.direction = deltaRay / stepLength;
+        // compute next ray
+        rayRecursive.origin = ray.origin + deltaRay;
+        // this is only an approximation of the ray's direction
+        rayRecursive.direction = ray.direction;
+        // check to see if the ray steps out of the safe zone
+        if(glm::length(rayRecursive.origin - safeZone.origin) >= safeZone.distance) {
+            // stepped out of safe zone, check for intersections and recompute it if none are found
+            ShadableObjectIntersection intersection = renderData->shadableBoundedHierarchy->closestIntersection(ray);
+            if(intersection.exists && intersection.distance <= stepLength) {
+                // the ray intersects before it ends the step, return the intersection
+                intersection.distance += distanceAccumulator;
+                return intersection;
+            } else {
+                // the ray doesn't intersect before it ends the step, compute a new safe zone centered at the next ray's origin
+                safeZone = renderData->shadableBoundedHierarchy->distance(rayRecursive.origin);
+            }
+        }
+        // compute next list of fields
+        fields = renderData->fieldBoundedHierarchy->encompassingObjects(rayRecursive.origin);
+        if(fields.size() == 0) {
+            // stepped out of field, cast ray
+            // this gets stalled on the edge of the field
+            ShadableObjectIntersection intersection = closestIntersectionThroughFields(rayRecursive, recursionDepth - 1);
+            intersection.distance += distanceAccumulator;
+    
+            return intersection;
+        }
+        // update the ray to the new one
+        ray = rayRecursive;
+        // increment distance
+        distanceAccumulator += stepLength;
+    }
+    // exceeded recursion depth
+    ShadableObjectIntersection intersection;
+    intersection.exists = false;
+    intersection.debugMarker = 1;
+    return intersection;
+    
+    /*
+    if(recursionDepth < 1) {
+        // exceeded recursion depth
+        ShadableObjectIntersection intersection;
+        intersection.exists = false;
+        return intersection;
+    }
+    // sum field deltas
+    glm::vec3 deltaRay = ray.direction * step;
+    for(std::list<Field*>::iterator it = fields.begin(); it != fields.end(); ++it) {
+        deltaRay += (**it).deltaRay(ray, step);
+    }
+    // we know know precisely the previous ray's direction
+    ray.direction = glm::normalize(deltaRay);
+    // compute next ray
+    Ray rayRecursive;
+    rayRecursive.origin = ray.origin + deltaRay;
+    // this is only an approximation of the ray's direction
+    rayRecursive.direction = ray.direction;
+    if(glm::length(rayRecursive.origin - safeZone.origin) > safeZone.distance) {
+        // stepped out of safe zone, check for intersections and recompute it if none are found
+        ShadableObjectIntersection intersection = renderData->shadableBoundedHierarchy->closestIntersection(ray);
+        if(!intersection.exists || intersection.distance < glm::length(deltaRay)) {
+            // intersection doesn't exist or is further than the ray delta, continue recursion
+            safeZone = renderData->shadableBoundedHierarchy->distance(rayRecursive.origin);
+        } else {
+            // intersection exists and is closer than recursive ray
+            return intersection;
+        }
+    }
+    // compute next list of fields
+    std::list<Field*> fieldsRecursive = renderData->fieldBoundedHierarchy->encompassingObjects(rayRecursive.origin);
+    if(fieldsRecursive.size() == 0) {
+        // stepped out of field, cast ray
+        // this gets stalled on the edge of the field
+        //return closestIntersectionThroughFields(rayRecursive, recursionDepth - 1);
+        return closestIntersection(rayRecursive);
+    }
+    // do recursion
+    return marchFields(fieldsRecursive, rayRecursive, step, safeZone, recursionDepth - 1);
+    */
+}
+
+ShadableObjectIntersection RenderCore::closestIntersectionThroughFields(Ray ray, int recursionDepth) {
+    ShadableObjectIntersection intersectionShadable = renderData->shadableBoundedHierarchy->closestIntersection(ray);
+    FieldIntersection intersectionField = renderData->fieldBoundedHierarchy->closestIntersection(ray);
+    if(!intersectionShadable.exists && !intersectionField.exists) {
+        // neither exist
+        return intersectionShadable;
+    } else if(intersectionShadable.exists && (!intersectionField.exists || intersectionShadable.distance <= intersectionField.distance)) {
+        // only shadable intersection exists, or shadable intersection is closer than field intersection
+        return intersectionShadable;
+    } else {
+        // only field intersection exists, or field intersection is closer than shadable intersection
+        //std::list<Field*> fields = {intersectionField.field};
+        std::list<Field*> fields = renderData->fieldBoundedHierarchy->encompassingObjects(intersectionField.origin);
+        Ray rayRecursive;
+        rayRecursive.direction = ray.direction;
+        rayRecursive.origin = ray.origin + ray.direction * intersectionField.distance;
+        DistanceMeasure safeZone = renderData->shadableBoundedHierarchy->distance(rayRecursive.origin);
+        ShadableObjectIntersection intersectionShadableRecursive = marchFields(fields, rayRecursive, 0.01, safeZone, recursionDepth - 1);
+        intersectionShadableRecursive.distance += intersectionField.distance;
+        return intersectionShadableRecursive;
+    }
 }
 
 // calculate closest intersection between ray and all objects
@@ -109,15 +229,18 @@ glm::vec3 RenderCore::colorRay(Ray ray) {
     //DistanceMeasure marchDistance = marchDistanceRay(ray);
     //return glm::vec3(marchDistance.distance / 10.0, marchDistance.objectDistanceDepth / 10.0, marchDistance.boxDistanceDepth / 10.0);
     
-    ShadableObjectIntersection closest = closestIntersection(ray);
+    ShadableObjectIntersection closest = closestIntersectionThroughFields(ray, 1000);
+    
     //return glm::vec3(closest.exists ? closest.distance / 10.0 : 100.0, closest.debugMarker, closest.boxIntersectionDepth / 40.0);
     //return glm::vec3(closest.objectIntersectionDepth / 255.0, closest.boxIntersectionDepth / 255.0, 0.0);
     
     if(closest.exists) {
         return colorIntersection(closest, renderData->recursionLimit);
+        return glm::vec3(closest.distance / 10.0, closest.debugMarker, 0);
         //return 0.5f * (closest.normal + 1.0f);
     } else {
         return glm::vec3(0);
+        return glm::vec3(0, closest.debugMarker, 0);
     }
 }
 

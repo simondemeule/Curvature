@@ -20,7 +20,9 @@
 #include "Sphere.hpp"
 #include "MeshData.hpp"
 #include "MeshInstance.hpp"
+#include "FieldAttractor.hpp"
 #include "FieldCrossProduct.hpp"
+#include "FieldEmpty.hpp"
 
 void RenderData::loadInputFile() {
     std::ifstream file(workingDirectory + inputFileName);
@@ -332,9 +334,30 @@ void RenderData::loadTest() {
     }
     
     // field
-    Field* fieldCrossProduct = new FieldCrossProduct(glm::vec3(0), glm::vec3(0, 0, 1), 3, 1);
-    fields.push_back(fieldCrossProduct);
+    /*
+    Field* fieldAttractor = new FieldAttractor(glm::vec3(0), 3, 0.005);
+    fields.push_back(fieldAttractor);
+     */
     
+    Field* fieldAttractor1 = new FieldAttractor(glm::vec3(-1, 0, -1), 2, -0.04);
+    //Field* fieldAttractor2 = new FieldAttractor(glm::vec3(1, 0, -1), 1.3, -0.05);
+    //Field* fieldEmpty = new FieldEmpty(glm::vec3(0), 2);
+    fields.push_back(fieldAttractor1);
+    //fields.push_back(fieldAttractor2);
+    //fields.push_back(fieldEmpty);
+    //Field* fieldCrossProduct = new FieldCrossProduct(glm::vec3(1, 0, -1), glm::vec3(0, 0, 1), 2, 2);
+    //fields.push_back(fieldCrossProduct);
+    
+    /*
+    Field* fieldCrossProduct = new FieldCrossProduct(glm::vec3(0), glm::vec3(0, 1, 0), 1, 0.001);
+    fields.push_back(fieldCrossProduct);
+    */
+    
+    /*
+    Field* fieldEmpty = new FieldEmpty(glm::vec3(0), 2);
+    fields.push_back(fieldEmpty);
+    */
+     
     // mesh
     /*
     MeshData* meshData = new MeshData("monkey2.obj");

@@ -9,6 +9,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <list>
 
 #include "RenderData.hpp"
 #include "Ray.hpp"
@@ -32,6 +33,12 @@ public:
     // x -> [-1, 1]
     // y -> [-1 / aspectRatio, 1 / aspectRatio]
     glm::vec2 toNormalizedCoordinates(int x, int y, int antiAliasingPass);
+    
+    // do ray-marching on fields
+    ShadableObjectIntersection marchFields(std::list<Field*> fields, Ray ray, float step, DistanceMeasure safeZone, int recursionDepth);
+    
+    // calculate closest intersection between ray and any object, marching through fields
+    ShadableObjectIntersection closestIntersectionThroughFields(Ray ray, int recursionDepth);
     
     // calculate closest intersection between ray and any object
     ShadableObjectIntersection closestIntersection(Ray ray);

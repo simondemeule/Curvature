@@ -10,6 +10,7 @@
 
 #include "Field.hpp"
 
+// a field that acts much like a magnetic monopole deflecting the path of charged particles
 class FieldCrossProduct : public Field {
     glm::vec3 origin;
     glm::vec3 direction;

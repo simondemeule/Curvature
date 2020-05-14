@@ -177,7 +177,7 @@ public:
             // recursive case, node is internal
             
             bool encompassingLeft = nodeLeft->boundingBox.containmentTest(point);
-            bool encompassingRight = nodeLeft->boundingBox.containmentTest(point);
+            bool encompassingRight = nodeRight->boundingBox.containmentTest(point);
             
             if(!encompassingLeft && !encompassingRight) {
                 // neither encompasses

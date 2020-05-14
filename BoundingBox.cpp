@@ -81,6 +81,7 @@ BoundedObjectIntersection BoundingBox::intersection(Ray ray) {
     intersection.exists = true;
     intersection.distance = minLength.x;
     return intersection;
+    
 }
 
 // taken from https://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm

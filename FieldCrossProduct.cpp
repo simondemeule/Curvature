@@ -22,6 +22,6 @@ FieldCrossProduct::FieldCrossProduct(glm::vec3 originNew, glm::vec3 directionNew
 }
 
 glm::vec3 FieldCrossProduct::deltaRay(Ray ray, float step) {
-    float intensity = strength * std::pow((0.5 - 0.5 * std::cos(M_PI * std::max(glm::length(ray.origin - origin) / radius, 1.0f))), 3.0);
+    float intensity = strength * (0.5 + 0.5 * std::cos(M_PI * std::min(glm::length(ray.origin - origin) / radius, 1.0f)));
     return intensity * step * glm::cross(ray.direction, direction);
 }

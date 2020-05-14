@@ -161,49 +161,95 @@ public:
     // create hierarchy
     BoundedHierarchy(std::vector<Object*> objects) {
         // must set root bounding box after the hierarchy is built since this is normally called by the parent
-        root = buildHierarchy(objects, nullptr);
-        if(root->nodeLeft != nullptr && root->nodeRight != nullptr) {
-            // exclude empty hierarchies, as this will break
-            root->boundingBox = BoundingBox(root->nodeLeft->boundingBox, root->nodeRight->boundingBox);
+        if(objects.size() == 0) {
+            // empty hierarchy
+            root = nullptr;
+        } else {
+            // build hierarchy recursively
+            root = buildHierarchy(objects, nullptr);
+            // set bounding box for root node
+            if(root->nodeLeft != nullptr && root->nodeRight != nullptr) {
+                // case where root is internal
+                root->boundingBox = BoundingBox(root->nodeLeft->boundingBox, root->nodeRight->boundingBox);
+            } else {
+                // case where root is leaf
+                root->boundingBox = root->object->boundingBox;
+            }
         }
+        
     }
     
     ObjectIntersection closestIntersection(Ray ray) {
-        // BoundedNode's recursive function assumes the passed node is known to intersect the ray.
-        // this means we have to check the intersection with the root node before calling it.
-        // we also exclude cases where the hierarchy is empty.
-        if((root->nodeLeft != nullptr && root->nodeRight != nullptr) && root->boundingBox.intersectionTest(ray)) {
-            return root->closestIntersection(ray);
-        } else {
+        if(root == nullptr) {
+            // case where hirearchy is empty
             ObjectIntersection intersection;
             intersection.exists = false;
             return intersection;
+        } else if (root->nodeLeft == nullptr && root->nodeRight == nullptr) {
+            // case where root is leaf
+            if(root->boundingBox.intersectionTest(ray)) {
+                return root->object->intersection(ray);
+            } else {
+                ObjectIntersection intersection;
+                intersection.exists = false;
+                return intersection;
+            }
+        } else {
+            // case where root is internal
+            
+            // BoundedNode's recursive function assumes the passed node is known to intersect the ray.
+            // this means we have to check the intersection with the root node before calling it.
+            if(root->boundingBox.intersectionTest(ray)) {
+                return root->closestIntersection(ray);
+            } else {
+                ObjectIntersection intersection;
+                intersection.exists = false;
+                return intersection;
+            }
         }
     }
     
     DistanceMeasure distance(glm::vec3 point) {
-        // exclude empty hierarchies, as this will break
-        if(root->nodeLeft != nullptr && root->nodeRight != nullptr) {
-            return root->distance(point);
-        } else {
-            // this might break things, too
+        if(root == nullptr) {
+            // case where hirearchy is empty
             DistanceMeasure distanceMeasure;
             distanceMeasure.origin = point;
             distanceMeasure.distance = std::numeric_limits<float>::infinity();
             return distanceMeasure;
+        } else if (root->nodeLeft == nullptr && root->nodeRight == nullptr) {
+            // case where root is leaf
+            return root->object->distance(point);
+        } else {
+            // case where root is internal
+            return root->distance(point);
         }
     }
     
     std::list<Object*> encompassingObjects(glm::vec3 point) {
-        // BoundedNode's recursive function assumes the passed node is known to contain the point.
-        // this means we have to check containment with the root node before calling it.
-        // we also exclude cases where the hierarchy is empty.
-        if((root->nodeLeft != nullptr && root->nodeRight != nullptr) && root->boundingBox.containmentTest(point)) {
-            return root->encompassingObjects(point);
-        } else {
+        if(root == nullptr) {
+            // case where hirearchy is empty
             std::list<Object*> list = {};
             return list;
+        } else if (root->nodeLeft == nullptr && root->nodeRight == nullptr) {
+            // case where root is leaf
+            if(root->boundingBox.containmentTest(point)) {
+                std::list<Object*> list = {root->object};
+                return list;
+            } else {
+                std::list<Object*> list = {};
+                return list;
+            }
+        } else {
+            // case where root is internal
+            
+            // BoundedNode's recursive function assumes the passed node is known to contain the point.
+            // this means we have to check containment with the root node before calling it.
+            if(root->boundingBox.containmentTest(point)) {
+                return root->encompassingObjects(point);
+            } else {
+                std::list<Object*> list = {};
+                return list;
+            }
         }
     }
-
 };
