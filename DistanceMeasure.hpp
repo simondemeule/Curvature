@@ -1,6 +1,6 @@
 //
 //  DistanceMeasure.hpp
-//  Bent
+//  Curvature
 //
 //  Created by Simon Demeule on 2020-05-09.
 //  Copyright © 2020 Simon Demeule. All rights reserved.

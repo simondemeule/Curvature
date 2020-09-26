@@ -92,7 +92,7 @@
 		3B8B2E4C246C6213005C2743 /* FieldEmpty.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FieldEmpty.hpp; sourceTree = SOURCE_ROOT; };
 		3B8B2E4E246C85A6005C2743 /* FieldAttractor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FieldAttractor.cpp; sourceTree = SOURCE_ROOT; };
 		3B8B2E4F246C85A6005C2743 /* FieldAttractor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FieldAttractor.hpp; sourceTree = SOURCE_ROOT; };
-		F4BF3C5C21F27C4300D819E9 /* Bent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Bent; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BF3C5C21F27C4300D819E9 /* Curvature */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Curvature; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 		F4BF3C5321F27C4200D819E9 = {
 			isa = PBXGroup;
 			children = (
-				F4BF3C5E21F27C4300D819E9 /* Bent */,
+				F4BF3C5E21F27C4300D819E9 /* Curvature */,
 				F4BF3C5D21F27C4300D819E9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,12 +117,12 @@
 		F4BF3C5D21F27C4300D819E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F4BF3C5C21F27C4300D819E9 /* Bent */,
+				F4BF3C5C21F27C4300D819E9 /* Curvature */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F4BF3C5E21F27C4300D819E9 /* Bent */ = {
+		F4BF3C5E21F27C4300D819E9 /* Curvature */ = {
 			isa = PBXGroup;
 			children = (
 				3B46AEE52461EE2B00934688 /* BoundedHierarchy.hpp */,
@@ -176,15 +176,15 @@
 				3B46AEE82461EE2B00934688 /* Tile.cpp */,
 				3B46AF072461EE2D00934688 /* Tile.hpp */,
 			);
-			path = Bent;
+			path = Curvature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F4BF3C5B21F27C4200D819E9 /* Bent */ = {
+		F4BF3C5B21F27C4200D819E9 /* Curvature */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F4BF3C6321F27C4300D819E9 /* Build configuration list for PBXNativeTarget "Bent" */;
+			buildConfigurationList = F4BF3C6321F27C4300D819E9 /* Build configuration list for PBXNativeTarget "Curvature" */;
 			buildPhases = (
 				F4BF3C5821F27C4200D819E9 /* Sources */,
 				F4BF3C5921F27C4200D819E9 /* Frameworks */,
@@ -194,9 +194,9 @@
 			);
 			dependencies = (
 			);
-			name = Bent;
+			name = Curvature;
 			productName = template;
-			productReference = F4BF3C5C21F27C4300D819E9 /* Bent */;
+			productReference = F4BF3C5C21F27C4300D819E9 /* Curvature */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -214,7 +214,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F4BF3C5721F27C4200D819E9 /* Build configuration list for PBXProject "Bent" */;
+			buildConfigurationList = F4BF3C5721F27C4200D819E9 /* Build configuration list for PBXProject "Curvature" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -226,7 +226,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F4BF3C5B21F27C4200D819E9 /* Bent */,
+				F4BF3C5B21F27C4200D819E9 /* Curvature */,
 			);
 		};
 /* End PBXProject section */
@@ -404,7 +404,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F4BF3C5721F27C4200D819E9 /* Build configuration list for PBXProject "Bent" */ = {
+		F4BF3C5721F27C4200D819E9 /* Build configuration list for PBXProject "Curvature" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4BF3C6121F27C4300D819E9 /* Debug */,
@@ -413,7 +413,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F4BF3C6321F27C4300D819E9 /* Build configuration list for PBXNativeTarget "Bent" */ = {
+		F4BF3C6321F27C4300D819E9 /* Build configuration list for PBXNativeTarget "Curvature" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4BF3C6421F27C4300D819E9 /* Debug */,

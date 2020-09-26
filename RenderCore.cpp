@@ -1,6 +1,6 @@
 //
 //  RenderCore.cpp
-//  Bent
+//  Curvature
 //
 //  Created by Simon Demeule on 2020-05-05.
 //  Copyright © 2020 Simon Demeule. All rights reserved.
@@ -86,7 +86,7 @@ ShadableObjectIntersection RenderCore::marchFields(std::list<Field*> &fields, Ra
         // this is only an approximation of the ray's direction
         rayRecursive.direction = ray.direction;
         
-        if(false) {// set to false to disable intersection safe zone optimization
+        if(true) {// set to false to disable intersection safe zone optimization
             // optimized intersection check
             
             // check to see if the ray steps out of the safe zone for intersections
@@ -114,7 +114,7 @@ ShadableObjectIntersection RenderCore::marchFields(std::list<Field*> &fields, Ra
             }
         }
         
-        if(false) { // set to false to disable field safe zone optimization
+        if(true) { // set to false to disable field safe zone optimization
             // optimized field check
             
             // check to see if the ray steps out of the safe zone for fields

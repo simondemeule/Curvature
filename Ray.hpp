@@ -1,6 +1,6 @@
 //
 //  Ray.hpp
-//  Bent
+//  Curvature
 //
 //  Created by Simon Demeule on 2019-03-20.
 //  Copyright © 2019 Simon Demeule. All rights reserved.

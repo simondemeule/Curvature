@@ -1,6 +1,6 @@
 //
 //  BoundingBoxNode.hpp
-//  Bent
+//  Curvature
 //
 //  Created by Simon Demeule on 2019-09-28.
 //  Copyright © 2019 Simon Demeule. All rights reserved.

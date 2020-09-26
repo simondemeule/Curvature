@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F4BF3C5B21F27C4200D819E9"
-               BuildableName = "Bent"
-               BlueprintName = "Bent"
-               ReferencedContainer = "container:Bent.xcodeproj">
+               BuildableName = "Curvature"
+               BlueprintName = "Curvature"
+               ReferencedContainer = "container:Curvature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,9 +31,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F4BF3C5B21F27C4200D819E9"
-            BuildableName = "Bent"
-            BlueprintName = "Bent"
-            ReferencedContainer = "container:Bent.xcodeproj">
+            BuildableName = "Curvature"
+            BlueprintName = "Curvature"
+            ReferencedContainer = "container:Curvature.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -45,7 +45,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/simondemeule/GitHub/Bent"
+      customWorkingDirectory = "/Users/simondemeule/GitHub/Curvature"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F4BF3C5B21F27C4200D819E9"
-            BuildableName = "Bent"
-            BlueprintName = "Bent"
-            ReferencedContainer = "container:Bent.xcodeproj">
+            BuildableName = "Curvature"
+            BlueprintName = "Curvature"
+            ReferencedContainer = "container:Curvature.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F4BF3C5B21F27C4200D819E9"
-            BuildableName = "Bent"
-            BlueprintName = "Bent"
-            ReferencedContainer = "container:Bent.xcodeproj">
+            BuildableName = "Curvature"
+            BlueprintName = "Curvature"
+            ReferencedContainer = "container:Curvature.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

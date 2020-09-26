@@ -1,6 +1,6 @@
 //
 //  RenderData.hpp
-//  Bent
+//  Curvature
 //
 //  Created by Simon Demeule on 2019-04-06.
 //  Copyright © 2019 Simon Demeule. All rights reserved.
