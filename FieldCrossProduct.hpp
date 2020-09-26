@@ -21,5 +21,5 @@ public:
     FieldCrossProduct(glm::vec3 origin, glm::vec3 direction, float radius, float strength);
     
     // ray differential equation function
-    glm::vec3 deltaRay(Ray ray, float step);
+    glm::vec3 deltaRay(Ray ray);
 };

@@ -29,6 +29,7 @@ class RenderData {
 private:
     void loadInputFile();                                           // creates objects and camera from input file
     void loadTest();                                                // creates objects and camera from predefined test setup
+    void loadAnim(float cameraAngle);                               // creates objects and camera from predefined anim scene
     void applyOutputSettingsFromFocalPlane();                       // calculates and sets output size from camera focal plane
     void applyOutputSettingsFromWidth(int outputWidthNew);          // calculates and sets output size from arbitrary width
     void applyOutputSettingsFromHeight(int outputHeightNew);        // calculates and sets output size from arbitrary height
@@ -72,4 +73,7 @@ public:
     
     // constructor for assignment files
     RenderData(std::string workingDirectoryNew, std::string inputFileNameNew, std::string outputFileNameNew);
+    
+    // constructor for animation. this is hard-coded garbage
+    RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew, float cameraAngle);
 };

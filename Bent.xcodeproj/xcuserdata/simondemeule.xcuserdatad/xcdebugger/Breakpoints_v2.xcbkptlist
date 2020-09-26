@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
+   uuid = "8661BC9E-9699-42D8-B41F-81587F4355D0"
    type = "1"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "B1194833-2E26-45F0-BF4E-5655BC9FFF48"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -22,6 +24,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "27339705-BAF6-451C-969E-E5075A78A2CE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -38,6 +41,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "3CE7B300-E0BC-40D8-80F1-3D99FB8D8EB6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -54,6 +58,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "8FDB4112-A19D-4D2C-80F2-9DEEBBF0992C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -68,6 +73,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "BDA8A142-EF1E-4C3E-A2AC-823458A53E4D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -84,6 +90,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "D191E9CE-F36E-4678-AEF9-9718F5255C34"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -100,6 +107,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "B0EC911A-90D4-424C-9622-317E0B7484AF"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -116,6 +124,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "B77471F6-6A70-4B4B-9D22-3633E0CD9E3E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -132,6 +141,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "B752495B-F3E6-4189-B6BC-3B3692F0FC02"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -148,6 +158,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "254BCD74-20F1-40D9-9D43-62882552C2FE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -161,6 +172,7 @@
             landmarkType = "7">
             <Locations>
                <Location
+                  uuid = "254BCD74-20F1-40D9-9D43-62882552C2FE - 3ff0f844d55e879"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -176,6 +188,7 @@
                   offsetFromSymbolStart = "141">
                </Location>
                <Location
+                  uuid = "254BCD74-20F1-40D9-9D43-62882552C2FE - 8a472d876f127500"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -196,6 +209,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "253AE52A-8201-4416-8819-27B2653D7129"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -212,6 +226,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "BE32327E-4454-4BB2-A957-09A8E747BFEB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -228,6 +243,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "4B076078-4C9D-401E-8082-71ABFF9D404A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -244,6 +260,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "F1F4D257-E94E-42EE-89DC-423595B2F816"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -260,6 +277,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "AABE04CF-B3A1-4B56-A907-5B3EA8A73386"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -276,6 +294,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "284E04D5-2AB0-4BBD-820A-F1D8753F6611"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -292,6 +311,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "08D5498F-939D-493D-988C-740E4A9C5467"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -308,6 +328,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "C5810141-D39B-415D-9577-DDF1BB6E6AF9"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -324,6 +345,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "C2874A32-C33B-4830-BFB9-BD2D5494032E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -340,6 +362,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "94720CD6-7B79-4D54-A6B5-214F5849929F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -356,19 +379,21 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "63C521C1-9724-4DCD-ADA3-259F1B2D79B1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "611119453.781828"
+            timestampString = "611696172.102031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
-            landmarkName = "RenderData::RenderData(std::string workingDirectoryNew, std::string inputFileNameNew, std::string outputFileNameNew)"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
+            landmarkName = "RenderData::RenderData(workingDirectoryNew, inputFileNameNew, outputFileNameNew)"
             landmarkType = "7">
             <Locations>
                <Location
+                  uuid = "63C521C1-9724-4DCD-ADA3-259F1B2D79B1 - a6121475d9d93d38"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -384,6 +409,7 @@
                   offsetFromSymbolStart = "314">
                </Location>
                <Location
+                  uuid = "63C521C1-9724-4DCD-ADA3-259F1B2D79B1 - a6121475d9d93d38"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -404,6 +430,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "B9F8AAC1-BF34-40A1-9A81-665FE1E9A37A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -420,6 +447,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "243DB3FA-D02B-450A-9BD2-08CC9239A00B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -436,6 +464,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "7F0FF36A-0BD9-49FB-BCAC-4439425153DC"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -452,6 +481,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "9F52152D-E5F0-4F8C-9BD3-09B69B94B944"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -468,6 +498,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "6C921754-276D-4C50-A30F-D0A3507B78B9"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -484,6 +515,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "36D03E06-8563-4172-AAA1-E73028F2A124"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -498,22 +530,24 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "1FF1376A-0455-4D17-9678-4B420D8950E5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "611119453.7821701"
+            timestampString = "611696172.102187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "481"
-            endingLineNumber = "481"
-            landmarkName = "RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew)"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
+            landmarkName = "RenderData::RenderData(outputWidthNew, tileSizeNew, antiAliasingPassesRootNew, threadCountNew, recursionLimitNew, workingDirectoryNew, outputFileNameNew)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "456CAAC9-3394-4502-AFA9-FF48217803B1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -530,22 +564,24 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "7C6C4ED0-7330-4940-967C-E19D0B2BD5C2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundingBox.cpp"
-            timestampString = "611119453.782279"
+            timestampString = "611696172.102277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
-            landmarkName = "BoundingBox::distanceEnd(glm::vec3 point)"
+            landmarkName = "BoundingBox::distanceEnd(point)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "3CBADD89-D70A-4E96-B405-12D2B3440982"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -560,6 +596,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "E34849DC-9C12-4A34-834E-C232F8DD760E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -574,6 +611,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
          <BreakpointContent
+            uuid = "076147CF-85D9-4D9F-8DD3-B81F1C7D1B83"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -581,6 +619,7 @@
             moduleName = "">
             <Locations>
                <Location
+                  uuid = "076147CF-85D9-4D9F-8DD3-B81F1C7D1B83 - 9d096611641b4e7c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -595,19 +634,21 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "F72460BA-A5CD-4FFE-A1B9-743A016CFBFE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "611119453.78247"
+            timestampString = "611696172.102355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "482"
-            endingLineNumber = "482"
-            landmarkName = "RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew)"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
+            landmarkName = "RenderData::RenderData(outputWidthNew, tileSizeNew, antiAliasingPassesRootNew, threadCountNew, recursionLimitNew, workingDirectoryNew, outputFileNameNew)"
             landmarkType = "7">
             <Locations>
                <Location
+                  uuid = "F72460BA-A5CD-4FFE-A1B9-743A016CFBFE - a6121475d9d93d38"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -623,6 +664,7 @@
                   offsetFromSymbolStart = "380">
                </Location>
                <Location
+                  uuid = "F72460BA-A5CD-4FFE-A1B9-743A016CFBFE - a6121475d9d93d38"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -643,6 +685,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "334EC48C-D120-4259-A8FD-0E1777ACE7F0"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -659,31 +702,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "9C22A315-C53A-4212-8E0F-5DB0114DF54F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeshPrimitive.cpp"
-            timestampString = "611119453.7825741"
+            timestampString = "611696172.1024539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
             endingLineNumber = "124"
-            landmarkName = "MeshPrimitive::intersection(Ray ray)"
+            landmarkName = "MeshPrimitive::intersection(ray)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "EB1848C6-7500-4F9F-BE07-A519571EC57F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderData.cpp"
-            timestampString = "611119453.782719"
+            timestampString = "611696172.102522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
             landmarkName = "RenderData::loadTest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -691,115 +736,106 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "574132AA-A08D-4FB9-839C-88E45FBF7C23"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeshPrimitive.cpp"
-            timestampString = "611119453.782801"
+            timestampString = "611696172.102581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
             endingLineNumber = "115"
-            landmarkName = "MeshPrimitive::intersection(Ray ray)"
+            landmarkName = "MeshPrimitive::intersection(ray)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "DB87EA6D-1532-4768-B243-526FB0FB2EE2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sphere.cpp"
-            timestampString = "611119453.782843"
+            timestampString = "611696172.102656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "Sphere::Sphere(glm::vec3 originNew, float radiusNew, ShadableAttributes* shadableAttributesNew)"
+            landmarkName = "Sphere::Sphere(originNew, radiusNew, shadableAttributesNew)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "1B3653BE-297F-481D-BCB2-9970BECA3780"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderCore.cpp"
-            timestampString = "611119453.782984"
+            timestampString = "611696172.10271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "RenderCore::marchFields(std::list&lt;Field*&gt; fields, Ray ray, float step, DistanceMeasure safeZone, int recursionDepth)"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "RenderCore::marchFields(fields, ray, step, safeZoneIntersection, safeZoneField, recursionDepth)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "7711C735-A651-4AA5-870E-F7C16DFF2865"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderCore.cpp"
-            timestampString = "611119453.78318"
+            timestampString = "611696172.103103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "RenderCore::closestIntersectionThroughFields(Ray ray, int recursionDepth)"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "RenderCore::closestIntersectionThroughFields(ray, recursionDepth)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RenderCore.cpp"
-            timestampString = "611119453.783275"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "RenderCore::closestIntersectionThroughFields(Ray ray, int recursionDepth)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
+            uuid = "867F4341-64BF-4A4D-8530-926D965824F3"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Field.cpp"
-            timestampString = "611119453.783366"
+            timestampString = "611696172.103398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
             endingLineNumber = "13"
-            landmarkName = "Field::intersection(Ray ray)"
+            landmarkName = "Field::intersection(ray)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "464B1FA0-A550-4DAB-8C9C-2E16BA304F74"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedHierarchy.hpp"
-            timestampString = "611119453.783506"
+            timestampString = "611696172.103462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
             endingLineNumber = "182"
-            landmarkName = "closestIntersection(Ray ray)"
+            landmarkName = "closestIntersection(ray)"
             landmarkType = "7">
             <Locations>
                <Location
+                  uuid = "464B1FA0-A550-4DAB-8C9C-2E16BA304F74 - b055f51a129c036a"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -815,6 +851,7 @@
                   offsetFromSymbolStart = "26">
                </Location>
                <Location
+                  uuid = "464B1FA0-A550-4DAB-8C9C-2E16BA304F74 - c79efa7705a57aaa"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -835,67 +872,72 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "2C6AED08-AF34-46AF-8723-82E43A828F9B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderCore.cpp"
-            timestampString = "611119453.783658"
+            timestampString = "611696172.10351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "RenderCore::closestIntersectionThroughFields(Ray ray, int recursionDepth)"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "RenderCore::closestIntersectionThroughFields(ray, recursionDepth)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "3C8444D0-4BCA-4D8C-BC1F-F230AB1AF87C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderCore.cpp"
-            timestampString = "611119453.783748"
+            timestampString = "611696172.1037869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "RenderCore::closestIntersectionThroughFields(Ray ray, int recursionDepth)"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "RenderCore::closestIntersectionThroughFields(ray, recursionDepth)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "86B82C9D-728E-4CCC-AAA2-302F427A0C60"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderCore.cpp"
-            timestampString = "611119453.783832"
+            timestampString = "611696172.104066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "RenderCore::closestIntersectionThroughFields(Ray ray, int recursionDepth)"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "RenderCore::closestIntersectionThroughFields(ray, recursionDepth)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "D594E404-B9A0-435E-BC52-48323C7C5B42"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FieldCrossProduct.cpp"
-            timestampString = "611119453.783917"
+            timestampString = "611696172.104342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "FieldCrossProduct::FieldCrossProduct(glm::vec3 originNew, glm::vec3 directionNew, float radiusNew, float strengthNew)"
+            landmarkName = "FieldCrossProduct::FieldCrossProduct(originNew, directionNew, radiusNew, strengthNew)"
             landmarkType = "7">
             <Locations>
                <Location
+                  uuid = "D594E404-B9A0-435E-BC52-48323C7C5B42 - e2956f5faae1426b"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -911,6 +953,7 @@
                   offsetFromSymbolStart = "495">
                </Location>
                <Location
+                  uuid = "D594E404-B9A0-435E-BC52-48323C7C5B42 - e2956f5faae1426b"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -931,192 +974,187 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RenderCore.cpp"
-            timestampString = "611119453.784058"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "RenderCore::closestIntersectionThroughFields(Ray ray, int recursionDepth)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
+            uuid = "047A3B3F-F4E3-4725-8B6C-400463B16BEA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedHierarchy.hpp"
-            timestampString = "611119453.784144"
+            timestampString = "611696172.104382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
-            landmarkName = "encompassingObjects(glm::vec3 point)"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "encompassingObjects(point)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "FCD806F8-2BCA-40B5-A22F-5496BD0D1890"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedHierarchy.hpp"
-            timestampString = "611119453.784191"
+            timestampString = "611696172.104423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "encompassingObjects(glm::vec3 point)"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "encompassingObjects(point)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "37335A65-165D-474E-95EC-BD667F2D6C9D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RenderCore.cpp"
-            timestampString = "611119453.784232"
+            timestampString = "611696172.104489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "RenderCore::marchFields(std::list&lt;Field*&gt; fields, Ray ray, float step, DistanceMeasure safeZone, int recursionDepth)"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "RenderCore::marchFields(fields, ray, step, safeZoneIntersection, safeZoneField, recursionDepth)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RenderCore.cpp"
-            timestampString = "611119453.784295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "RenderCore::marchFields(std::list&lt;Field*&gt; fields, Ray ray, float step, DistanceMeasure safeZone, int recursionDepth)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
+            uuid = "D8E20DAA-29F7-4548-A804-FD5481ECCF20"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FieldAttractor.cpp"
-            timestampString = "611119453.78435"
+            timestampString = "611696172.1050659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "FieldAttractor::deltaRay(Ray ray, float step)"
+            landmarkName = "FieldAttractor::deltaRay(ray)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "959040A3-B5B2-4A6D-876E-1E149C10C294"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedHierarchy.hpp"
-            timestampString = "611119453.784483"
+            timestampString = "611696172.105108"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "encompassingObjects(glm::vec3 point)"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "encompassingObjects(point)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "A451C39C-54AD-4A03-9021-17D66CD63290"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedNode.hpp"
-            timestampString = "611119453.784528"
+            timestampString = "611696172.1052099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "encompassingObjects(glm::vec3 point)"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "encompassingObjects(point)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "472C675D-313D-4F9B-954F-60B0575FF119"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedNode.hpp"
-            timestampString = "611119453.7846659"
+            timestampString = "611696172.105275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "encompassingObjects(glm::vec3 point)"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "encompassingObjects(point)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "BA300482-897D-4405-8351-8504C77A0A60"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedNode.hpp"
-            timestampString = "611119453.784713"
+            timestampString = "611696172.105336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "encompassingObjects(glm::vec3 point)"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "encompassingObjects(point)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "A7277202-7F16-4EF8-8E68-135A226A52AD"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedNode.hpp"
-            timestampString = "611119453.784755"
+            timestampString = "611696172.105389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "encompassingObjects(glm::vec3 point)"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "encompassingObjects(point)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "21706920-55C5-48A7-A90E-0A211027B5F2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BoundedNode.hpp"
-            timestampString = "611119453.784795"
+            timestampString = "611696172.1054389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "encompassingObjects(glm::vec3 point)"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
+            landmarkName = "encompassingObjects(point)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8AF669C4-924F-456C-8DF2-4ACF768798B7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RenderCore.cpp"
+            timestampString = "611696172.105492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "RenderCore::marchFields(fields, ray, step, safeZoneIntersection, safeZoneField, recursionDepth)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -25,5 +25,5 @@ public:
     int boxIntersectionDepth = 0;
     int debugMarker = 0;
     
-    ShadableObject *shadableObject;
+    ShadableObject *object;
 };

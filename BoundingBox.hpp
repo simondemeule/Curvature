@@ -38,6 +38,8 @@ public:
     DistanceMeasure distance(glm::vec3 point);
     // distance function for furthest point on box
     DistanceMeasure distanceEnd(glm::vec3 point);
+    // distance function for biggest inscribed circle in box centered on point
+    DistanceMeasure distanceInscribed(glm::vec3 point);
     // surface area function
     float surfaceArea();
     

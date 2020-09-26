@@ -25,8 +25,20 @@ int main(int argc, const char * argv[]) {
     Tester tester = Tester();
     tester.doTheTest();
     */
-    RenderData renderDataExtended(2000, 32, 2, 16, 2, "","Test.bmp");
+    RenderData renderDataExtended(1000, 32, 2, 16, 2, "","Test.bmp");
     RenderScheduler renderScheduler(&renderDataExtended);
     renderScheduler.renderAndSaveImage();
+    /*
+    int numSteps = 180;
+    for(int i = 0; i < numSteps; i++) {
+        std::string path;
+        path.append("Frame");
+        path.append(std::to_string(i));
+        path.append(".bmp");
+        RenderData renderData(1920, 32, 2, 16, 2, "", path, glm::radians(360.0 / numSteps * i));
+        RenderScheduler renderScheduler(&renderData);
+        renderScheduler.renderAndSaveImage();
+    }
+     */
     return 0;
 }

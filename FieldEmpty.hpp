@@ -19,5 +19,5 @@ public:
     FieldEmpty(glm::vec3 origin, float radius);
     
     // ray differential equation function
-    glm::vec3 deltaRay(Ray ray, float step);
+    glm::vec3 deltaRay(Ray ray);
 };

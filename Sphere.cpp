@@ -57,7 +57,8 @@ ShadableObjectIntersection Sphere::intersection(Ray ray) {
     intersection.exists = true;
     intersection.incident = ray.direction;
     intersection.distance = t;
-    intersection.shadableObject = this;
+    intersection.object = this;
+    intersection.objectIntersectionDepth = 1;
     return intersection;
 }
 

@@ -339,19 +339,17 @@ void RenderData::loadTest() {
     fields.push_back(fieldAttractor);
      */
     
-    Field* fieldAttractor1 = new FieldAttractor(glm::vec3(-1, 0, -1), 2, -0.04);
+    //Field* fieldAttractor1 = new FieldAttractor(glm::vec3(-1, 0, -1), 2, -0.04);
     //Field* fieldAttractor2 = new FieldAttractor(glm::vec3(1, 0, -1), 1.3, -0.05);
     //Field* fieldEmpty = new FieldEmpty(glm::vec3(0), 2);
-    fields.push_back(fieldAttractor1);
+    //fields.push_back(fieldAttractor1);
     //fields.push_back(fieldAttractor2);
     //fields.push_back(fieldEmpty);
     //Field* fieldCrossProduct = new FieldCrossProduct(glm::vec3(1, 0, -1), glm::vec3(0, 0, 1), 2, 2);
     //fields.push_back(fieldCrossProduct);
     
-    /*
-    Field* fieldCrossProduct = new FieldCrossProduct(glm::vec3(0), glm::vec3(0, 1, 0), 1, 0.001);
+    Field* fieldCrossProduct = new FieldCrossProduct(glm::vec3(0), glm::vec3(0, 1, 0), 2.4, 0.1);
     fields.push_back(fieldCrossProduct);
-    */
     
     /*
     Field* fieldEmpty = new FieldEmpty(glm::vec3(0), 2);
@@ -359,13 +357,12 @@ void RenderData::loadTest() {
     */
      
     // mesh
-    /*
-    MeshData* meshData = new MeshData("monkey2.obj");
+    MeshData* meshData = new MeshData("monkey3.obj");
     meshDatas.push_back(meshData);
-    //MeshInstance* meshInstance = new MeshInstance(meshData, glm::rotate(glm::mat4(2.0), (float) M_PI_2, glm::vec3(1.0, 0.0, 0.0)), sphereAttributes);
-    MeshInstance* meshInstance = new MeshInstance(meshData,glm::mat4(1.0), sphereAttributes);
+    MeshInstance* meshInstance = new MeshInstance(meshData, glm::rotate(glm::mat4(2.0), (float) M_PI_2, glm::vec3(1.0, 0.0, 0.0)), sphereAttributes);
+    //MeshInstance* meshInstance = new MeshInstance(meshData,glm::mat4(1.0), sphereAttributes);
     meshInstances.push_back(meshInstance);
-    */
+    
     //objects.push_back(new Sphere(glm::vec3(0, 0, 0), 1, sphereAttributes));
     
     // sphere floating miror
@@ -396,6 +393,44 @@ void RenderData::loadTest() {
     // camera
     //camera = new Camera(glm::vec3(0, -4, 0), glm::vec3(0, 4, 0), glm::vec3(0, 0, 1), 80, 1.0, 16.0 / 9.0);
     camera = new Camera(glm::vec3(0, -4, 2), glm::vec3(0, 4, -2), glm::vec3(0, 0, 1), 80, 1.0, 16.0 / 9.0);
+    //camera = new Camera(glm::vec3(0, 0, 2), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0), 80, 1.0, 16.0 / 9.0);
+}
+
+void RenderData::loadAnim(float cameraAngle) {
+    ShadableAttributes* sphereAttributes = new ShadableAttributes();
+    sphereAttributes->ambient = glm::vec3(0.1);
+    sphereAttributes->diffuse = glm::vec3(0.8);
+    sphereAttributes->specular = glm::vec3(0.8);
+    sphereAttributes->shininess = 1;
+    sphereAttributes->reflectivity = 0.2;
+    
+    // sphere grid
+    for(int i = -3; i <= 3; i++) {
+        for(int j = -3; j <= 3; j++) {
+            objects.push_back(new Sphere(glm::vec3(i * 2, j * 2, -2), 1, sphereAttributes));
+        }
+    }
+    
+    
+    Field* fieldAttractor1 = new FieldAttractor(glm::vec3(-1, 0, -1), 2, -0.04);
+    Field* fieldAttractor2 = new FieldAttractor(glm::vec3(1, 0, -1), 1.3, -0.05);
+    fields.push_back(fieldAttractor1);
+    fields.push_back(fieldAttractor2);
+    Field* fieldCrossProduct = new FieldCrossProduct(glm::vec3(0), glm::vec3(0, 1, 0), 2.4, 0.1);
+    fields.push_back(fieldCrossProduct);
+    
+    // lights
+    ShadableAttributes lightAttributes;
+    lightAttributes.specular = lightAttributes.diffuse = glm::vec3(0.9, 0.0, 0.6);
+    lights.push_back(new Light(glm::vec3(4, -4, 2), lightAttributes));
+    lightAttributes.specular = lightAttributes.diffuse = glm::vec3(0.3, 0.1, 0.9);
+    lights.push_back(new Light(glm::vec3(-4, 4, 2), lightAttributes));
+    lightAttributes.specular = lightAttributes.diffuse = glm::vec3(0.0, 0.9, 0.6);
+    lights.push_back(new Light(glm::vec3(-4, 4, 20), lightAttributes));
+    // camera
+    camera = new Camera(glm::vec3(glm::rotate(glm::mat4(1.0), cameraAngle, glm::vec3(0, 0, 1)) * glm::vec4(0, -4, 2, 1)),
+                        glm::vec3(glm::rotate(glm::mat4(1.0), cameraAngle, glm::vec3(0, 0, 1)) * glm::vec4(0, 4, -2, 0)),
+                        glm::vec3(0, 0, 1), 80, 1.0, 16.0 / 9.0);
     //camera = new Camera(glm::vec3(0, 0, 2), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0), 80, 1.0, 16.0 / 9.0);
 }
 
@@ -494,6 +529,22 @@ RenderData::RenderData(std::string workingDirectoryNew, std::string inputFileNam
     applyAntiAliasingSettings(1);
     applyThreadSettings();
     applyRecursionSettings(0);
+    expandPrimitives();
+    computeShadableBoundedHierarchy();
+    computeFieldBoundedHierarchy();
+}
+
+RenderData::RenderData(int outputWidthNew, int tileSizeNew, int antiAliasingPassesRootNew, int threadCountNew, int recursionLimitNew, std::string workingDirectoryNew, std::string outputFileNameNew, float cameraAngle) {
+    workingDirectory = workingDirectoryNew;
+    outputFileName = outputFileNameNew;
+    
+    loadAnim(cameraAngle);
+    
+    applyOutputSettingsFromWidth(outputWidthNew);
+    applyTileSettings(tileSizeNew);
+    applyAntiAliasingSettings(antiAliasingPassesRootNew);
+    applyThreadSettings(threadCountNew);
+    applyRecursionSettings(recursionLimitNew);
     expandPrimitives();
     computeShadableBoundedHierarchy();
     computeFieldBoundedHierarchy();

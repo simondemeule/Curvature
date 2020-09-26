@@ -17,6 +17,6 @@ radius(radiusNew)
     primitiveCount = 1;
 }
 
-glm::vec3 FieldEmpty::deltaRay(Ray ray, float step) {
+glm::vec3 FieldEmpty::deltaRay(Ray ray) {
     return glm::vec3(0);
 }

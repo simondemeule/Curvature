@@ -21,7 +21,7 @@ public:
     FieldIntersection intersection(Ray ray);
     
     // ray differential equation function
-    virtual glm::vec3 deltaRay(Ray ray, float step) = 0;
+    virtual glm::vec3 deltaRay(Ray ray) = 0;
     
     // primitive count for bounded hierarchy construction optimisation
     int primitiveCount = 1;

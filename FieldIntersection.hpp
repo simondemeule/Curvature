@@ -24,5 +24,5 @@ public:
     int boxIntersectionDepth = 0;
     int debugMarker = 0;
     
-    Field *field;
+    Field *object;
 };

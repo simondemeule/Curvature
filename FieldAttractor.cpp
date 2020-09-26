@@ -20,7 +20,7 @@ strength(strengthNew)
     primitiveCount = 1;
 }
 
-glm::vec3 FieldAttractor::deltaRay(Ray ray, float step) {
+glm::vec3 FieldAttractor::deltaRay(Ray ray) {
     float intensity = strength * (0.5 + 0.5 * std::cos(M_PI * std::min(glm::length(ray.origin - origin) / radius, 1.0f)));
-    return intensity * step * glm::normalize(glm::vec3(origin - ray.origin));
+    return intensity * glm::normalize(glm::vec3(origin - ray.origin));
 }

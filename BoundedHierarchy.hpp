@@ -209,6 +209,36 @@ public:
         }
     }
     
+    ObjectIntersection closestIntersectionExcluding(Ray ray, Object* objectExcluded) {
+        if(root == nullptr) {
+            // case where hirearchy is empty
+            ObjectIntersection intersection;
+            intersection.exists = false;
+            return intersection;
+        } else if (root->nodeLeft == nullptr && root->nodeRight == nullptr) {
+            // case where root is leaf
+            if(root->boundingBox.intersectionTest(ray)) {
+                return root->object->intersection(ray);
+            } else {
+                ObjectIntersection intersection;
+                intersection.exists = false;
+                return intersection;
+            }
+        } else {
+            // case where root is internal
+            
+            // BoundedNode's recursive function assumes the passed node is known to intersect the ray.
+            // this means we have to check the intersection with the root node before calling it.
+            if(root->boundingBox.intersectionTest(ray)) {
+                return root->closestIntersectionExcluding(ray, objectExcluded);
+            } else {
+                ObjectIntersection intersection;
+                intersection.exists = false;
+                return intersection;
+            }
+        }
+    }
+    
     DistanceMeasure distance(glm::vec3 point) {
         if(root == nullptr) {
             // case where hirearchy is empty
@@ -249,6 +279,31 @@ public:
             } else {
                 std::list<Object*> list = {};
                 return list;
+            }
+        }
+    }
+    
+    void encompassingObjects(glm::vec3 point, std::list<Object*> &objects) {
+        if(root == nullptr) {
+            // case where hirearchy is empty
+            return;
+        } else if (root->nodeLeft == nullptr && root->nodeRight == nullptr) {
+            // case where root is leaf
+            if(root->boundingBox.containmentTest(point)) {
+                objects.push_back(root->object);
+                return;
+            } else {
+                return;
+            }
+        } else {
+            // case where root is internal
+            
+            // BoundedNode's recursive function assumes the passed node is known to contain the point.
+            // this means we have to check containment with the root node before calling it.
+            if(root->boundingBox.containmentTest(point)) {
+                return root->encompassingObjects(point, objects);
+            } else {
+                return;
             }
         }
     }

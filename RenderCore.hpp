@@ -25,6 +25,8 @@ public:
     // constructor
     RenderCore(RenderData* renderData);
     
+    DistanceMeasure distanceSameEncompassing(glm::vec3 point, std::list<Field*> &fields);
+    
     // transforms a pixel coordinate and antialiasing pass number to normalized camera plane coordinates
     // input:
     // x -> [0, outputWidth]
@@ -35,13 +37,16 @@ public:
     glm::vec2 toNormalizedCoordinates(int x, int y, int antiAliasingPass);
     
     // do ray-marching on fields
-    ShadableObjectIntersection marchFields(std::list<Field*> fields, Ray ray, float step, DistanceMeasure safeZone, int recursionDepth);
+    ShadableObjectIntersection marchFields(std::list<Field*> &fields, Ray ray, float step, DistanceMeasure safeZoneIntersection, DistanceMeasure safeZoneField, int recursionDepth);
     
     // calculate closest intersection between ray and any object, marching through fields
     ShadableObjectIntersection closestIntersectionThroughFields(Ray ray, int recursionDepth);
     
     // calculate closest intersection between ray and any object
     ShadableObjectIntersection closestIntersection(Ray ray);
+    
+    // calculate closest intersection between ray and all objects excluding a specific one
+    ShadableObjectIntersection closestIntersectionExcluding(Ray ray, ShadableObject* objectExcluded);
     
     // calculate the color contribution of a light to an intersection
     glm::vec3 colorLight(ShadableObjectIntersection intersection, Light* light);

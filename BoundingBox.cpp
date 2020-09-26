@@ -126,6 +126,27 @@ DistanceMeasure BoundingBox::distanceEnd(glm::vec3 point) {
     return distanceMeasure;
 }
 
+// derived from distance function above
+// distance function for biggest inscribed circle in box centered on point
+DistanceMeasure BoundingBox::distanceInscribed(glm::vec3 point) {
+    /*
+    DistanceMeasure distanceMeasure = distance(point);
+    distanceMeasure.distance = std::max(- distanceMeasure.distance, 0.0f);
+    return distanceMeasure;
+    */
+    glm::vec3 pointCenter = 0.5f * (pointPositive + pointNegative);
+    glm::vec3 boundFromCenter = pointPositive - pointCenter;
+    glm::vec3 pointFromCenter = point - pointCenter;
+    glm::vec3 pointFromCornerMirrored = abs(pointFromCenter) - boundFromCenter;
+    
+    DistanceMeasure distanceMeasure;
+    distanceMeasure.origin = point;
+    distanceMeasure.boxDistanceDepth = 1;
+    distanceMeasure.distance = - std::min<float>(std::max<float>(pointFromCornerMirrored.x, std::max<float>(pointFromCornerMirrored.y, pointFromCornerMirrored.z)), 0.0);
+    
+    return distanceMeasure;
+}
+
 float BoundingBox::surfaceArea() {
     return 2 * (pointPositive.x - pointNegative.x) * (pointPositive.y - pointNegative.y) + 2 * (pointPositive.x - pointNegative.x) * (pointPositive.z - pointNegative.z) + 2 * (pointPositive.y - pointNegative.y) * (pointPositive.z - pointNegative.z);
     ;

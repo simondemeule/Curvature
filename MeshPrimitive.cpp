@@ -78,7 +78,7 @@ void MeshPrimitive::updateBoundingBox() {
 ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {    
     // calculate intersection with triangle plane
     float denom = glm::dot(normalTrue, ray.direction);
-    if(denom > -1e-6) {
+    if(denom >= 0) {
         // intersection with plane is a backface or ray is parallel to plane
         // exit calculation
         ShadableObjectIntersection intersection;
@@ -86,7 +86,7 @@ ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {
         return intersection;
     }
     float t = glm::dot(corner1 - ray.origin, normalTrue) / denom;
-    if(t < 1e-3) {
+    if(t < 0) {
         // intersection with plane is behind ray
         // exit calculation
         ShadableObjectIntersection intersection;
@@ -102,7 +102,7 @@ ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {
     float area2 = area(corner1, pointIntersection, corner3);
     float area3 = area(corner1, corner2, pointIntersection);
     
-    if(std::abs((area1 + area2 + area3) / areaTotal - 1.0) > 1e-3) {
+    if(((area1 + area2 + area3) / areaTotal - 1.0) > 1e-6) {
         // intersection is not in triangle
         // exit calculation
         ShadableObjectIntersection intersection;
@@ -124,7 +124,8 @@ ShadableObjectIntersection MeshPrimitive::intersection(Ray ray) {
     intersection.normal = normalInterpolated;
     intersection.distance = t;
     intersection.incident = ray.direction;
-    intersection.shadableObject = this;
+    intersection.object = this;
+    intersection.objectIntersectionDepth = 1;
     return intersection;
 }
 
