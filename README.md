@@ -4,7 +4,7 @@ Curvature is an experimental 3D raytracing engine written from scratch with one 
 
 ![](https://github.com/simondemeule/Curvature/blob/master/doc/anim.gif)
 
-GIF above: orbiting around a 7x7 grid of spheres with a light-bending field at the center, which twists light in a fashion similar to the way magnetic fields bend the trajectory of electrons. The original 180 frame, 1920x1080, 2x anti-aliased render took about 4 hours to complete on a 8-core i9 2019 15" MacBook Pro running an earlier version of the software. 
+GIF above: orbiting around a 7x7 grid of spheres with a light-bending field at the center, which twists light in a fashion similar to the way magnetic fields bend the trajectory of electrons, and two light-repelling fields. The original 180 frame, 1920x1080, 2x anti-aliased render took about 4 hours to complete on a 8-core i9 2019 15" MacBook Pro running an earlier version of the software. 
 
 I have been working this as a fun side project since early 2019, mostly as a proof of concept for this improved algorithm I came up with. I am completely aware this code is far from perfect: I definitely cut corners on memory management in some parts of this application. I wish to eventually fix this, but in the mean time, I hope you will look past this and be just as excited as I am to be rendering weird, curved-spacetime images.
 
