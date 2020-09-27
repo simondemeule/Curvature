@@ -22,7 +22,7 @@ Curvature was developed on macOS, so there might be issues on Windows or Linux (
 
 # Getting Started
 
-At the moment, getting scenes onto Curvature is a bit messy. The *RenderData* class contains all the information needed by the *RenderScheduler* class to produce an image. You can either use one of its test constructors with a hardcoded test scene, or load a scene from a simple text file. The documentation for this file format doesn't exist yet, and it unfortunately doesn't support specifying fields at the moment. It is just simpler to hard-code a test scene by rewriting the test scene constructors, until this issue gets properly fixed. Hopefully more documentation will be produced looking forwards.
+At the moment, getting scenes onto Curvature is a bit messy. The `RenderData` class contains all the information needed by the `RenderScheduler` class to produce an image. You can either use one of its test constructors with a hardcoded test scene, or load a scene from a simple text file. The documentation for this file format doesn't exist yet, and it unfortunately doesn't support specifying fields at the moment. It is just simpler to hard-code a test scene by rewriting the test scene constructors, until this issue gets properly fixed. Hopefully more documentation will be produced looking forwards.
 
 # Acknowledgements
 
