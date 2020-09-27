@@ -1,6 +1,6 @@
 # Curvature
 
-Curvature is an experimental 3D hybrid raytracing / raymarching engine written from scratch with one goal in mind: allowing light to be curved efficiently.
+Curvature is an experimental hybrid raytracing / raymarching 3D engine written from scratch with one goal in mind: allowing light to be curved efficiently.
 
 ![](https://github.com/simondemeule/Curvature/blob/master/doc/anim.gif)
 
